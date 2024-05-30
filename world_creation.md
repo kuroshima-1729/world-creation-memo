@@ -44,7 +44,7 @@ Author: くろしま </br>
   - VRC Scene Descripter 
 
     ![alt text](images/vrc_scene_descripter.png) </br>
-    
+
     ワールドをアップロードするときに必要となる、ワールド限定のコンポーネント。
     - Reference Camera: プレイヤーの目となるカメラのリファレンス。
     - Respone Height Y: リスポーンさせられる高さ。
@@ -79,3 +79,4 @@ Author: くろしま </br>
     - Unity標準のUI
     - ボタンなどがある。 
 
+# VRChat初心者に送る、Unityの親子関係・階層について
