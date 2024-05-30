@@ -42,7 +42,9 @@ Author: くろしま </br>
     - オブジェクトの「見た目」を調整したいときに触るコンポーネント。
     - このコンポーネントを作ると、Mesh Filterというメッシュと呼ばれる3Dモデルの形状のデータが指定される。
   - VRC Scene Descripter 
+
     ![alt text](images/vrc_scene_descripter.png) </br>
+    
     ワールドをアップロードするときに必要となる、ワールド限定のコンポーネント。
     - Reference Camera: プレイヤーの目となるカメラのリファレンス。
     - Respone Height Y: リスポーンさせられる高さ。
@@ -61,7 +63,9 @@ Author: くろしま </br>
   - Projector
     - テクスチャを投影することができる。
     - 影の作成などができる
+
     ![alt text](images/projector_image.png) </br>
+
   - (Aim/LookAt/Parent/Position/Rotation/Scale) Constraint
     - 他のオブジェクトの変化(位置・回転・スケールの変更)に従って、ゲームオブジェクトに制約を付ける。
       - 他のゲームオブジェクトがある位置に移動するときに、同じ分だけ移動したりなど。
