@@ -20,7 +20,7 @@ Book Title: 群上の調和解析
 $H$ を $G$ の部分群であるとし、 $G$ 上の２項関係 ~ を
 $$x\sim y \iff xH = yH$$
 と定義すれば、 $\sim$ は同値関係である。ここで、 $xH = \lbrace xa| a\in H\rbrace$ である。この同値関係による $x\in G$ の同値類は $\xi_x$ は、
-$$\xi_x =\{y\in G\|xH=yH\}$$
+$$\xi_x =\lbrace y\in G\|xH=yH\rbrace$$
 である。 $G$ の $\sim$ による商集合 $\lbrace\xi_x | x\in G\rbrace$ を $G/H$ で表す。同値類 $\xi_x$ を右-剰余類という。
 
 $x, y\in G$ が同じ剰余類に属するためには、 $x^{-1}y\in H$ であることが必要充分である。このとき $x$ と $y$ とは $H$ を法として合同であると言い、
@@ -60,7 +60,7 @@ $$y\varphi (N) y^{-1}=\varphi(x)\varphi(N)\varphi(x)^{-1}=\varphi(xNx^{-1})\subs
 $2^{\circ}$ $G$ は群、 $N$ をその正規部分群とし、写像 $\pi : G\rightarrow G/N$ を $\pi : x\mapsto xN \ (x\in G)$ と定義する。これを自然な写像または標準的写像という。 $\pi$ は準同型写像で、 $\pi (N)$ は $G/N$ の正規部分群である。
 証明) $\pi$ は全射で、 $N$ が $G$ の正規部分群なので $1^{\circ}$ から導かれる。
 
-定理 1.1 <br>
+**定理 1.1** <br>
 $G$, $G^{\prime}$ は群、 $\varphi : G\rightarrow G^{\prime}$ は準同型写像とする。このとき $G/Ker\varphi$ と $\varphi(G)$ とは群として同型である。同型写像は
 $$\Phi : x\cdot Ker\varphi \mapsto \varphi(x), \ \ x\in G$$
 によって与えられる。</br>
@@ -68,6 +68,31 @@ $$\Phi : x\cdot Ker\varphi \mapsto \varphi(x), \ \ x\in G$$
 単射性: $\Phi (x\cdot Ker\varphi)=\Phi (x^{\prime}\cdot Ker\varphi)$ とすると $\varphi(x)=\varphi(x^{\prime})$ で、 $e^{\prime}=\varphi(x)\varphi(x^{\prime})=\varphi(x {x^{\prime}}^{-1})$ なので、 $x {x^{\prime}}^{-1} \in Ker\varphi$ よって、 $xKer\varphi=x^{\prime}Ker\varphi$ である。
 さらに、 $\Phi$ は準同型写像である。実際、 $x, x^{\prime}$ に対して、
 $$\Phi(xKer\varphi\cdot x^{\prime}Ker\varphi)=\Phi(xx^{\prime}Ker\varphi)=\varphi(x\cdot x^{\prime})=\varphi(x)\varphi(x^{\prime})=\Phi(xKer\varphi)\cdot \Phi(x^{\prime}Ker\varphi)$$
-であるから、$\Phi$ は準同型写像である。したがって、
+であるから、 $\Phi$ は準同型写像である。したがって、
 $$G/Ker\varphi \simeq \varphi(G)$$
  
+**定理 1.2** </br>
+$G$, $G^{\prime}$ は群、 $\varphi: G\rightarrow G^{\prime}$ は準同型全射とする。 $H^{\prime}$ を $G^{\prime}$ の正規部分群とすれば、 $H=\varphi^{-1}(H^{\prime})$ は $G$ の正規部分群で
+$$G/H\simeq G^{\prime}/H^{\prime}$$
+証明) 写像 $\Phi: G\rightarrow G^{\prime}/H^{\prime}$ を
+$$\Phi: x\mapsto \varphi(x)H^{\prime}$$
+と定義すると、 $\Phi$ は全射の準同型である。( $yH^{\prime}\in G^{\prime}/H^{\prime}$ とすると、 $\varphi$ の全射性から $y=\varphi(x)$ となる $x\in G$ がある。この $x$ をとればよい。) </br>
+$\Phi$ の核は、
+$$Ker\Phi = \lbrace x\in G | \Phi(x)=H^{\prime} \rbrace = \lbrace x\in G | \varphi(x)H^{\prime} = H^{\prime} \rbrace \\ = \lbrace x\in G | \varphi(x)\in H^{\prime} \rbrace = \varphi^{-1}(H^{\prime}) = H$$
+である。したがって、定理 1.1 により、
+$$G/H\simeq G^{\prime}/H^{\prime}$$
+
+**系 1.1** $G$ は群、 $H$ と $N$ は $G$ の正規部分群で、しかも $N\subset H$ とする。このとき
+$$(G/N)/(H/N)\simeq G/H$$
+証明) $G^{\prime} = G/N$ 、 $H^{\prime}=H/N$ とする。 $H^{\prime}$ は $G^{\prime}$ の正規部分群である。 $\pi: G\rightarrow G/N$ を自然な写像 $x\mapsto xN$ として、これを定理1.2の $\varphi$ に見立てれば、
+$$\pi^{-1}(H^{\prime})=\lbrace g\in G | \pi(g)=H^{\prime} \rbrace = \lbrace g\in G | gN=H/N \rbrace$$
+で、 $N\subset H$ より、
+$$\pi^{-1}(H^{\prime})=\lbrace g\in G | g\in H \rbrace = H$$
+よって、定理 1.2 より、
+$$G/H\simeq G^{\prime}/H^{\prime} = (G/N)/(H/N)$$
+
+## Section 2. 位相群の概念
+**定義** 集合 $G$ が次の３条件を満たすとき、それは位相群であるという。</br>
+(TG-1) $G$ は群である。</br>
+(TG-2) $G$ は位相空間である。</br>
+(TG-3) $G$ 上で定義されている群の演算が、与えられた位相に関して連続である。</br>
