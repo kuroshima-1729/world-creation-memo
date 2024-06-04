@@ -96,3 +96,47 @@ $$G/H\simeq G^{\prime}/H^{\prime} = (G/N)/(H/N)$$
 (TG-1) $G$ は群である。</br>
 (TG-2) $G$ は位相空間である。</br>
 (TG-3) $G$ 上で定義されている群の演算が、与えられた位相に関して連続である。</br>
+
+$G$ 上の群の演算を仮に </br>
+乗法演算 : $(x,y)\mapsto x\cdot y \ \ [G\times G\rightarrow G]$ </br>
+逆元の演算 : $x\mapsto x^{-1} \ \ [G\rightarrow G]$ </br>
+とすれば、(TG-3) の意味するところは、この二つが連続であることである。これは演算
+$$(x,y)\mapsto x\cdot y^{-1} \ \ [G\times G\rightarrow G]$$
+が連続であることと同値である。</br>
+
+例:</br>
+$G=\mathbb{R}$ とし、その上に定まる位相はユークリッド位相であるとする。このとき $\mathbb{R}$ は加法についての位相群となる。</br>
+$G=\mathbb{R}^l$ とし、その上にEuclid位相を定めれば、 $\mathbb{R}^l$ はベクトルの加法演算についての位相群( $l$ 次元ベクトル群 )となる。</br>
+$G=\{z\in \mathbb{C} : |z|=1 \}$ は複素数の乗法と、 $\mathbb{C}$ から導入される相対位相について位相群となる。</br>
+$(n\times n)$-型の実行列の全体は行列の和に関して可換群、またそのうち正則行列の全体 $GL$ は行列の積について非可換群を成し、いずれも ${\mathbb{R}}^{n^2}$ のEuclid位相の下に位相群となる。 $GL$ の元のうち行列式の値が $1$ に等しいものの全体 $SL$ は、行列の積についての群をなし、やはり位相群である。
+
+
+## Section 3. 位相群の位相
+位相群の特徴: 代数的な演算と、位相的な性質の間に密接な関係があり、その結果として、群の構造をもつ $G$ に位相群としての位相を導入するには、全空間にわたる基底を指定する必要はなく、単位元 $e$ の完全近傍系(すべての近傍の族)を指定すれば十分である。</br>
+$A, B\subset G$ に対し、
+$$
+A\cdot B = \{x\cdot y\ | x\in A, y\in B\}, \ \ A^{-1} = \{x^{-1} | x \in A \}
+$$
+などと書く。</br>
+**定義** </br>
+集合 $X$ の部分集合の族 $\mathscr{F}$ が次の３条件を満たすとき、 $\mathscr{F}$ は $X$ 上の**フィルター**という。</br>
+(1) $A, B\in \mathscr{F} \Rightarrow A\cap B \in \mathscr{F}$ </br>
+(2) $A\in \mathscr{F}, A\subset B \Rightarrow B\in \mathscr{F}$ </br>
+(3) $\empty \notin \mathscr{F}$ </br>
+
+いま、位相群の単位元 $e$ の完全近傍系の作るフィルターを $\mathscr{N}$ とする。 $a$ を $G$ の任意の元とするとするとき、写像
+$$
+x\mapsto a\cdot x; \ \ x\mapsto x\cdot a
+$$ 
+は $G$ から $G$ への位相同型写像である。したがって、
+$$
+a\mathscr{N}=\{aV|V\in \mathscr{N}\}, \mathscr{N}a = \{Va| V\in\mathscr{N}\}
+$$
+は点 $a$ の完全近傍系になる。このようにして、単位元 $e$ の完全近傍系を知ることにより、ほかの任意の点における完全近傍系を知ることができる。
+
+$e$ の完全近傍系 $\mathscr{N}$ は次の三条件を満たす。
+(1) 任意の $U\in \mathscr{N}$ に対して、 $VV\subset U$ を満たす $N\in\mathscr{N}$ が存在する。</br>
+証明) 群の乗法演算を $m: G\times G\rightarrow G$ とする。 $int(U)$ は $e$ の開近傍であり、 $m$ の連続性から、 $m^{-1}(int(U))$ は $(e, e)$ の開近傍なので、 $V\times V\subset m^{-1}(int(U))\subset m^{-1} (U)$ となる $V\in \mathscr{N}$ が存在する。 $ab\in VV$ とすると、 $(a, b) \in V\times V \subset m^{-1}(U)$ より、 $ab=m((a,b))\in U$ したがって、 $VV\subset U$
+
+
+
