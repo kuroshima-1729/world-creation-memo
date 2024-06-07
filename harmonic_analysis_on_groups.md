@@ -173,7 +173,16 @@ $$
 $$
 xV \subset aVV \subset aU
 $$
-ゆえに、 $aU\in x\mathscr{N}$。
+ゆえに、 $aU\in x\mathscr{N}$。</br>
+(B) の証明: 演算 $(a, b)\mapsto ab^{-1}$ が連続となることを示す。</br>
+$U$ を $e$ の任意の近傍とすれば、 (3)により
+$$
+V\equiv b^{-1}Ub\in \mathscr{N} \tag{1}
+$$
+この $V$ に対して、(1)、(2) $\iff$ (\*) より、 $WW^{-1}\subset V$ なる $W\in\mathscr{N}$ が存在する。 いま $u, v\in W$ とすれば、 $uv^{-1}\in V$ であり、 したがって、 (1) により、 $buv^{-1}b^{-1}\in U$ 。よって、
+$$
+u\in W, v\in W \Rightarrow (au)(bv)^{-1}=(ab^{-1})(buv^{-1}b^{-1})\in ab^{-1}U
+$$
 
 
 
