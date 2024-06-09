@@ -134,8 +134,8 @@ a\mathscr{N}=\{aV|V\in \mathscr{N}\}, \mathscr{N}a = \{Va| V\in\mathscr{N}\}
 $$
 は点 $a$ の完全近傍系になる。このようにして、単位元 $e$ の完全近傍系を知ることにより、ほかの任意の点における完全近傍系を知ることができる。
 
-$e$ の完全近傍系 $\mathscr{N}$ は次の三条件を満たす。
-(1) 任意の $U\in \mathscr{N}$ に対して、 $VV\subset U$ を満たす $N\in\mathscr{N}$ が存在する。</br>
+$e$ の完全近傍系 $\mathscr{N}$ は次の三条件を満たす。</br>
+(1) 任意の $U\in \mathscr{N}$ に対して、 $VV\subset U$ を満たす $V\in\mathscr{N}$ が存在する。</br>
 証明) 群の乗法演算を $m: G\times G\rightarrow G$ とする。 $int(U)$ は $e$ の開近傍であり、 $m$ の連続性から、 $m^{-1}(int(U))$ は $(e, e)$ の開近傍なので、 $V\times V\subset m^{-1}(int(U))\subset m^{-1} (U)$ となる $V\in \mathscr{N}$ が存在する。 $ab\in VV$ とすると、 $(a, b) \in V\times V \subset m^{-1}(U)$ より、 $ab=m((a,b))\in U$ したがって、 $VV\subset U$ </br>
 (2) 任意の $U\in \mathscr{N}$ に対して、 $U^{-1}\in\mathscr{N}$。</br>
 証明) 写像 $x\mapsto x^{-1}$ が $G$ を $G$ 自身に移す位相同型写像であるから、開写像。したがって、 $e = x^{-1}(e)\in x^{-1}(U^{\circ})=(U^{\circ})^{-1}\subset {U^{-1}}^{\circ} \subset U^{-1}$ (後ろから2番目の縫合関係は、内部は最大の開集合であることから)。または単に $e\in (U^{-1})^{\circ}=U^{-1}$ なので。 </br>
@@ -143,7 +143,7 @@ $e$ の完全近傍系 $\mathscr{N}$ は次の三条件を満たす。
 証明) $a\in G$ を一つ固定したとき、 $x\mapsto ax$ 、 $x\mapsto xa^{-1}$ がいずれも $G$ から $G$ への位相同型写像、したがって開写像であることから、 $e=aea^{-1}\in aUa^{-1}$ なので、 $U\in \mathscr{N}$。
 
 ここで、フィルター $\mathscr{N}$ について "(1)および(2)" が成り立つことは次の(\*)と同値である。</br>
-(\*) 任意の $U\in \mathscr{N}$ に対して、 $VV^{-1}\subset U$ かつ $V^{-1}\in \matscr{N} を満たす $V\in \mathscr{N}$$ が存在する。</br>
+(\*) 任意の $U\in \mathscr{N}$ に対して、 $VV^{-1}\subset U$ かつ $V^{-1}\in \mathscr{N}$ を満たす $V\in \mathscr{N}$ が存在する。</br>
 証明) フィルター $\mathscr{N}$ について、 (1)と(2)が成り立つと仮定する。任意の $U\in \mathscr{N}$ に対して、(1) から $WW\subset U$ を満たす $W\subset \mathscr{N}$ が存在する。また (2) によって、 $W^{-1}\in \mathscr{N}$ であるから、 $V=W\cap W^{-1}$ とおけば、 $V\in \mathscr{N}$ (フィルターの定義(2))。(2)より $V^{-1}\in\mathscr{N}$ かつ $V^{-1}\subset W$ となり、したがって $VV^{-1}\subset WW \subset U$。</br>
 逆にフィルター $\mathscr{N}$ が (\*)を満たすとする。このとき任意の $U\in\mathscr{N}$ について、 $e\in U$ となる。実際、 $V\in\mathscr{N}$ が $VV^{-1}\subset U$ とすれば、 ( $V$は非空であるから)すべての $x\in V$ について、 $xx^{-1}=e\in U$ となるからである。 (\*)より $V\subset VV^{-1}\subset U$。したがって、 $V\subset U^{-1}$ であるからフィルターの定義 (2) より $U^{-1}\in\mathscr{N}$ である。 $V\in \mathscr{N}$ が $VV^{-1}\subset U$ を満たすものとし、 $W=V\cap V^{-1}$ とおけば、 $W\in\mathscr{N}$ で (フィルターの定義(1)より)かつ $WW\subset VV^{-1}\subset U$ である。
 
@@ -183,6 +183,27 @@ $$
 $$
 u\in W, v\in W \Rightarrow (au)(bv)^{-1}=(ab^{-1})(buv^{-1}b^{-1})\in ab^{-1}U
 $$
+
+定理1.3 において、群 $G$ 各点の完全近傍系を指定することにより、 $G$ の位相群としての位相が決定されることを示した。</br>
+$G$ の位相は基本近傍系を指定するだけでも決定される。
+
+**定義** </br>
+$(S, \mathscr{O})$ を一つの位相空間とし、 $V(x)$ を点 $x$ の(全)近傍系とする。 $V(x)$ の部分集合 $V^{*}(x)$ で次の性質をもつものを、 $x$ の基本近傍系という。</br>
+(\*) 任意の $V\in V(x)$ に対して、 $U\subset V$ となるような $U\in V^{*}(x)$ が存在する。
+
+単位元 $e$ の開集合からなる基本近傍系を $\mathscr{B}(e)$ とすると、</br>
+(※) 任意の $U, V\in \mathscr{B}(e)$ に対し、 $W\subset U\cap V$ を満たす $W\in \mathscr{B}(e)$ が存在する。</br>
+証明) $U\cap V$ は $e$ の近傍であるから(開集合かつ $e\in U^{\circ}\cap V^{\circ}=(U\cap V)^{\circ}$)、基本近傍系の定義より、 $W\subset U\cap V$ となるような $W\in \mathscr{B}(e)$ が存在する。</br>
+$(1^{\prime})$ 任意の $U\in\mathscr{B}(e)$ に対して、 $VV\subset U$ を満たす $V\in \mathscr{B}(e)$ が存在する。</br>
+証明) 任意の $U\in \mathscr{B}(e)$ に対して、 $U$ は $e$ の近傍なので、 近傍系の性質(1)より、 ある近傍 $W$ が存在して、 $WW\subset U$ となる。近傍 $W$ に対して、$V\in \mathscr{V}(e)$ が存在して、 $V\subset W$ となる。 したがって、 $VV\subset WW\subset U$。</br>
+$(2^{\prime})$ 任意の $U\in\mathscr{B}(e)$ に対して、 $U^{-1}\in\mathscr{B}(e)$</br>
+証明) $U\in \mathscr{B}(e)$ で、近傍なので、近傍系の性質(2)から $U^{-1}$ も近傍である。 したがって、基本近傍系の定義から、 ある $W\in \mathscr{B}(e)$ s.t $W\subset U^{-1}$ である。よって、$W$ はまた近傍であるから、 $U^{-1}\in\mathscr{B}(e)$。</br>
+$(3^{\prime})$ 任意の $U\in \mathscr{B}(e)$ 、 $a\in G$ に対して、 $V\subset aUa^{-1}(\iff a^{-1}Va\subset U)$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
+証明) 近傍の性質(3)より、 $aUa^{-^1}$ は近傍である。したがって、基本近傍系の定義から、 $V\subset aUa^{-1}$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
+$(4^{\prime})$ 任意の $U\in\mathscr{B}(e)$ と $x\in U$ に対して、 $xV\subset U$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
+証明) 
+
+
 
 
 
