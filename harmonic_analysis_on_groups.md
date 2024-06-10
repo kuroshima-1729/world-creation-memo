@@ -201,7 +201,15 @@ $(2^{\prime})$ 任意の $U\in\mathscr{B}(e)$ に対して、 $U^{-1}\in\mathscr
 $(3^{\prime})$ 任意の $U\in \mathscr{B}(e)$ 、 $a\in G$ に対して、 $V\subset aUa^{-1}(\iff a^{-1}Va\subset U)$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
 証明) 近傍の性質(3)より、 $aUa^{-^1}$ は近傍である。したがって、基本近傍系の定義から、 $V\subset aUa^{-1}$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
 $(4^{\prime})$ 任意の $U\in\mathscr{B}(e)$ と $x\in U$ に対して、 $xV\subset U$ を満たす $V\in\mathscr{B}(e)$ が存在する。</br>
-証明) 
+証明) $U$ は $x$ の近傍なので、 $U\in x\mathscr{N}$ よって、 ある $U^{\prime}\in \mathscr{N}$ に対して、 $U = xU^{\prime}$ 。 $U^{\prime}\in \mathscr{N}$ より、 ある $V\in \mathscr{B}(e)$ があって、 $V\subset U^{\prime}$ 。したがって、 $xV\subset xU^{\prime}=U$ 。
+
+$\mathscr{B}(e)$ に属する集合に $x\in G$ を乗じ、
+$$
+\mathscr{B}(e)=\{V\subset G | xU\subset V \rm{\ for \ \ some\ }U\in\mathscr{B}(e)\}
+$$
+が点 $x$ の完全近傍系をつくるフィルターとなる。そして逆にまだ位相の定まっていない群 $G$ 上に $(1^{\prime})$ ~ $(4^{\prime})$ を満たす集合族 $\mathscr{B}(e)$ が与えられれば、これを $e$ の開集合からなる基本近傍系とする $G$ の位相が定まり、 $G$ は位相群となる。</br>
+証明) $\mathscr{N(x)}$ が完全近傍系の公準 $(1)$ ~ $(3)$ を満たすフィルターであることを示す。
+
 
 
 
