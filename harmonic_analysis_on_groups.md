@@ -40,7 +40,7 @@ $$(\xi_x)\cdot (\xi_y) = \xi_{x\cdot y}, \ \ \  (\xi_x)^{-1}=\xi_{x^{-1}}$$
 $$(xN)\cdot (yN) = (x\cdot y)N, \,\,\, (xN)^{-1}=x^{-1}N$$
 なる演算を定めれば、 $G/N$ はこの演算の下に群となり、これらの演算は、well-definedである。 $G/N$ を $G$ の $N$ に関する商群とよぶ。 $G/N$ の単位元は $N$、 $xN$ の逆元は、 $x^{-1}N$ である。  
 
-$G$, $G^{\prime}$ を群(情報演算をともに $\cdot$ で記す)とし、写像 $\varphi : G\rightarrow G^{\prime}$ が
+$G$, $G^{\prime}$ を群(乗法演算をともに $\cdot$ で記す)とし、写像 $\varphi : G\rightarrow G^{\prime}$ が
 $$\varphi (x\cdot y) = \varphi (x)\cdot \varphi (y),  x,y \in G$$
 を満たすとき、 $\phi$ は準同型写像であるという。特に、$\varphi$ が全単射でもある場合は、これを同型写像という。
 
@@ -207,12 +207,21 @@ $\mathscr{B}(e)$ に属する集合に $x\in G$ を乗じ、
 $$
 \mathscr{B}(e)=\{V\subset G | xU\subset V \rm{\ for \ \ some\ }U\in\mathscr{B}(e)\}
 $$
-が点 $x$ の完全近傍系をつくるフィルターとなる。そして逆にまだ位相の定まっていない群 $G$ 上に $(1^{\prime})$ ~ $(4^{\prime})$ を満たす集合族 $\mathscr{B}(e)$ が与えられれば、これを $e$ の開集合からなる基本近傍系とする $G$ の位相が定まり、 $G$ は位相群となる。</br>
-証明) $\mathscr{N(x)}$ が完全近傍系の公準 $(1)$ ~ $(3)$ を満たすフィルターであることを示す。
+が点 $x$ の完全近傍系をつくるフィルターとなる。</br>
+証明) (1) $U, V\in \mathscr{N}(x)$ とすると、ある $U^{\prime}, V^{\prime}\in\mathscr{B}(e)$ があって、 $xU^{\prime}\subset U$ 、 $xV^{\prime} \subset V$ を満たす。このとき
+$$
+x(U^{\prime}\cap V^{\prime})=xU^{\prime}\cap xV^{\prime}\subset U\cap V
+$$
+$U^{\prime}\cap V^{\prime}\in \mathscr{N}(e)$ より $U\cap V\in\mathscr{N}(e)$ である。 </br>
+(2) $U\in\mathscr{N}(e)$ 、 $U\subset V$ とする。 このときある $U^{\prime}\in \mathscr{B}(e)$ があって、 $xU^{\prime}\subset U\subset V$ 。したがって、 $V\in \mathscr{N}(x)$ である。</br>
+(3) 任意の $U\in \mathscr{N}(x)$ に関して、 $x\in U$ なので、 $U\neq\empty$ である。したがって、 $\empty \notin \mathscr{N}(x)$ 。
 
+そして逆にまだ位相の定まっていない群 $G$ 上に $(1^{\prime})$ ~ $(4^{\prime})$ を満たす集合族 $\mathscr{B}(e)$ が与えられれば、これを $e$ の開集合からなる基本近傍系とする $G$ の位相が定まり、 $G$ は位相群となる。</br>
+証明) $\mathscr{N(x)}$ が完全近傍系の公準 $(1)$ ~ $(3)$ を満たすフィルターであることを示す。フィルターであることは上で証明したため、 $\mathscr{N(x)}$ が完全近傍系の公準 $(1)$ ~ $(3)$ を満たすことを証明する。</br>
+(おそらく (※)、$(1^{\prime})～(4^{\prime})$ から導けると思うが、わからない)
 
-
-
+定理 1.3'</br>
+群 $G$ の単位元 $e$ を含む集合族 $\mathscr{B}(e)$ が条件(※) および $(1^{\prime})～(4^{\prime})$ を満足するならば、 $G$ を位相群とし、かつ $\mathscr{B}(e)$ を単位元 $e$ の開集合からなる基本近傍系とする位相が位置に定まる。
 
 
 
