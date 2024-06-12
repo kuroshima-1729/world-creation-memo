@@ -223,7 +223,31 @@ $U^{\prime}\cap V^{\prime}\in \mathscr{N}(e)$ より $U\cap V\in\mathscr{N}(e)$ 
 定理 1.3'</br>
 群 $G$ の単位元 $e$ を含む集合族 $\mathscr{B}(e)$ が条件(※) および $(1^{\prime})～(4^{\prime})$ を満足するならば、 $G$ を位相群とし、かつ $\mathscr{B}(e)$ を単位元 $e$ の開集合からなる基本近傍系とする位相が位置に定まる。
 
+次の定理は位相群 $G$ の分離公理に関するものであり、位相群 $G$ においては $T_0, T_1, T_2, T_3$ が同値となる。
+![alt text](images/separation_axiom.png)
+参考: https://www.youtube.com/watch?v=Ebr1piFxEwI </br>
+$(T_0)$ (Kolmogorovの公理) 相異なる２点の少なくとも一方が他方を含まない近傍を有する。</br>
+$(T_1)$ (Fechetの公理) 相異なる２点はそれぞれ他方を含まない近傍を有する。</br>
+$(T_2)$ (Hausdorffの公理) 相異なる２点はそれぞれ互いに交わらない近傍を有する。</br>
+$(T_3)$ (Vietorisの公理) 任意の閉集合 $F$ とこれに含まれない点はそれぞれ交わらない近傍を有し(正則性)、かつ $T_1$。</br>
+$(T_4)$ (Tietzeの公理) 交わらない二つの閉集合は互いに交わらない近傍を有し(正規性)かつ$T_1$。<br>
+すぐにわかる関係として、
+$$
+T_4\Rightarrow T_3\Rightarrow T_2 \Rightarrow T_1\Rightarrow T_0
+$$
 
+**定理 1.4**(位相群の分離公理)
+位相群 $G$ について、 $T_0, T_1, T_2, T_3$ はすべて同値である。</br>
+証明) $T_0\Rightarrow T_2,T_3$ を証明すれば十分である。</br>
+$T_o\Rightarrow T_2$: $a,b\in G$, $a\neq b$ とすれば、$G$ が $T_0$ であるから、例えば $a\in U$、$b\notin U$ となる開集合が存在する。このとき互いに交わらない $a,b$ の近傍が存在することを示す。このとき一般性を失うことなく、 $a=e, b\neq e$ および $e\in U, b\notin U$ として証明すれば十分である(一般的には、$a, b$を考えて、$e, a^{-1}b$において証明されていることを利用すればよい。) そこで、 $VV^{-1}\subset U$ を満たす $e$ の近傍 $V$ をとる(定理1.3より)。 $e\in V$ 、 $b\in bV$ であるから、仮に $b\cap bV\neq\empty$ であるとし、 $x\in V\cap bV$ とすれば、
+$$
+x\in V \ and \ x=by \ for \ some \ y\in V 
+$$
+したがって、
+$$
+b=xy^{-1} \in VV^{-1}\subset U
+$$
+これは $b\notin U$ に矛盾する。
 
 
 
