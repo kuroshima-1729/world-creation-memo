@@ -224,7 +224,7 @@ $U^{\prime}\cap V^{\prime}\in \mathscr{N}(e)$ より $U\cap V\in\mathscr{N}(e)$ 
 群 $G$ の単位元 $e$ を含む集合族 $\mathscr{B}(e)$ が条件(※) および $(1^{\prime})～(4^{\prime})$ を満足するならば、 $G$ を位相群とし、かつ $\mathscr{B}(e)$ を単位元 $e$ の開集合からなる基本近傍系とする位相が位置に定まる。
 
 次の定理は位相群 $G$ の分離公理に関するものであり、位相群 $G$ においては $T_0, T_1, T_2, T_3$ が同値となる。
-![alt text](images/separation_axiom.png)
+![alt text](../images/separation_axiom.png)
 参考: https://www.youtube.com/watch?v=Ebr1piFxEwI </br>
 $(T_0)$ (Kolmogorovの公理) 相異なる２点の少なくとも一方が他方を含まない近傍を有する。</br>
 $(T_1)$ (Fechetの公理) 相異なる２点はそれぞれ他方を含まない近傍を有する。</br>
