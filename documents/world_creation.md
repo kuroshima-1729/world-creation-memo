@@ -26,9 +26,9 @@ Author: くろしま </br>
 # VRChat初心者のためのUnityコンポーネント入門
 ## コンポーネントとは?
   - Unityを開いた時のウィンドウの役割に当てはめる
-  ![alt text](images/unity_window.png) </br>
+  ![alt text](../images/unity_window.png) </br>
   机の上に置いたものを「ゲームオブジェクト」といい、「ゲームオブジェクト」がどんな形をしていてどんな性質をもっているかは、どんな「コンポーネント」があるかによって決まる。</br>例: </br>
-  ![alt text](images/component_example.png)
+  ![alt text](../images/component_example.png)
   「コンポーネント」を「ゲームオブジェクト」につけることで、色々な機能を付与できる。
 ## CRChatのコンポーネントの制限
   - 次のサイトで使用できるコンポーネントが確認できる(World)。</br>
@@ -43,7 +43,7 @@ Author: くろしま </br>
     - このコンポーネントを作ると、Mesh Filterというメッシュと呼ばれる3Dモデルの形状のデータが指定される。
   - VRC Scene Descripter 
 
-    ![alt text](images/vrc_scene_descripter.png) </br>
+    ![alt text](../images/vrc_scene_descripter.png) </br>
 
     ワールドをアップロードするときに必要となる、ワールド限定のコンポーネント。
     - Reference Camera: プレイヤーの目となるカメラのリファレンス。
@@ -64,7 +64,7 @@ Author: くろしま </br>
     - テクスチャを投影することができる。
     - 影の作成などができる
 
-    ![alt text](images/projector_image.png) </br>
+    ![alt text](../images/projector_image.png) </br>
 
   - (Aim/LookAt/Parent/Position/Rotation/Scale) Constraint
     - 他のオブジェクトの変化(位置・回転・スケールの変更)に従って、ゲームオブジェクトに制約を付ける。
@@ -83,11 +83,11 @@ Author: くろしま </br>
 ## 親子関係・階層
   - ヒエラルキー: Unityの左側のウィンドウ
 
-  ![alt text](/images/hierarcy_image.png)
+  ![alt text](../images/hierarcy_image.png)
 
   - ヒエラルキーにあるゲームオブジェクトを長押しでつかんで、ほかのゲームオブジェクト上で離す(ドラッグ＆ドロップと呼ぶ)と、次のようにオブジェクト名が一段下がる。
 
-  ![alt text](images/drag_and_drop_image.png)
+  ![alt text](../images/drag_and_drop_image.png)
 
   - ２つのゲームオブジェクトは、「階層」を形作っており、上の階層にあるオブジェクトを親オブジェクト、下の階層にあるオブジェクトを子オブジェクトという。
     - 親子関係とは、ゲームオブジェクト同士の関係性を表した言葉である。
@@ -110,7 +110,7 @@ Author: くろしま </br>
   - 親オブジェクトが子オブジェクトの基準になることを利用する。
   - 空のゲームオブジェクトを扉の左下に配置する。
 
-  ![alt text](images/door_image.png)
+  ![alt text](../images/door_image.png)
  
   - 左下が基準(原点)となるため、上方向にスケールすると、オブジェクトの各座標には定数が乗算され、特に下は0のため、定数を乗算しても変わらない。したがって上方向にだけのびる。
   - また、回転をすると、左下を中心に回転する。
@@ -124,7 +124,7 @@ Author: くろしま </br>
     - shift 同時押しで加速。
     - 加速量は右クリックを押したまま、マウスホイールをスクロールすると調節できる。
       - Gizumoボタン横のカメラマークでも設定可(Camera Speed)
-      ![alt text](images/camera_mark_image.png)
+      ![alt text](../images/camera_mark_image.png)
 ## 操作ツールの切り替え
   - Q: ハンドツール
   - W: 移動
@@ -133,7 +133,7 @@ Author: くろしま </br>
   - T: 矩形トランスフォーム
   - Y: トランスフォーム(移動・回転・拡大縮小の組み合わせ)
 ## Pivot/Center、Local/Global
-![alt text](images/pivot_local_image.png)
+![alt text](../images/pivot_local_image.png)
   - Pivot/Center: 選択ツールの操作を行うときの基準点の位置を選択
     - Pivot: モデルの原点
     - Center: オブジェクトの中心
@@ -178,7 +178,7 @@ Author: くろしま </br>
   - VRChatでは一つのScene上でデータを編集し、それをVRCSDKを通してアップロードする形が一般的。
   - Unityでゲームを制作する場合は、「複数のSceneを切り替えて使う」方法がある。
     - 例えば、次の図のようにゲームの進行に合わせて、シーンの切り替えを行うことが可能である。
-    ![alt text](images/scene_image.png)
+    ![alt text](../images/scene_image.png)
     - VRChatは１つのシーンしか扱えない。
 ## UnityのSceneに保存されている情報について
   - UnityのSceneファイルには、Hierarchy上の情報だけではなく、環境設定系のデータも紐づけて保存されている。
@@ -220,16 +220,16 @@ Author: くろしま </br>
 # VRChat初心者の躓きやすいUnityエラーの対処法
 ## VRSDKのBuildボタンが消えた！
   - 画面左側にあるConsoleというタブを開く。
-  ![alt text](images/console_image.png)
+  ![alt text](../images/console_image.png)
   - 項目がたくさん出てくる(Unityのログの一覧)。
-  ![alt text](images/log_image.png)
+  ![alt text](../images/log_image.png)
   - 重要度に応じて、白<黄色<赤 となっている。
     - 白い吹き出しにビックリマークのアイコンは最も影響が無いもの。</br>
-    ![alt text](images/white_icon_image.png)
+    ![alt text](../images/white_icon_image.png)
     - 黄色に三角形にビックリマーク。ちょっと問題はありますが、大きい影響はありません。</br>
-    ![alt text](images/yellow_icon_image.png)
+    ![alt text](../images/yellow_icon_image.png)
     - 赤い8角形にビックリマーク。明確に問題があるエラー。</br>
-    ![alt text](images/red_icon_image.png)
+    ![alt text](../images/red_icon_image.png)
       - 無視してもUnityが問題なく動くものと、Unityが上手く動かなくなるものが混在している。
       - 優先的に直すべきものは、「Consoleタブの左上のClearボタンを押して、残ったエラー」。
         - ログをクリックして選択すると、下の方に文章が現れるので、それをgoogleなりtwitterに検索をかけて対処。
@@ -247,7 +247,7 @@ Author: くろしま </br>
     - インポート時にエラーが起こった場合は、その時インポートされたファイルを削除するだけでエラーが解消される。
       - インポートされたファイルについては、インポート時に以下のようなリストが出てくるが、このチェックが入っているものが追加される。
       - 削除したいときは、このリストに載っているものを削除すれば良い。
-      ![alt text](images/import_image.png)
+      ![alt text](../images/import_image.png)
     - 間違って削除したときは、削除してすぐなら、冷静に Ctrl+Z のショートカットを押すことで元に戻る。
       - Unityを一度閉じてしまうとダメなので、そのときは消してしまったファイルのあるUnityPackageを再インポートする。
   - Unityの動作がおかしくなっているケースもある。
@@ -264,9 +264,9 @@ Author: くろしま </br>
   - Blueprint IDを管理するためにPipeline Managerという名前のコンポーネントがある。
     - ワールドであれば、VRCWorldという名前のゲームオブジェクトについている、VRC Scene Descripterコンポーネントの下にある。
     - 一度でもアップロードしたデータであれば、以下のようにアップロード時のBlueprint IDが記載されている。
-    ![alt text](images/blueprint_upload_image.png)
+    ![alt text](../images/blueprint_upload_image.png)
     - 一度もアップロードしたことがない場合は以下のように空欄になっている。
-    ![alt text](images/blueprint_non_upload_image.png)
+    ![alt text](../images/blueprint_non_upload_image.png)
       - この空欄の状態でアップロードすると、自動的に新しいBlueprint IDが割り振られて、Blueprint IDが表示されるようになる。
 ## 別データとしてのアップロード方法
   - 別データとして、アップロードしたい場合はPipeline ManagerのDetachボタンを押す。
