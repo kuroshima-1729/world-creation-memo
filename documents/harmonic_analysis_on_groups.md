@@ -289,6 +289,47 @@ $$
 $$
 とすることができる。そこで、はじめから、 $\{N_k\}$ が対称的で、しかも $N_{k+1}^3\subset N_k$ を満たすものと仮定してよい。ただし、便宜上、 $N_0=G$ とおく。
 
-
+関数 $\sigma: G\times G\rightarrow \mathbb{R}$ を次のように定義する。
+$$
+\sigma: (x,y)\mapsto \frac{1}{2^k} \ \ if \ \ x^{-1}y\in N_k\backslash N_{k+1}, k=0, 1, 2,\dots
+$$
+とすると、この $\sigma$ は </br>
+(1) $\sigma(x,y)\ge 0 $ </br>
+(2) $\sigma(x,y)=\sigma(y,x)$ ( $N_k$ が対称的なため) </br>
+(3) $\sigma(ax,ay)=\sigma(x,y)$ </br>
+を満足する。そこで、 $\rho: G\times G\rightarrow \mathbb{R}$ を
+$$
+\rho(x,y)=inf_{x_0,\dots,x_n}\left\{\displaystyle\sum_{i=1}^{n}\sigma(x_{i-1}, x_i): x_0=x,x_1,\dots,x_n=y \right\}
+$$
+と定義する。ただし、inf は $x_0=x, x_1,\dots, x_n=y$ となるような、任意有限個の点 $(x_0,x_1,\dots,x_n)$についてとる。こうして定義された $\rho$ は距離関数である。 $\rho(x,y)\ge 0$ , $\rho(x,y)=\rho(y,x)$ は良い。 $\rho(x,y)\iff x=y$ を証明する。$\Rightarrow$ $\rho(x, y)=0$ なので、任意の $i$ に関して $\sigma(x_{i-1}, x_i)=0$ である。したがって、任意の $i$ に関して $x_{i-1}^{-1}x_i\in N_i\backslash N_{i+1}$ 。 よって、 $x_{i-1}^{-1}x_i=e$ であり、 $x=y$ $\Leftarrow$ $x=y$ で、 $x^{-1}y$より任意の $k$ に対して $x^{-1}y=e\in N_k\backslash N_{k+1}$ 。よって、 $\rho(x,y)=0$ 。三角不等式を証明する。 $x,y,z\in G$ と $\epsilon >0$ を勝手に与えると、 $x_0,\dots, x_n, \dots, x_m \ (x_0=x, x_n=y, x_m=z)$ を適当に選んで、
+$$
+\rho(x,y) > \rho(x_0,x_1)+\dots+\rho(x_{n-1}, x_n)-\frac{\epsilon}{2}
+$$
+$$
+\rho(y,z) > \rho(x_n,x_{n+1})+\dots+\rho(x_{m-1}, x_m)-\frac{\epsilon}{2}
+$$
+とすることができる。ゆえに
+$$
+\rho(x,y)+\rho(y,z)>\displaystyle\sum_{i=1}^{m}\sigma(x_{i-1}, x_i) - \epsilon \ge \rho(x,y) - \epsilon
+$$
+$\epsilon$ は任意であるから、
+$$
+\rho(x,z)\le \rho(x,y) + \rho(y,z)
+$$
+また、 $\rho(ax,ay)=\rho(x,y)$ となることは、 $\sigma(ax, ay)=\sigma(x,y)$ からわかる。</br>
+最後に、 $\rho$ による位相が $G$ の当初の位相と一致することを他方の位相の近傍系がもう一方の位相の近傍系に一致することを示すことで示す。それには
+$$
+(1) x^{-1}y\in N_k \Rightarrow \rho(x,y)\le \frac{1}{2^k}
+$$
+$$
+(2) x^{-1}y \notin N_k \Rightarrow \rho(x,y)\ge \frac{1}{2^k}
+$$
+を示せば十分である。</br>
+(1) の証明: $x^{-1}y\in N_k$ とすれば、 $\rho$ の定義から、 $\rho(x,y)\le \sigma(x,y)\le\frac{1}{2^k}$ </br>
+(2) の証明: $x^{-1}y\notin N_k$ とする。 $\rho(x,y)>\frac{1}{2^k}$ を示すためには、 $x=x_0,x_1,\dots, x_{n-1}, x_n=y$ をみたす任意の有限個の点について 
+$$
+\displaystyle\sum_{i=1}^n \sigma(x_{i-1}, x_i)\ge \frac{1}{2^k}
+$$
+を証明すればよい。
 
 
