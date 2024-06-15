@@ -1,7 +1,16 @@
 # tex
-  - 数式の前後は半角スペース一時開けないとgithub上では数式として表示されない。
-  - noteではｍ数式にしたい箇所を\$${...}\$$(全て半角)で囲む。
+  - 数式の前後は半角スペース一時開けないとgithub上では数式として表示されない(スマホ上ではこれでも反映されない)。
+  - noteでは数式にしたい箇所を\$${...}\$$(全て半角)で囲む。
+  - 大きい和集合で上下に添え字をつけるときは
+    ```
+    \displaystyle\bigcup
+    ```
+    を使う。
 
+# keybord shortcut
+  - F4: 電卓に設定
+  - F12: スリープに設定
+  - 設定>アクセシビリティ>キーボード>固定キー機能>固定キー機能用のキーボードショートカットを無効にすることで、shiftを連打したとき(５回)にでてくるポップアップが出てこなくなる。
 
 # world
   - 光の混ざり具合考慮するため、mainカラーを全体の光に調節するといい見た目になる。
@@ -18,20 +27,28 @@
 
 # bug fix
   - open3dインストール時のOSError </br>
-  ```
-  OSError: libX11.so.6: cannot open shared object file: No such file or directory
-  ```
-  のエラーに対し、次のコマンド順に実行(一番上のコマンドは必要か不明)
-  ```
-  apt install libc++-dev 
-  apt update && apt install -y libsm6 libxext6
-  apt-get install -y libxrender-dev
-  ```
-  すると、次のエラーに変わる。
-  ```
-  OSError: libGL.so.1: cannot open shared object file: No such file or directory
-  ```
-  次のコマンドを入力することにより解決。
-  ```
-  apt-get update && apt-get install libgl1
-  ```
+    ```
+    OSError: libX11.so.6: cannot open shared object file: No such file or directory
+    ```
+    のエラーに対し、次のコマンド順に実行(一番上のコマンドは必要か不明)
+    ```
+    apt install libc++-dev 
+    apt update && apt install -y libsm6 libxext6
+    apt-get install -y libxrender-dev
+    ```
+    すると、次のエラーに変わる。
+    ```
+    OSError: libGL.so.1: cannot open shared object file: No such file or directory
+    ```
+    次のコマンドを入力することにより解決。
+    ```
+    apt-get update && apt-get install libgl1
+    ```
+
+  - wsl起動時謎エラー
+    ```
+    起動されたオブジェクトはクライアントから切断されました。
+    Error code: Wsl/Service/CreateInstance/RPC_E_DISCONNECTED
+    ```
+    再起動すれば治るけど、謎のバグ。処理速度が速すぎると出るらしい(Excel)。</br>
+    参考: https://zawanii.com/uipath-excel-exception/

@@ -330,6 +330,140 @@ $$
 $$
 \displaystyle\sum_{i=1}^n \sigma(x_{i-1}, x_i)\ge \frac{1}{2^k}
 $$
-を証明すればよい。
+を証明すればよい。帰納法により証明する。 $n=1$ のとき、 $x^{-1}y\notin N_k$ ならば $x^{-1}y\in N_{i} \ (i\le k-1)$ なので、 $\sigma(x,y)\ge\frac{1}{2^k}$ 。 次に $p\le n-1$ であるすべての $p$ に対して、 $x_0^{-1}x_p\notin N_k$ ならば、 
+$$
+\displaystyle\sum_{i=1}^p \sigma(x_{i-1}, x_i)\ge\frac{1}{2^k}
+$$
+が成り立つと仮定する。 $x=x_0, x_1, \dots, x_n=y$ とし、 $q$ を $x_0^{-1}x_q\notin N_{k+1}$ となるような最小の添え字 $(1\le q\le n)$ とする。そこで
+$$
+x=x_0, \ x_{q-1}, \ x_q, \ x_n=y
+$$
+なる有限個の点を考えれば、帰納法の仮定により
+$$
+\sigma(x_0, x_{q-1}) + \sigma(x_{q-1}, x_q) + \sigma(x_q, x_n) \ge \frac{1}{2^k}
+$$
+($q=n$ のときは、 $n=1$ の場合を使い、 $q<n$ のときは帰納法の仮定を用いる) </br>
+また、 $q$ の定義から、 $x_0^{-1}x_{q-1}\in N_{k+1}$ であるから、
+$$
+\sigma(x_0, x_{q-1})\le \frac{1}{2^{k+1}}
+$$
+(どこで使っている?) </br>
+したがって、
+$$
+x_{q-1}^{-1}x_q\notin N_{k+1}, \ x_q^{-1}x_n\notin N_{k+1}
+$$
+のどちらかが成り立つ。実施、仮に $x_{q-1}^{-1}x_q\in N_{k+1}$ かつ $x_q^{-1}x_n\in N_{k+1}$ であれば、
+$$
+x^{-1}y=x_0^{-1}x_n=(x_0^{-1}x_{q-1})\cdot(x_{q-1}^{-1}x_q)\cdot(x_q^{-1}x_n)\in N_{k+1}^3\subset N_k
+$$
+となって矛盾。</br>
+そこでまず $x_{q-1}^{-1}x_q\notin N_{k+1}$ とすれば
+$$
+\sigma(x_{q-1}, x_q)\ge \frac{1}{2^k}
+$$
+したがって、
+$$
+\displaystyle\sum_{i=1}^n \sigma(x_{i-1}x_i)\ge \frac{1}{2^k}
+$$
+また、 $x_q^{-1}x_n\notin N_{k+1}$ とすれば、 $\{x_0,x_1,\dots,x_n\}$を
+$$
+x=x_0, \dots, x_q, \dots, x_n=y
+$$
+の形に分解して、帰納法の仮定から
+$$
+\sigma(x_0,x_1) + \dots + \sigma(x_{q-1}, x_q)\ge \frac{1}{2^{k+1}}
+$$
+$$
+\sigma(x_q,x_{q+1})+\dots+\sigma(x_{n-1},x_n)\ge \frac{1}{2^{k+1}}
+$$
+2番目の不等式は、 $j=q+1,\dots, n-1$ で、
+$$
+x_qx_j = x_qx_n^{-1}x_nx_0^{-1}x_0x_j\notin (N_{k+1})\subset N_k
+$$
+からの結果。</br>
+次の結果が得られる。 
+$$
+\displaystyle\sum_{i=1}^n\sigma(x_{i-1}, x_i)\ge 2\times \frac{1}{2^{k+1}}=\frac{1}{2^k}
+$$
 
+## Section 5. 位相群の準同型写像
+位相群間の準同型写像について考える次の定理は準同型の連続性に関する重要な定理である。
+
+**定理(位相群の準同型の連続性)**
+$G, G^{\prime}$ を二つの位相群、 $\varphi: G\rightarrow G^{\prime}$ とする。このとき
+(1) $\varphi$ は連続 $\iff$ $\varphi$ は単位元 $e$ において連続。しかもこのとき $\varphi$ は一様連続である。</br>
+$G^{\prime}$ における単位元の任意の近傍 $V$ に対して、 $G$ における単位元の近傍 $U_V$ を適当に選び $x^{-1}y\in U\Rightarrow \varphi(x)^{-1}\varphi(y)\in V$ とすることができる。ここで一様が意味するところは、 $V$ に対して選択する近傍 $U_V$ は $V$ に依存し、一般的には場所 $x, y$ にも依存するが、ここでは $x, y$ に依存せずに選択できるということである。</br>
+(2) $\varphi$ は開写像 $\iff$ $\varphi$ は $e$ において開写像( $e$ の任意の開近傍 $U$ の像 $\varphi(U)$ は $G^{\prime}$) の開集合である。</br>
+証明) $\varphi$ が $e$ において連続であるとする。つまり $G^{\prime}$ の単位元 $e^{\prime}$ の任意の近傍 $V$ に対して $e$ の適当な近傍 $U$ をとれば $\varphi(U)\subset V$ となるとする。 $x$ を $G$ の任意の元とし、 $y=\varphi(x)$ とする。 $y$ の任意の近傍を $W$ とすれば、 $e^{\prime}$ の近傍 $V$ を適当に選び、 $yV\subset W$ とすることができる。この $V$ に対して、 上記の $U$ をとると、 $xU$ は $G$ における $x$ の近傍であり、
+$$
+\varphi(xU)=\varphi(x)\varphi(U)=y\cdot \varphi(U)\subset yU
+$$
+これによって、 $\varphi$ が $G$ のすべての点で連続であることがわかる。逆は、すべての点で連続なので、単位元 $e$ においても連続。</br>
+また、上の記号で、 $x^{-1}y\in U$ ならば $\varphi(x)^{-1}\varphi(y)=\varphi(x^{-1}y)\in V$ であるから、 $\varphi$ が連続であれば、それは一様連続である。</br>
+(単位元の近傍 $U$ に対し、任意の点 $y$ の近傍が $yU$ と記述できることがポイント?)</br>
+(2) $\varphi$ が単位元 $e$ において開写像であるとき、 $\varphi$ が開写像であることだけ示せば十分である。定理 1.1 により $e$ の完全近傍系 $\mathscr{N}$ と点 $x\in G$ の完全近傍系 $\mathscr{N}_x$ とは $N\mapsto xN (N\in \mathscr{N})$ の対応関係の下に過不足なく１対１に対応している。</br>
+$U$ を $G$ の開集合 $x$ を $U$ の１点とすると、 $U$ は $x$ の近傍で、上記のことから $xV=U$ となる $e$ の開近傍 $V$ が存在する。 $\varphi$ は準同型写像なので $\varphi(U)=\varphi(x)\varphi(V)$ 仮定により、 $\varphi$ は $e$ において開写像であるから、 $\varphi(V)$ は開集合である。したがって、 $\varphi(U)=\varphi(x)\varphi(V)$ は $\varphi(x)$ を含む開集合である。
+
+## Section 6. 位相群の部分群
+**定理 1.7**(部分群の性質)</br>
+$H$ を Hausdorff位相群 $G$ の部分群とすると、次の命題が成り立つ。</br>
+(1) $H$ の閉方 $\bar{H}$ も $G$ の部分群である。</br>
+(2) $H$ が $G$ の正規部分群であれば、 $\bar{H}$ も可換である。</br>
+(3) $H$ が可換であれば、 $\bar{H}$ も可換である。</br>
+(4) $H$ は開集合 $\iff$ $int(U)\neq \empty$</br>
+(5) $H$ が開集合であれば、 それは閉集合である。 </br>
+証明) (1) $a,b\in \bar{H}$ とする。 このとき有向点族 $\{x_\lambda\}_\lambda$ 、 $\{y_\lambda\}_\lambda$ が存在して、 $x=\lim_\lambda x_\lambda$ 、 $y=\lim_\lambda y_\lambda$ 。このとき、 $xy^{-1} = \lim_\lambda x_\lambda y_\lambda^{-1}$ より、 $xy^{-1}\in \bar{H}$ である。</br>
+(2) $H$ が $G$ の正規部分群であるとする。 $a\in \bar{H}$ 、 $c\in G$ とする。 このとき有向点族 $\{a_{\lambda}\}_{\lambda}$ があって、 $a = \lim_\lambda a_\lambda$ 。したがって、 $cac^{-1}=\lim_\lambda ca_\lambda c^{-1}$ より $cac^{-1}\in\bar{H}$ 。よって、 $\bar{H}$ も正規部分群である。</br>
+(3) $G$ がHausdorffなので、$x, y\in \bar{H}$ に対して $x_\lambda \rightarrow x, y_\lambda\rightarrow y$ なる $H$ の有効点族 $\{x_\lambda\}, \{y_\lambda\}$ が存在する。 $H$ の可換性により、
+$$
+xy=\lim_\lambda x_\lambda y_\lambda = \lim_\lambda y_\lambda x_\lambda =yx
+$$
+であるから所望の結果を得る。
+(4) $H$ が開集合ならば、 $int(H)\neq\empty$ 。逆に $x\in int(H)$ とすれば、 $xU\subset H$を満たす、単位元 $e$ の近傍 $U$ が存在する。 任意の $y\in H$ に対して
+$$
+yU = yx^{-1}xU\subset yx^{-1}H=H
+$$ 
+であるから、 $H$ は開集合である。</br>
+(最後の等号) $yx^{-1}H\subset H$ は $H$ が部分群であることから成り立つ。逆に $z\in H$ とすれば $z=yx^{-1}xy^{-1}z\in yx^{-1}H$であるから成り立つ。</br>
+(5) $H$ が開部分群であるとすれば、
+$$
+H^c =\cup_{x\notin H} xH
+$$
+各 $xH$ は開集合であるから、 $H^c$ は開集合。
+
+**系 1.2**</br>
+$G$ はHausdorff位相群、 $U$ は 単位元 $e$ の対称的近傍とすれば、 $H=\displaystyle\bigcup_{n=1}^{\infty}$ は開かつ閉な部分群である。</br>
+証明) $H$ は部分群である。また、 $int(H)\neq \empty$ 。 したがって、定理 1.7 (4)、(5)より、 $H$ は開かつ閉である。
+
+**系 1.3**</br>
+$G$ は Hausdorff位相群、 $H$ はその局所コンパクトな部分群とすれば、 $H$ は閉である。
+証明) $H$ が位相群 $\bar{H}$ において稠密かつ局所コンパクトなので、 開部分群である。したがって、定理 1.7 (5) より、それは　$\bar{H}$ において開部分群であるから、本来の位相についても開である。
+
+## Section 7. 位相群の商群
+位相群 $G$ の閉じた正規部分群 $N$ について、商群 $G/N$ を考え、これに位相群を定める。</br>
+$G/N$ の位相は、商位相、すなわち $\pi: x\mapsto xN$ で定義される自然な写像 $\pi: G\rightarrow G/N$ を考え、集合族
+$$
+\{U\in G/N : \pi^{-1}(U) は G の開集合\}
+$$
+を $G/N$ の位相とする。商位相は $\pi$ を連続とする $G/N$ の中で最も強い位相である。
+
+**定理 1.8 (商群)** </br>
+$G$ を位相群、 $N$ をその閉じた正規部分群とすれば、次の命題が成り立つ。</br>
+(1) $\pi : G\rightarrow G/N$ は連続</br>
+(2) $\pi$ は開写像</br>
+(3) $G/N$ は位相群で、 $G$ が Hausdorffならば $G/N$ も Hausdorffである。
+(4) $G^{\prime}$ をもうひとつの位相群とし、 $\varphi:G\rightarrow G^{\prime}$ を連続な準同型写像とする。いま、 $N\subset \rm{Ker}\varphi$ ならば、 $G/N$ から $G^{\prime} $　への連続な週同型写像 $\varphi:G/N\rightarrow G^{\prime}$ で、
+$$
+\varphi = \bar{\varphi}\circ\pi
+$$
+を満たすものが存在し、このような $\bar{\varphi}$ は一意に定まる。
+![alt text](../images/quotient_top_commutative_image.png)
+証明) (1) 商位相の定義から成り立つ。 </br>
+(2) $U\subset G$ を開集合とする。このとき 
+$$
+\pi^{-1}(\pi(U))=UN=\displaystyle\bigcup_{x\in N}Ux
+$$
+であり、　各 $Ux$ は開集合なので、 $\pi^{-1}(\pi(U))$ は開集合。したがって商位相の定義から、 $\pi(U)$ は開集合である。
+(3) 
+ 
 
