@@ -451,7 +451,7 @@ $$
 $G$ を位相群、 $N$ をその閉じた正規部分群とすれば、次の命題が成り立つ。</br>
 (1) $\pi : G\rightarrow G/N$ は連続</br>
 (2) $\pi$ は開写像</br>
-(3) $G/N$ は位相群で、 $G$ が Hausdorffならば $G/N$ も Hausdorffである。
+(3) $G/N$ は位相群で、 $G$ が Hausdorffならば $G/N$ も Hausdorffである。</br>
 (4) $G^{\prime}$ をもうひとつの位相群とし、 $\varphi:G\rightarrow G^{\prime}$ を連続な準同型写像とする。いま、 $N\subset \rm{Ker}\varphi$ ならば、 $G/N$ から $G^{\prime} $　への連続な週同型写像 $\varphi:G/N\rightarrow G^{\prime}$ で、
 $$
 \varphi = \bar{\varphi}\circ\pi
@@ -464,6 +464,23 @@ $$
 \pi^{-1}(\pi(U))=UN=\displaystyle\bigcup_{x\in N}Ux
 $$
 であり、　各 $Ux$ は開集合なので、 $\pi^{-1}(\pi(U))$ は開集合。したがって商位相の定義から、 $\pi(U)$ は開集合である。
-(3) 
+(3) $G/N$ が群であることはすでに述べたので、それが実際に位相群であることを示す。 $a,b\in G$ とすれば
+$$
+\pi(a)\pi(b)=\pi(ab)
+$$
+である。実際、 $N$ が正規部分群であるから
+$$
+\pi(a)\pi(b)=aN\cdot bN=abNN=abN=\pi(ab)
+$$
+$G/N$ における $\pi(ab)$ の近傍を $V$ とする。 $\pi$ の連続性から、 $\pi^{-1}(V)=U$ は $G$ における $ab$ の近傍。したがって、 $a,b$ それぞれの近傍 $U_a, U_b$ を適当に選んで $U_aU_b\subset U$ とすることができる。 よって
+$$
+\pi(U_a)\pi(U_b)\subset \pi(U)=V
+$$
+$\pi$ は開写像なので、 $\pi(U_a), \pi(U_b)$ は $\pi(a), \pi(b)$ の近傍である。これから、 $G/N$ における積の演算の連続性が得られる。逆元演算の連続性も同様。 $G$ がHausdorffであれば、 $G/N$ もHausdorffであることをしめすためには、それが $T_1$ であること、すなわち $G/N$ の1点、たとえば $\{\xi_e=N\}$ が $G/N$ において閉であることを示せば十分である( $T_1$ 空間はこの条件と同値であることと、位相群において、 $T_1$ と $T_2$ 空間は同値であることから)。 $\pi^{-1}(\xi_e)=N$ で、これは仮定により $G$ の閉集合である。 $(G/N)\backslash \{\xi_e\}=\pi(G\backslash N)$ であるが、 $G\backslash N$ は $G$ の開集合、 $\pi$ は開写像なので、 $(G/N)\backslash \{\xi_e\}$ は $G/N$ の開集合である。したがって $\{\xi_e\}$ は $G/N$ の閉集合である。これから、すべての剰余類 $\{\xi_x=xN\} \ (x\in G)$ は閉である。 任意の点 $x\in G$ を乗算する写像は、位相同型写像のため、すべての剰余類 $\{\xi_x=xN\} \ (x\in G)$ は閉である。</br>
+(4) $N\subset \rm{Ker}\varphi$ に注意すると、 各 $x\in G$ について $\bar{\varphi}(xN)=\varphi(x)$ とすれば、この $\bar{\varphi}$ が求める準同型写像である(一意性とwll-definedは計算すればわかる)。 $V\subset G^{\prime}$ を開集合とすれば、 
+$$
+\pi^{-1}(\bar{\varphi}^{-1}(V))=(\bar{\varphi}\circ \pi)^{-1}(V)=\varphi^{-1}(V)
+$$
+$\varphi$ が連続のため、これは開集合である。したがって、商位相の定義により、 $\bar{\varphi}^{-1}(V)$ も開集合である。
  
 
