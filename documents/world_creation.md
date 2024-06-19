@@ -355,3 +355,25 @@ Author: くろしま </br>
       - 重要ではないオブジェクトの割り当て領域を小さくして、重要なオブジェクトに領域を割くなどの工夫をすれば、容量を節約しながら綺麗に見せることも可能
     3. UV2を作り直して再展開する。
       - Blender等のモデリングソフトでUV2を展開・編集するという手もある。これは各モデルのUV2に対して行う。
+## その他
+  - color temparature mode で寒色から暖色に変えられる。
+
+# "反射"を制して綺麗なワールドを！クオリティを上げるReflection Probeとは？
+## Reflection Probeとは？
+  - 反射する物体に映りこむ景色の情報を与えるもの。
+  - デフォルトの反射の景色はSkybox。Reflection Probeを設定することではじめて反射に映りこむ景色を「上書き」できる。
+  - Reflection Probeはキューブマップと呼ばれる特殊なテクスチャを生成して使う。
+    - キューブマップを使ってできた疑似的な立方体による風景は、境目をうまく処理することにより球体のように見えるので、Skyboxなどにもキューブマップが利用されたりする(なので、Sky"box")。
+## デフォルトの反射光設定変更
+  - デフォルトの反射で使われている景色を変更する場所は、[Windws]→[Rendering]→[LightingSettings]のウィンドウの中にあるEnvironment Reflectionという項目。
+  ![alt text](../images/lightning_setting_image.png)
+    - デフォルトではSourceがSkyboxになっているが、Customを選択することにより独自のcubemapを使用することができる。
+## shader側の設定項目
+  - MetallicとRoughnessはどちらもReflection Probeに関わりのあるパラメータ。
+  - Metallicはそもそもの反射率に、Smoothness(ShaderによってはRoughness)は映り込むReflection Probeの粗さに関係する。
+## Reflection Probe側の設定
+  - 上部アイコン二つ
+    - 全射は Refection Probeの影響を受ける範囲を設定し、後者はCubemapを撮影する位置を設定する。
+  - TypeをCustomにし、Dynamic Objectにチェックを入れると、Staticのチェックに関係なく、すべてのオブジェクトを撮影する。
+## Reflection Probeの細かい制御方法
+  - 調整したいゲームオブジェクトのMeshRendererのAnchor OverrideにReflection Probeのゲームオブジェクトを入れることで、そのReflection Probeの影響だけを受けるようになる。
