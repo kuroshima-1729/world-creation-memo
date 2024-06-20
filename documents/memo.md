@@ -16,6 +16,13 @@
   - 光の混ざり具合考慮するため、mainカラーを全体の光に調節するといい見た目になる。
   - F2はrename
   - ワールドのバックアップには、Turbo Backup Proを買う！(次回新作作成時)
+  - MasterCubeというアセットで、cubeを引き延ばしてもテクスチャを均等に配置してくれる。
+    - インポートして、使いたいオブジェクトに、MasterCubeコンポーネントを追加すればよい
+    - Reflesh base UVを押し、スケールを一度動かせば、反映される。
+    - 参考: https://tsubakit1.hateblo.jp/entry/2016/05/24/073000 </br>
+      https://assetstore.unity.com/packages/tools/modeling/mastercube-40033#content
+  - いい感じのライティングの参考
+    - https://tsubakit1.hateblo.jp/entry/2018/01/04/235520
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。

@@ -377,3 +377,75 @@ Author: くろしま </br>
   - TypeをCustomにし、Dynamic Objectにチェックを入れると、Staticのチェックに関係なく、すべてのオブジェクトを撮影する。
 ## Reflection Probeの細かい制御方法
   - 調整したいゲームオブジェクトのMeshRendererのAnchor OverrideにReflection Probeのゲームオブジェクトを入れることで、そのReflection Probeの影響だけを受けるようになる。
+
+
+# VRChatでの音の付け方 ～AudioSource周りのあれこれ～
+## AudioClipとAudioSourceについて
+  - 現実で音楽を聴きたいとき、必要なものが二つある。
+    - 音源データ
+    - 音源データを再生するための機器
+  - Unityでも同じ働きをするものがある
+    - AudioClip
+    - AudioSource
+  - Unity上にインポートされた音源データは、AudioClipの設定に従って再構成されて扱われる。
+  - AudioListenerもあるが、自動で設定される(たしかカメラとかについてる)
+## 2D・3D音源について
+  - 生活の中でなっている音は、音の発生源があり、左右のボリューム差によって、音の発生源がどこにあるか聞き分けることができる。
+    - 音の発生源が決まっていて、一夜向きによって聞こえ方が変わる音源をUniity上では3D音源として扱う。
+  - 2D音源は、どのような位置、向きにおいても同じ聞こえ方をするものになる。
+  - 2D音源はBGMに使われ、3D音源は効果音などに使われる。
+  - Spatial Blendにより、中間の性質を持たせることができる。
+## 具体的な設定方法について
+### AudioClipの設定
+![alt text](../images/audio_clip_image.png)
+  - Force To Mono: ステレオの音源をモノラル音源にする。
+    - 表現力は下がるが、容量が半分になるという利点がある。
+  - Compression Format
+    - 基本的にVobisで問題ない。PCMは無圧縮、ADPCMはPCMの1/3.5の圧縮率で、高品質になるが、容量が非常に大きくなる。
+  - Quality
+    - 下げると高音域(15kHz)が削られるらしい。重要でな効果音はこれを利用することにより、ワールド容量を減らすことができる。圧縮形式がVovisのときのみ使える。
+  - Sample Rate Setting
+    - PCM、ADPCM用の軽量化オプション
+### BGMなどの2D音源
+  - Loop
+    - デフォルトだと、１回再生し終わると終わる。
+  - Volume
+    - 0～1の値で設定する。基本大きいので、小さめの値から設定する。
+### 効果音などの3D音源
+  - VRC Spatial Audio Sourceと呼ばれるコンポーネントを利用するかしないかでかわる。
+  -Spatial Audio Sourceを使わない場合
+    - Volume
+      - 2D音源と同じ。
+    - Spatial Blend
+      - 2D音源と3D音源のブレンド具合。
+    - 3D Sound Settings
+      - Doppler Level
+        - 今はもう無効。
+      - Spread
+        - 音が聞こえる角度を示す。180°だと均等に聞こえる。
+      - Volume Rolloff
+        - 音量や各種エフェクトを距離に応じて制御する波形のタイプ。
+      - Min Distance
+        - 最大の音量が維持される距離。この数値より近い距離にいた場合、常に最大になる。
+        - 音量が０になるポイントで**はない**。
+    - 波形グラフ
+    ![alt text](../images/wave_graph_image.png)
+      - 横軸が音源からの距離で、縦軸が大きさ。横軸の大きさはMax Distanceに対応する。
+      - 4つのパラメーターを距離ごとに設定することができる。
+      - 制御点を加えたりのぞいたりすることで、曲線を調整できる。
+  - Spatial Audio Sourceを使う場合
+    - AudioSourceのついたゲームオブジェクトを追加する形で使う。
+    ![alt text](../images/spatial_audio_source_image.png)
+      - GainはVolumeと同時に機能し、音が小さすぎるときに使うとよい(あげすぎると音割れする。)
+      - Volumetric Radiusは音が回り込んでくる距離を示す。
+      - Enable Spatializationはつけていないと3D音源にならない。
+      - Use Audio Source Volume Curveはチェックを入れていないと、波形グラフによるVolumeの調整がNearとFarの逆２乗の波形で上書きされる。
+  - 全ての音源にエフェクトをかけたい場合
+    - 適当なゲームオブジェクトにAudio Listenerというコンポーネントをつけて、それにつけたいエフェクトのコンポーネントをつける。
+      - フィルター系はワールド開始時にオンになっていないと作動しない。
+  - 音源ごとにエフェクトをかけたい場合
+    - AudioSourceのついたゲームオブジェクトに、エフェクトのコンポーネントをつける。
+  - エリアごとにリバーブをかけたい場合
+    - AudioReverbZoneコンポーネントのついたゲームオブジェクトを配置することで、そのAudioReverbZoneの影響範囲に入ったときだけエフェクトをかけることができる。
+      - VRC Audio SourceつきのAudioSourceでは無効化される。
+  - Spatial Audio Sourceコンポーネントはシームレスに音が変化してよいらしい。
