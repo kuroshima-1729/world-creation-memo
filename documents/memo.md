@@ -6,6 +6,16 @@
     \displaystyle\bigcup
     ```
     を使う。
+  - ドイツ文字は、
+    ```
+    \mathfrak{}
+    ```
+    を使う。
+  - ノルムは、 
+    ```
+    \|x\|
+    ``` 
+    をつかう
 
 # keybord shortcut
   - F4: 電卓に設定
@@ -36,6 +46,11 @@
       - メッシュに対してスカルプト（彫り込むことが)できたり、Prefabをブラシで配置できたりするみたいです。使ったことがないので詳しくは知りません。
     - ⑤ProGrids
       - グリッドに沿って配置できたりするみたいです。使ったことがないので詳しくは知りません。
+    - git 設定参考
+      https://qiita.com/uni928/items/8a560522e4ce1f2bdcde</br>
+      https://cg-method.com/unity-gitignore-setting/</br>
+      https://nekojara.city/unity-gitignore
+       - ターミナルで .gitignore.txtを.gitignoreにすると作動する
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。

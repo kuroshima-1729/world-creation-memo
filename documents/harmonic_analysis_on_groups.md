@@ -482,5 +482,100 @@ $$
 \pi^{-1}(\bar{\varphi}^{-1}(V))=(\bar{\varphi}\circ \pi)^{-1}(V)=\varphi^{-1}(V)
 $$
 $\varphi$ が連続のため、これは開集合である。したがって、商位相の定義により、 $\bar{\varphi}^{-1}(V)$ も開集合である。
- 
+
+# 第２章 Banach代数
+複素Banach空間 $\mathfrak{X}$ からそれ自身の中への有界線形作用素の空間 $\mathfrak{L}(\mathfrak{X})$ あるいは コンパクト・Hausdorff空間の（複素）連続関数の空間 $\mathfrak{C}(X,\mathbb{C})$ などを抽象化して、Banach代数の概念が得られる。
+## Section 0 ノルム空間、Banach空間
+忘れたので復習。
+
+**定義**(ベクトル空間)
+$S$ を空でない集合とする。 $S$ における加法 $S\times S\rightarrow S:(x,y)\mapsto x+y $ と スカラー倍法 $\mathbb{R}\times S\rightarrow S:(\lambda, x)\mapsto \lambda x$ とが与えられ、次の1. と2. が満たされるとき、 $S$ はこれらの演算に関してベクトル空間であるという。</br>
+1. 加法について </br>
+(1) 任意の $x,y\in S$ に対して、 $x+y=y+x$ </br>
+(2) 任意の $x,y,x\in S$ に対して、 $(x+y)+z=x+(y+z)$ </br>
+(3) $S$ に一つの元 $0$ ( $S$ の零元と呼ばれる) があって、 $S$ のすべての元 $x$ に対して、 $x+0=x$ が成り立つ。</br>
+(4) $S$ の任意の元 $x$ に対し、 $x+(-x)=0$ となる $S$ の元 $-x$ が存在する。
+2. スカラー倍法(と加法)について </br>
+(1) 任意の $x,y\in S$ 、 任意の $\lambda\in\mathbb{R}$ に対して、 $\lambda(x+y)=\lambda x + \lambda y$ 。</br>
+(2) 任意の $x\in S$ 、 任意の $\lambda, \mu \in \mathbb{R}$ に対して、 $(\lambda +\mu)x=\lambda x + \mu x$ 。</br>
+(3) 任意の $x\in S$ 、 任意の $\lambda, \mu \in \mathbb{R}$ に対して、 $(\lambda\mu)x=\lambda(\mu x)$ 。</br>
+(4) 任意の $x\in S$ に対して、 $1x=x$ (1は実数1である。)</br>
+
+$\mathbb{R}$ の代わりに $\mathbb{C}$ にしたものを、複素ベクトル空間という。
+
+いま、 $S$ を一つのベクトル空間とし、 $\varphi$ を $S$ から、 $\mathbb{R}$ への一つの写像とする。ただし、 $x\in S$ の $\varphi$ による像 $\varphi(x)$ をここでは $\|x\|$ と書くことにする。これについて、次の $(N1)$～$(N4)$ が成り立つとき、 $\varphi=\| \ \|$ を $S$ 上のノルムという。</br>
+(N1) 任意の $x\in S$ に対して $\|x\|\ge 0$ 。</br>
+(N2) $\|x\|=0$ となるのは $x=0$ のとき、またそのときに限る。</br>
+(N3) 任意の $x\in S$ 、任意の $\lambda\in\mathbb{R}$ に対して、 $\|\lambda x\|=|\lambda|\|x\|$ 。 </br>
+(N4) 任意の $x,y\in S$ に対して、 $\|x+y\|\le \|x\|+\|y\|$ 。</br>
+ベクトル空間 $S$ の上に一つのノルム $\| \ \|$ が与えられたとき、 $S$ と $\| \ \|$ の組 $(S, \|\|)$ をノルム空間という。 </br>
+ノルム空間 $S$ の２点 $x,y$ に対し、
+$$
+d(x,y)=\|x-y\|
+$$
+とおく。この $d$ をノルム $\| \ \|$ から定められる距離関数といい、 $d(\| \ \|)$ で表す。
+
+ノルム空間の例 </br>
+例1. 集合 $\mathbb{R}^n$ において、その２点 $x=(x_1,\dots, x_n)$ , $y=(y_1\dots, y_n)$ に対し
+$$
+x+y = (x_1 + y_1,\dots, x_n + y_n)
+$$
+また、 $\mathbb{R}^n$ の点 $x=(x_1, \dots, x_n)$ と $\lambda\in \mathbb{R}$ に対し、
+$$
+\lambda x = (\lambda x_1,\dots, \lambda x_n)
+$$
+と定義すれば、 $\mathbb{R}^n$ はこれらの算法に関して( $\mathbb{R}$ 上の)ベクトル空間になる。さらにこのベクトル空間において、 $x=(x_1,\dots, x_n)$  に対し、
+$$
+\|x\|^{(n)}=\sqrt{\displaystyle\sum_{i=1}^{n} x_i^2}
+$$
+と定めれば、 $\| \ \|^{(n)}$ は $\mathbb{R}^n$ 上の一つのノルムとなる。
+
+例2. ベクトル空間 $\mathbb{R}^n$ において、 $x=(x_1,\dots, x_n)$ に対し、
+$$
+\|x\|_1^{(n)}=\displaystyle\sum_{i=1}^n |x_i|
+$$
+$$
+\|x\|_{\infty}^{(n)}={\rm{max}}\{|x_1|,\dots, |x_n|\}
+$$
+とおけば、これらも $\mathbb{R}^n$ 上のノルムとなる。
+
+例3. $\mathbb{R}^{\mathbb{N}}$ の元、すなわち実数の無限列 $(x_n)_{n\in\mathbb{N}}=(x_1,x_2,\dots,x_n,\dots)$ で、級数 $\displaystyle\sum_{n=1}^{\infty} x_n^2$ が収束する( $\displaystyle\sum_{n=1}^{\infty} x_n^2<+\infty$ )ものを考え、そのような無限列全体の集合を $l^{(2)}$ とする。 $l^{(2)}$ の元 $x=(x_n)_{n\in\mathbb{N}}$ 、 $y=(y_n)_{n\in\mathbb{N}}$ および $実数 \lambda$ 
+$$
+x+y = (x_n + y_n)_{n\in\mathbb{N}}, \ \ \lambda x = (\lambda x_n)_{n\in\mathbb{N}}
+$$
+と定義すれば、 $\displaystyle\sum_{n=1}^{\infty}(x_n+y_n)^2\le 2\left(\displaystyle\sum_{n=1}^{\infty}x_n + \displaystyle\sum_{n=1}^{\infty}y_n\right) <+\infty$ 、 $\displaystyle\sum_{n=1}^{\infty}(\lambda x_n)^2=\lambda^2 \displaystyle\sum_{n=1}^{\infty}x_n^2 < +\infty$ であるから、 $x+y$ と $\lambda x$ も $l^{(2)}$ の元となる。 これらの算法に関して、 $l^{(2)}$ はベクトル空間となる。</br>
+また、 $l^{(2)}$ の元 $x=(x_n)_{n\in\mathbb{N}}$ に対し、
+$$
+\|x\| = \sqrt{\displaystyle\sum_{n=1}^{\infty} x_n^2}
+$$
+と定める。これはノルムの性質(N1)～(N3)を満たす。また、 $\mathbb{R}^k$ におけるノルムの性質 $\| \ \|^{(k)}$ の性質
+$$
+\sqrt{\displaystyle\sum_{n=1}^k (x_n + y_n)^2}\le \sqrt{\displaystyle\sum_{n=1}^k x_n^2} + \sqrt{\displaystyle\sum_{n=1}^k y_n^2}
+$$
+において、 $k\rightarrow \infty$ とすれば
+$$
+\|x+y\| \le \|x\|+\|y\|
+$$
+が得られる。 よって、 $(l^{(2)}, \| \ \|)$ はノルム空間となる。このノルム空間を Hilbert空間または $l^{(2)}$ 空間という。
+
+例4. $X$ を空でない任意の集合とし、 $X$ 上の有界実数値関数全体の集合を $S^*=\mathscr{F}^b(X, \mathbb{R})$ とする。 $f, g\in S^*$ 、 $\lambda\in\mathbb{R}$ に対し、 $X$ から $\mathbb{R}$ への写像 $f+g$ 、 $\lambda f$ を
+$$
+(f+g)(x)=f(x)+g(x), \ \ (\lambda f)(x) = \lambda f(x) \ \ (x\in X)
+$$
+と定義すれば、これらも $X$ 上の有界実数値関数、すなわち $S^*=\mathscr{F}^b(X, \mathbb{R})$ の元である。 この加法とスカラー倍について、 $S^*$ はベクトル空間をなす。</br>
+$f\in S^*$ に対し、
+$$
+\|f\|={\rm{sup}}\{|f(x)| : x\in X\}
+$$
+と定める。</br>
+$X$ が位相空間であるとき、 $X$ 上の実数値関数で有界かつ連続であるもの全体の集合を $B(X, \mathbb{R})$ で表す。これを $S$ とすれば、 $S\subset S^*=\mathscr{F}^b(X, \mathbb{R})$であるが、 $f, g\in S$ ならば、 $f+g, \lambda f\in S$ である(連続関数の和もスカラー倍も連続関数)から、 $S$ もまたベクトル空間 (部分空間) である。 $S^*$ のノルムを $S$ 上で制限すれば、 $S$ 上のノルムが得られるから、 $S$ もノルム空間である。
+
+Banach空間 </br>
+ノルム空間 $(S, \| \ \|)$ は、 $\| \ \|$ から定められる距離関数 $d=d(\| \ \|)$ に関して $(S, d)$ が完備(コーシー列が必ず収束する)であるとき、Banach空間であるという。
+
+**定理**</br>
+Hilbert空間 $l^{(2)}$ はBanach空間である。</br>
+
+
+
 
