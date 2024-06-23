@@ -51,6 +51,10 @@
       https://cg-method.com/unity-gitignore-setting/</br>
       https://nekojara.city/unity-gitignore
        - ターミナルで .gitignore.txtを.gitignoreにすると作動する
+    - 曲候補
+      - Lo-fi chill beat - frosty shadow of winter
+      - Bathroom - Chill Background Music
+      - ほしくず
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。
