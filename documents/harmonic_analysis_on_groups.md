@@ -570,12 +570,71 @@ $$
 と定める。</br>
 $X$ が位相空間であるとき、 $X$ 上の実数値関数で有界かつ連続であるもの全体の集合を $B(X, \mathbb{R})$ で表す。これを $S$ とすれば、 $S\subset S^*=\mathscr{F}^b(X, \mathbb{R})$であるが、 $f, g\in S$ ならば、 $f+g, \lambda f\in S$ である(連続関数の和もスカラー倍も連続関数)から、 $S$ もまたベクトル空間 (部分空間) である。 $S^*$ のノルムを $S$ 上で制限すれば、 $S$ 上のノルムが得られるから、 $S$ もノルム空間である。
 
+完備性
+定義
+$(S, d)$ を距離空間とする。 $S$ の点列 $(a_n)_{n\in \mathbb{N}}$ は、次の性質を満足するとき、コーシー列であるといわれる。</br>
+任意に正数 $\epsilon$ を与えたとき、 適当に自然数 $n_0$ をとれば、 $m>n_0$ 、 $n>n_0$ であるすべての自然数 $m,n$ に対して、 $d(a_m, a_n)<\epsilon$ が成り立つ。</br>
+
+収束点列はコーシー列であるが、逆が成り立つとは限らない。</br>
+例.1</br>
+$\mathbb{R}$ の開区間 $(0,1)$ を $S$ とする。 $S$ において、点列
+$$
+\frac{1}{2}, \frac{1}{3},\dots, \frac{1}{n}
+$$
+は Causy点れ鵜であるが、収束点列ではない。実際、十分大きい $m$ に対して、 $\frac{1}{m}<\epsilon/2$ 、 $\frac{1}{n}<\epsilon/2$ とできるので、
+$$
+d(\frac{1}{m}, \frac{1}{n}) \le d(\frac{1}{m}, 0) + d(0, \frac{1}{n}) < \epsilon
+$$
+しかし、 $0\notin S$ より、収束点列ではない。</br>
+
+定義 </br>
+距離空間 $(S, d)$ において、その任意のコーシー列が収束するとき $(S, d)$ は完備であるという。
+
 Banach空間 </br>
 ノルム空間 $(S, \| \ \|)$ は、 $\| \ \|$ から定められる距離関数 $d=d(\| \ \|)$ に関して $(S, d)$ が完備(コーシー列が必ず収束する)であるとき、Banach空間であるという。
 
 **定理**</br>
 Hilbert空間 $l^{(2)}$ はBanach空間である。</br>
+証明) $l^{(2)}$ のノルム $\| \ \|$ から定められる距離関数を $d$ とし、$(x^{(k)})_{k\in\mathbb{N}}$ を距離空間 $(l^{(2)}, d)$ における任意のコーシー列とする。これが収束することを示せばよい。</br>
+$x^{(k)}=(x^{(k)}_n)_{n\in\mathbb{N}}=(x^{(k)}_1,x^{(k)}_2,\dots,x^{(k)}_n,\dots)$ とする。一つの自然数 $n$ を任意に固定するとき、ノルム $\| \ \|$ の定義から、任意の $k,l\in\mathbb{N}$ に対し、
+$$
+|x^{(k)}_n - x^{(l)}_n|\le \|x^{(k)}_n - x^{(l)}_n\|=d(x^{(k)}, x^{(l)})
+$$
+この不等式と、 $(x^{(k)})_{k\in\mathbb{N}}$ が $l^{(2)}$ のコーシー列であることから、 $(x^{(k)}_n)_{k\in\mathbb{N}}$ は $\mathbb{R}$ のコーシー列であることがわかる。したがって、 $\mathbb{R}$ の完備性により、 $\mathbb{R}$ の元 $x_n=\displaystyle\lim_{k\rightarrow\infty} x^{(k)}_n$ が存在する。 そこで、 $x=(x_n)_{n\in\mathbb{N}}$ とおく。この $x$ が $l^{(2)}$ に属し、かつ $l^{(2)}$ において、 $\displaystyle\lim_{k\rightarrow\infty} x^{(k)}=x$ となることを示す。</br>
+$\epsilon$ を任意の正数とすれば、 $(x^{(k)})_{k\in\mathbb{N}}$ は $l^{(2)}$ のコーシー列であるから、ある $k_0\in\mathbb{N}$ が存在して、 $k,l>k_0$ である任意の $k,l\in\mathbb{N}$ に対して
+$$
+d(x^{(k)}, x^{(l)})=\|x^{(k)} - x^{(l)}\|<\epsilon
+$$
+すなわち、
+$$
+\displaystyle\sum_{n=1}^\infty (x^{(k)}_n - x^{(n)}_n)^2 <\epsilon^2
+$$
+が成り立つ。よって $h$ を任意の自然数とすれば
+$$
+\displaystyle\sum_{n=1}^h (x^{(k)}_n - x^{(n)}_n)^2 <\epsilon^2
+$$
+上式で、 $l\rightarrow\infty$ とすれば、 $x^{(l)}_n\rightarrow x_n$ であるから、
+$$
+\displaystyle\sum_{n=1}^h (x^{(k)}_n - x_n)^2 \le \epsilon^2 \ \ \ \ \  (5.3)
+$$
+となる。そこで、
+$$
+x_n^2 =(x^{(k)}_n-(x^{(k)}_n -x_n))^2\le 2((x^{(k)}_n)^2+(x^{(k)}_n-x_n)^2)
+$$
+に注意すれば、 $\displaystyle\sum_{n=1}^\infty (x^{(k)}_n)^2 < +\infty$ であるから、(5.3)より、
+$$
+\displaystyle\sum_{n=1}^\infty x_n^2 \le 2(\|x^{(k)}\|^2+\epsilon^2) < +\infty
+$$
+ゆえに、 $x=(x_n)_{n\in\mathbb{N}}\in l^{(2)}$ である。また、 (5.3) から、
+$$
+d(x^{(k)}, x)=\|x^{(k)}-x\|\le \epsilon 
+$$
+これが、 $k>k_0$ であるすべての $k\in\mathbb{N}$ に対して成り立つから、
+$$
+\displaystyle\lim_{k\rightarrow\infty}x^{(k)}=x
+$$
+となる。</br>
 
-
-
+定理</br>
+$X$ を任意の集合とするとき、ノルム空間 $\mathfrak{F}^b(X, \mathbb{R})$ (有界実数値関数の全体) はBanach空間である。
 
