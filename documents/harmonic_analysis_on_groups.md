@@ -636,5 +636,28 @@ $$
 となる。</br>
 
 定理</br>
-$X$ を任意の集合とするとき、ノルム空間 $\mathfrak{F}^b(X, \mathbb{R})$ (有界実数値関数の全体) はBanach空間である。
+$X$ を任意の集合とするとき、ノルム空間 $\mathfrak{F}^b(X, \mathbb{R})$ (有界実数値関数の全体) はBanach空間である。</br>
+証明) $(f_n)_{n\in\mathbb{N}}$ を $S^*=\mathfrak{F}^b(X,\mathbb{R})$ の任意のCauchy点列とする。ノルムの性質から、
+$$
+|\|f_m\|-\|f_n\||\le\|f_m-f_n\|
+$$
+であるから、実数列は $(\|f_n\|)_{n\in\mathbb{N}}$ は $\mathbb{R}$ のコーシー列で、したがって有界である(参考: https://kaikiblog.com/cauchy_bounded/)。すなわち、適当な正の実数 $K$ をとれば、すべての $n\in\mathbb{N}$ に対して $\|f_n\|\le K$ が成り立つ。一方、 $X$ の点 $x$ を任意に固定するとき、 $S^*$ におけるノルムの定義により、
+$$
+|f_m(x)-f_n(x)|\le \|f_m-f_n\|
+$$
+であるから、 $(f_n(x))_{x\in\mathbb{N}}$ も $\mathbb{R}$ のコーシー列である。したがって、 $\displaystyle\lim_{n\rightarrow\infty} f_n(x)$ が存在する。それを $f(x)$ として $f:X\rightarrow\mathbb{R}$ を定義すれば、 $f\in S^*$ で、 $S^*$ において、 $\displaystyle\lim_{n\rightarrow\infty} f_n=f$ となることを示す。</br>
+まず、 $X$ の任意の点 $x$ と任意の正数 $\epsilon$ に対し、 $n$ を十分大きくとれば、 $|f_n(x)-f(x)|<\epsilon$ が成り立つから、
+$$
+|f(x)|<|f_n(x)|+\epsilon \le \|f_n\| +\epsilon \le K+\epsilon
+$$
+したがって、 $f$ は $X$ 上の有界実数値関数、すなわち $\mathfrak{F}^b(X,\mathbb{R})=S^*$ の元である。</br>
+また、任意に $\epsilon >0$ を与えるとき、適当に $n_0$ をとれば、 $m,n>n_0$ である任意の $m,n\in\mathbb{N}$ に対して $\|f_n-f_m\|<\epsilon$ であるから、 $X$ のどの点 $x$ についても $|f_n(x)-f_m(x)|<\epsilon$ 。この不等式で $m\rightarrow\infty$ とすれば、 $|f_n(x)-f(x)|\le\epsilon$ 。これがすべての $x\in X$ に対して成り立つから、
+$$
+\|f_n-f\|\le\epsilon
+$$
+ゆえに、 $\displaystyle\lim_{n\rightarrow\infty} f_n=f$ 。
+
+定理</br>
+$X$ を任意の位相空間とするとき、 $B(X,\mathbb{R})$ はBanach空間である。</br>
+
 
