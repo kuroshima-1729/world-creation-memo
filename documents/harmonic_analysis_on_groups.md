@@ -659,5 +659,43 @@ $$
 
 定理</br>
 $X$ を任意の位相空間とするとき、 $B(X,\mathbb{R})$ はBanach空間である。</br>
+証明) $(f_n)_{n\in\mathbb{N}}$ を $S=B(X,\mathbb{R})$ のコーシー列とする。上の定理からこれが $S^*$ の中では極限を持つことは証明されているので、それが $S$ に属すること、すなわち $X$ 上で連続であることを証明すればよい。</br>
+$a$ を $X$ の任意の1点、 $\epsilon$ を任意の正数とする。 $\displaystyle\lim_{n\rightarrow\infty}f_n=f$ すなわち、 $\displaystyle\lim_{n\rightarrow\infty}\|f_n-f\|=0$ であるから、適当な $n_o\in\mathbb{N}$ をとれば、
+$$
+\|f_n-f\|<\frac{\epsilon}{3} \ \ (5.4)
+$$
+が成り立つ。また、 $f_{n_0}$ は連続であるから、 $a$ の適当な近傍 $U$ をとれば、任意の $x\in U$ に対して、
+$$
+|d_{n_0}(x)^f_{n_0}(1)| < \frac{\epsilon}{3}
+$$
+となる。また、(5.4)により、
+$$
+|f_{n_0}(x)-f(x)| < \frac{\epsilon}{3}, \ \ |f_{n_0}(a)-f(a)| < \frac{\epsilon}{3}
+$$
+であるから、 $x\in U$ ならば、
+$$
+|f(x)-f(a)|\le |f(x)-f_{n_0}(x)|+|f_{n_0}(x)-f_{n_0}(a)|+|f_{n_0}(a)-f(a)| \\
+<\frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}=\epsilon
+$$
+ゆえに、 $f:X\rightarrow \mathbb{R}$ である。
 
+位相空間 $X$ 上の実連続関数全体の集合を $C(X,\mathbb{R})$ と書く。 $X$ がコンパクトな位相空間である場合、 $X$ 上の実連続関数は有界となる。したがって、 $C(X,\mathbb{R})=B(X,\mathbb{R})$ となる。 ゆえに、上の定理から次の系が得られる。</br>
+系</br>
+$X$ を任意のコンパクトな位相空間とするとき、 $C(X,\mathbb{R})$ はBanach空間である。
+
+## Section 1 定義と例
+定義</br>
+複素線形空間 $\mathfrak{U}$ が次のような条件を満たす演算
+$$
+(x,y)\mapsto x\cdot y \ \ (\mathfrak{U}\times\mathfrak{U}\rightarrow \mathfrak{U})
+$$
+を持つとき、 $\mathfrak{U}$ は(複素)代数であるという。</br>
+(1) $(x+y)\cdot z=x\cdot z + y\cdot z; \ \ x,y,z\in\mathfrak{U}$</br>
+(2) $x\cdot(y\cdot z)=(x\cdot y)\cdot z; \ \ x,y,z\in \mathfrak{U} $ </br>
+(3) $\lambda(x\cdot y)=(\lambda) x\cdot y = x\cdot (\lambda y); \ \ x,y\in\mathfrak{U},\lambda\in\mathbb{C}$ </br>
+また、すべての $x\in\mathfrak{U}$ に対して、
+$$
+e\cdot x = x\cdot e = x
+$$
+を満たす元 $e\in\mathfrak{U}$ が存在するとき、この $e$ を代数 $\mathfrak{U}$ の単位元と呼ぶ。
 
