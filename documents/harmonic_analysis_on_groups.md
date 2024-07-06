@@ -699,3 +699,69 @@ e\cdot x = x\cdot e = x
 $$
 を満たす元 $e\in\mathfrak{U}$ が存在するとき、この $e$ を代数 $\mathfrak{U}$ の単位元と呼ぶ。
 
+定義</br>
+$(\mathfrak{U},\|\cdot\|)$ が代数でしかも線形ノルム空間であり、かつ任意の $x,y\in \mathfrak{U}$ について
+$$\|xy\|\le \|x\|\cdot \|y\|$$
+が成り立つとき、 $(\mathfrak{U},\|\cdot\|)$ はノルム代数であるという。また、完備なノルム代数をBanach代数という。
+
+ノルム代数においては、
+$$\|x^n\|\le \|x\|^n$$
+が成り立つ。
+
+定義</br>
+代数 $\mathfrak{U}$ $(\mathfrak{U}\neq \{0\})$ の任意の２元 $x,y$ について、 $xy=yx$ が成り立つとき、 $\mathfrak{U}$ は可換代数であるという。
+
+$(\mathfrak{U},\|\cdot\|)$ をノルム代数とするとき
+$$
+\begin{array}{}
+\|x_ny_n-xy\|&\le& \|x_n(y_n-y)\|+\|(x_n-x)y\| \\
+&\le& \|x_n\|\cdot \|y_n-y\| + \|x_n-x\|\cdot \|y\|
+\end{array}
+$$
+であることから、乗法演算 $(x,y)\mapsto xy$ は $\mathfrak{U}\times\mathfrak{U}$ 上で連続である。
+
+定義</br>
+$\mathfrak{U}_1$ 、 $\mathfrak{U}_2$ をふたつの代数とする。これらふたつの空間の間に定義された線形の全単射 $\varphi:\mathfrak{U}_1\rightarrow \mathfrak{U}_2$ で、しかもすべての $x,y\in \mathfrak{U}_1$ に対して、 $\varphi(xy)=\varphi(x)\varphi(y)$ を満たすものが存在するとき、 $\mathfrak{U}_1$ と $\mathfrak{U}_2$ とは代数として同型であるという。 $\mathfrak{U}_1$ 、 $\mathfrak{U}_2$ がノルム代数で、しかも $\varphi$ がこれらの間に位相同型を与える場合には、 $\mathfrak{U}_1$ と $\mathfrak{U}_2$ とはノルム代数として同型であるという。 $\varphi$ を代数としての(またはノルム代数としての)同型作用素と呼ぶ。
+
+
+参考: https://old.math.jp/wiki/Banach%E7%A9%BA%E9%96%93%E3%81%A8%E6%9C%89%E7%95%8C%E7%B7%9A%E5%9E%8B%E4%BD%9C%E7%94%A8%E7%B4%A0#.E5.91.BD.E9.A1.8C2.4.EF.BC.88.24Y.24_.E3.81.8CBanach.E7.A9.BA.E9.96.93.E3.81.AA.E3.82.89.E3.81.B0_.24.5Cmathbb.7BB.7D.28X.2CY.29.24_.E3.81.AF_Banach_.E7.A9.BA.E9.96.93.EF.BC.89
+定義</br>
+$X, Y$ を $\mathbb{C}$ 上のノルム空間とする。  $X\rightarrow Y$ の線形作用素全体に各点ごとの演算(準同型みたいな)を入れて得られる $\mathbb{C}$ 上の線形空間を $\mathbb{L}(X,Y)$ と表す。 そして任意の $T\in\mathbb{L}(X,Y)$ に対し、
+$$
+\|T\|={\rm{sup}}\{\|Tx\|:x\in X, \|x\|\le 1 \}
+$$
+とおき、
+$$
+\mathbb{B}(X,Y)=\{T\in\mathbb{L}(X,Y):\|T\|< \infty \}
+$$
+とおく。 $\mathbb{B}(X,Y)$ の元を $X\rightarrow Y$ の有界線形作用素という。
+$$
+\|Tx\|\le\|T\|\|x\| \ \ (\forall R\in\mathbb{B}(X,Y)m, \forall x\in X)
+$$
+であるから、 $\mathbb{B}(X,Y)$ は $\mathbb{L}(X,Y)$ の線形部分空間であり、
+$$
+\mathbb{B}(X,Y)\ni T \mapsto \|T\| \in [0, \infty) 
+$$
+は $\mathbb{B}(X,Y)$ 上のノルムである。このノルムを作用素ノルムという。 </br>
+有界線形作用素の参考: https://umathematics.com/functional_analysis_4/ </br>
+作用素ノルムの参考: https://mathlandscape.com/op-norm/
+
+定理</br>
+$X$ をノルム空間、 $Y$ をBanach空間とする。このとき $\mathbb{B}(X,Y)$ はBanach空間である。
+証明) $(T_n)_{n\in\mathbb{N}}$ を $\mathbb{B}(X,Y)$ のコーシー列とする。任意の $x\in X$ に対し、
+$$
+\|T_nx-T_mx\|\le\|T_n-T_m\|\|x\| \ \ (\forall n,m\in\mathbb{N})
+$$
+であるから、 $(T_nx)_{n\in\mathbb{N}}$ はBanach空間 $Y$ のコーシー列である。よって、
+$$
+Tx = \displaystyle\lim_{n\rightarrow\infty} T_nx \ \ (\forall x\in X)
+$$
+として、 $T:X\rightarrow Y$が定義でき、 $T$ は線形作用素である。任意の $\epsilon\in (0,\infty)$ に対し、 $n_0\in\mathbb{N}$ で、
+$$
+\|T_m-T_n\|\le \ \ (\forall n,m\ge n_0)
+$$
+なるものをとる。このとき任意の $m\ge n_0$ と、 $\|x\|\le 1$ なる任意の $x\in X$ に対し、
+$$
+\|Tx-T_mx\|=\displaystyle\lim_{n\rightarrow\infty}\|T_nx-T_mx\|=\inf_{n\in\mathbb{N}}\sup_{k\ge n}
+$$
+
