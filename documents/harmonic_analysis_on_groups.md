@@ -764,4 +764,25 @@ $$
 $$
 \|Tx-T_mx\|=\displaystyle\lim_{n\rightarrow\infty}\|T_nx-T_mx\|=\inf_{n\in\mathbb{N}}\sup_{k\ge n}
 $$
+...省略
+
+例1 </br>
+複素Banach空間 $\mathfrak{X}$ から $\mathfrak{X}$ 自身への有界線形作用素の作る線形空間 $\mathscr{L}(\mathfrak{X})$ は作用素ノルムの下にBanach空間となる。</br>
+参考: https://tmu-kurata.fpark.tmu.ac.jp/lectures/fun19/note-5.pdf </br>
+$\mathscr{L}(\mathfrak{X})$ の上にさらに第2の演算として、作用素の合成 $A\circ B \ (A,B\in \mathscr{L}(\mathfrak{X}))$ を考えれば、この演算を乗法とみなして $\mathscr{L}(\mathfrak{X})$ はBanach代数となる。恒等写像 $I\in\mathscr{L}(\mathfrak{X})$ は任意の $A\in \mathscr{L}(\mathfrak{X})$ について $IA=AI=A$ を満たす。すなわち $I$ は Banach代数 $\mathscr{L}(\mathfrak{X})$ の単位元である。ただし、 $\mathscr{L}(\mathfrak{X})$ は可換代数ではない。特別な事例として、 $\mathfrak{X}=\mathbb{C}^n$ とすれば、 $n\times n$ 行列の全体はBanach代数である。
+
+例２
+$\mathfrak{U}=M_n$ ( $n\times n$ 複素行列の全体)とし、 $i$ 行 $j$ 列の要素を $x_{ij}$ とする行列を $(x_{ij})$ と略記する。 $M_n$ は通常の行列演算の下に代数を作り、しかもノルム
+$$
+\|x_{ij}\| = \displaystyle\sum_{i,j}|x_{ij}|
+$$
+の下に $n^2$ 次元のBanach空間となる。 $x=(x_{ij})$ 、 $y=(y_{ij})$ とすれば、
+$$
+xy = (x_{ij})(y_{ij}) = \left( \displaystyle\sum_{k=1}^n x_{ik}y_{kj} \right)
+$$
+であるから、
+$$
+\|xy\| = \displaystyle\sum_{i,j}|\displaystyle\sum_k x_{ik}y_{kj}|\le \displaystyle\sum_{i,j}\left(\displaystyle\sum_{k.l}|x_{i,k}|\cdot|y_{lj}| \right)=\|x\|\cdot \|y\|
+$$
+したがって、 $M_n$ はBanach代数となる。単位元は単位行列で、そのノルムは $n$ である。
 
