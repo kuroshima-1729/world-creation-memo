@@ -823,7 +823,8 @@ $$
 $$
 \oint_{\gamma} f(z)dz=0
 $$
-を満たすものは、必ず $D$ 上で正則である。
+を満たすものは、必ず $D$ 上で正則である。</br>
+参考: https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%AC%E3%83%A9%E3%81%AE%E5%AE%9A%E7%90%86
 
 よって、Moreraの定理により、 $f$ は単位円の内部で正則である。すなわち $f\in\mathfrak{U}$ 。
 
