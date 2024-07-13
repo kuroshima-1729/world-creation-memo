@@ -786,3 +786,67 @@ $$
 $$
 したがって、 $M_n$ はBanach代数となる。単位元は単位行列で、そのノルムは $n$ である。
 
+例3 </br>
+$X$ をHausdorffコンパクト位相空間とすれば、 $X$ 上の複素数値連続関数のつくるBanach空間$\mathfrak{C}(X,\mathbb{C})$ は、乗法演算
+$$
+(fg)(x)=f(x)\cdot g(x), \ \ f,g\in \mathfrak{C}(X,\mathbb{C})
+$$
+の下にBanach代数となる。ノルムは、一様収束ノルム
+$$
+\|f\|=\sup_{x\in X} |f(x)|
+$$
+である。
+
+例4 (disc algebra) </br>
+複素平面 $\mathbb{C}$ 上の単位円 $\{z\in\mathbb{C} : |z|\le 1\}$ 上で定義されたすべての連続関数のうち、単位円の内部 $\{z\in\mathbb{C} : |z| < 1\}$ で正則なものの全体を $\mathfrak{U}$ とする。 $f\in \mathfrak{U}$ のノルムを
+$$
+\|f\| = \sup_{|z|<1}|f(z)|
+$$
+とし、 $\mathfrak{U}$ 上の演算を通常通り、
+$$
+(f+g)(z)=f(z)+g(z)
+$$
+$$
+(\lambda f)(z)=\lambda f(z)
+$$
+$$
+(fg)(z)=f(z)g(z)
+$$
+(ここで、 $f,g\in \mathfrak{U}$ 、 $z\in\{w\in\mathbb{C} : |w|\le 1\}$ 、 $\lambda\in\mathbb{C}$) とすれば、 $\mathfrak{U}$ はBanach代数である。実際、 $\mathfrak{U}$ が完備であることは次のようにしてわかる。 </br>
+$\{f_n\}$ を $\mathfrak{U}$ におけるコーシー列とすれば、 $\{f_n\}$ は単位円上のある連続関数に一様収束する(一様ノルムなので)。 $\{z\in\mathbb{C} : |z|<1\}$ における任意の閉曲線を $\gamma$ とすれば、 コーシーの定理により、
+$$
+\int_{\gamma}f(z)dz = \displaystyle\lim_{n\rightarrow\infty}\int_{\gamma}f_n(z)dz=0
+$$
+
+定理(Morera) </br>
+複素平面内のある連結開集合 $D$ 上で定義される連続な複素数値関数 $f$ で、 $D$ 内のすべての区分的 $C^1$ 閉曲線 $\gamma$ に対して、
+$$
+\oint_{\gamma} f(z)dz=0
+$$
+を満たすものは、必ず $D$ 上で正則である。
+
+よって、Moreraの定理により、 $f$ は単位円の内部で正則である。すなわち $f\in\mathfrak{U}$ 。
+
+例 5 </br>
+複素数列の空間 $l_1 = \left\{x=\{x_n\}_{n=-\infty}^{\infty} : \|x_n\|=\displaystyle\sum_{h=-\infty}^\infty |x_n|<\infty \right\}$ はBanach空間となる(ヒルベルト空間の証明において、正インデックスと負インデックスに分けて考える)。いま、
+$$
+(x*y)_n = \displaystyle\sum_{k=^\infty}^\infty x_ky_{n-k}, \ \ x,y\in l_1
+$$
+として、数列 $\{(x*y)_n\}_{n=-\infty}^\infty$ を定義すれば、 $x*y\in l_1$ でしかも $\|x*y\|\le \|x\|\cdot \|y\|$ が成り立つ。実際、
+$$
+\begin{array}{}
+\|x*y\|&=&\displaystyle\sum_{n=-\infty}^\infty |(x*y)_n|\le\displaystyle\sum_{n=-\infty}^\infty \left(\displaystyle\sum_{n=-\infty}^\infty|x_k||y_{n-k}|\right) \\ &=& \displaystyle\sum_{i,j}|x_i|\cdot |y_j| = \|x\|\cdot \|y\|
+\end{array}
+$$
+よって、 $l_1$ はBanach代数となる。さらに $l_1$ はBanach代数として可換、すなわち $x*y=y*x$ である。実際、
+$$
+(y*x)_n=\displaystyle\sum_{k=-\infty}^\infty y_kx_{n-k}=\displaystyle\sum_{l=-\infty}^\infty y_{n-l}x_l = (x*y)_n
+$$
+である。また、
+$$
+e=(\dots, 0,0,1,0,0,\dots) \ \ (1\ \  {\rm{on}} \ \ n=0)
+$$
+とすれば、 $e$ は $l_1$ の単位元で、 $\|e\|=1$ 。 ( $(x*e)_n=\displaystyle\sum_{k=-\infty}^\infty x_k e_{n-k} = x_n$ )。 $x*y$ を $x$ と $y$ の畳み込みという。
+
+
+
