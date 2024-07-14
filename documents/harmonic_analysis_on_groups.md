@@ -849,5 +849,57 @@ e=(\dots, 0,0,1,0,0,\dots) \ \ (1\ \  {\rm{on}} \ \ n=0)
 $$
 とすれば、 $e$ は $l_1$ の単位元で、 $\|e\|=1$ 。 ( $(x*e)_n=\displaystyle\sum_{k=-\infty}^\infty x_k e_{n-k} = x_n$ )。 $x*y$ を $x$ と $y$ の畳み込みという。
 
+例６ </br>
+区間 $\lbrack 0, 2\pi \rbrack$ (あるいはトーラス $\mathbb{R}/2 \pi \mathbb{Z}$) 上で定義された複素数値連続関数のうち、絶対収束Fourier級数に展開できるものの全体を $\mathfrak{U}$ とする。すなわち
+$$
+f(x)=\displaystyle\sum_{n=-\infty}^\infty c_ne^{inx} \ \ {\rm{with}} \ \ \displaystyle\sum_{n=-\infty}^\infty |c_n| < \infty 
+$$
+となる複素連続関数 $f$ の集合が $\mathfrak{U}$ である。ここで $f\in\mathfrak{U}$ のノルムを
+$$
+\|f\|=\displaystyle\sum_{n=-\infty}^\infty |c_n|
+$$
+としておけば、通常の関数の和と積に関して、 $\mathfrak{U}$ は可換Banach代数となる。</br>
+$M=\displaystyle\sum_{n=-\infty}^\infty |c_n|$ とすれば $|f(x)|\le M$ より、例４から、Banach代数となる。
+
+例７</br>
+実軸 $\mathbb{R}$ 上の可積分関数の空間 $\mathfrak{L}^1(\mathbb{R}, \mathbb{C})$ はノルム空間 $\|\cdot\|$ に関してBanach空間となる。一般に $L_p$ 空間がBanach空間となることを示す。
+
+$L_p$ 空間
+$1\le p < \infty$ 、 $\Omega\subset \mathbb{R}^n$ が開集合 $L^p(\Omega)$ を $\Omega$ 上の可測関数 $u$ で
+$$
+\|u\|_{L^p}=\left( \int_{\Omega} |u(t)|^p dt \right)^{1/p} < \infty
+$$
+を満たすもの全体とする。</br>
+$L^p(\Omega)$ は完備である。</br>
+証明) $\{u_n\}$ を $L^p(\Omega)$ 内のコーシー列とする。このとき、 $\|u_{n_{k+1}}-u_{n_k}\|_{L^p}<1/2^k$ となる部分列 $\{u_{n_k}\}$ がとれる。単調収束定理を用いることにより、
+$$
+\begin{array}{}
+\left\|\displaystyle\sum_{j=1}^\infty|u_{n_{j+1}}-u_{n_j}| \right\| &=& \left( \displaystyle\int_{\Omega}\left|\displaystyle\sum_{j=1}^\infty |u_{n_{j+1}}-u_{n_j}| \right|^pdt\right)^{1/p} \\ &=& \left(\displaystyle\int_{\Omega} \displaystyle\lim_{m\rightarrow \infty}\displaystyle\sum_{j=1}^m|u_{n_{j+1}}-u_{n_j}|^p \right)^{1/p} \\ &=& \displaystyle\lim_{m\rightarrow\infty}\left(\displaystyle\int_{\Omega}\displaystyle\sum_{j=1}^m|u_{n_{j+1}}-u_{n_j}|^p \right)^{1/p} \\ &=& \displaystyle\lim_{m\rightarrow\infty} \left\|\displaystyle\sum_{j=1}^m |u_{n_{j+1}}-u_{n_j}| \right\|_{L_p} \\ &\le& \displaystyle\sum_{j=1}^\infty \|u_{n_{j+1}}-u_{n_j}\|_{L^p} \le 1 < \infty
+\end{array}
+$$
+よって、 $\displaystyle\sum_{j=1}^\infty|u_{n_{j+1}}-u_{n_j}|\in L^p(\Omega)$ 。これより、 $\displaystyle\sum_{j=1}^\infty |u_{n_{j+1}}(t)-u_{n_j}(t)|<\infty, \ \ t\in \Omega$ 。したがって、 $k<m$ に対して、 
+$$
+|u_{n_m}(t)-u_{n_k}(t)|\le \displaystyle\sum_{j=k}^{m-1} |u_{n_{j+1}}(t)-u_{n_j}(t)|\rightarrow 0 \ \ (m>k\rightarrow\infty)
+$$
+よって、 $t\in\Omega$ に対して、$\{u_{n_k}(t)\}$ は $\mathbb{R}$ でのコーシー列となり、完備性から $u_{n_k}(t)\rightarrow u^*(t)$ となる $u^*$ が存在する。この $u^*$ が $\{u_n\}$ の $L^p(\Omega)$ での極限となる。実際
+$$
+\begin{array}{}
+|u_{n_k}(t)|&\le& |u_{n_1}(t)|+\displaystyle\sum_{j=1}^{k-1}|u_{n_{j+1}}(t)-u_{n_j}(t)| \\ &\le& |u_{n_j}(t)|+\displaystyle\sum_{j=1}^{\infty}|u_{n_{j+1}}-u_{n_j}(t)|\in L^p(\Omega)
+\end{array}
+$$
+より最後の式を $g(t)$ とおき、 $k\rightarrow\infty$ とすれば、 $t\in\Omega$ に対し、 $|u^*(t)|\le g(t)\in L^p(\Omega)$ すなわち、 $u^*(t)\in L^p(\Omega)$ 。さらに $k<m$ に対し、
+$$
+\|u_{n_m}-u_{n_k}\|_{L^p}\le \displaystyle\sum_{j=k}^{m-1} \|u_{n_{j+1}}-u_{n_j}\|_{L^p}\le \displaystyle\sum_{j=k}^\infty \frac{1}{2^j}=\frac{1}{2^{k-1}}
+$$
+ここで、 $|u_{n_m}(t)-u_{n_k}(t)|\le 2g(t)\in L^p(\Omega)$ から、Lebegueの収束定理から、 $m\rightarrow\infty$ として、
+$$
+\|u^*-u_{n_k}\|_{l^p}\le \frac{1}{2^{k-1}}\rightarrow 0 \ \ (k\rightarrow\infty)
+$$
+したがって、 $u_{n_k}\rightarrow u^*$ in $L^p(\Omega)$ となる。ここで、
+$$
+\|u_n-u\| \le \|u_n-u_{n_k}\| + \|u_{n_k}-u\|\rightarrow 0 \ \ (n_k>n\rightarrow\infty)
+$$
+より、 $u_n\rightarrow u^*$ in $L^p(\Omega)$ となる。
+
 
 
