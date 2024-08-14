@@ -901,5 +901,102 @@ $$
 $$
 より、 $u_n\rightarrow u^*$ in $L^p(\Omega)$ となる。
 
+### ルベーグ積分
+　- 参考: 川平友規著, ルベーグ積分基礎のキソ(https://www1.econ.hit-u.ac.jp/kawahira/courses/lebesgue.pdf)
+  - ルベーグ積分の要点
+    - 積分は関数の体重を計測するようなもの
+      - リーマン積分において計測できない関数が存在
+      - それを改良するものがルベーグ積分
+    - ルベーグ積分は、「零集合」上のみで値がことなる関数を区別しない。
+      - トポロジーの発想に近い？(考察)
+#### 第１章 リーマン積分 vs ルベーグ積分
+積分とは？
+ - 積分とは「集合と関数のペアから、一つの実数を定める手続き」と考えられる。
+ - 「集合と関数のペア」を適切に選ばないと積分の値は定まらない。
+区間上のリーマン積分<br>
+以下、 $a$ と $b$ を満たす実数とし、閉区間 $[a,b]$ 上の(連続とは限らない)関数 $f:[a,b]\rightarrow \mathbb{R}$ を考える。区間 $[a,b]$ から
+$$
+a=x_0 < x_1 < x_2 < \dots < x_{N-1} < x_N = b
+$$
+を満たす有限個の点を集めた集合
+$$
+\Delta = \{x_0, x_1\dots, x_{N-1}, x_N\}
+$$
+を区間 $[a,b]$ の分割という。
 
+分割 $\Delta$ が与えられたとき、各 $k=1,\dots, N$ に対し、 $x_{k-1} \le x_k^*\le x_k$ を満たす $x_k^*$ を選んで得られる $N$ 点からなる集合
+$$
+\Delta^* =\{x_1^*,\dots, x_2^*,\dots, x_N^*\}
+$$
+を分割 $\Delta$ の代表点集合という。
 
+関数 $f:[a,b]\rightarrow\mathbb{R}$ に対し、区間 $[a,b]$ の分割 $\Delta$ とその代表点集合 $\Delta^*$ が定める量
+$$
+\Sigma(f,\Delta, \Delta^*):= \displaystyle\Sigma_{k=1}^N f(x_k^*)(x_k-x_{k-1})
+$$
+を関数 $f$ のリーマン和とよぶ。
+
+定積分</br>
+区間 $[a,b]$ とその分割 $\Delta = \{x_k\}_{k=0}^N$ に対し、分割された区間の最大幅を
+$$
+|\Delta|:=\max\{x_k-x_{k-1}\mid 1\le k\le N\}
+$$
+と表すことにする。
+
+定義(リーマン可積分、定積分) </br>
+関数 $f:[a,b]\rightarrow\mathbb{R}$ がリーマン可積分であるとは、次を満たす実数 $A$ が存在することをいう。
+
+任意の正の数 $\epsilon$ に対し、ある正の数 $\delta$ が存在し、すべての $|\Delta|<\delta$ を満たす分割 $\Delta$ とその代表点集合 $\Delta^*$ に対し、
+$$
+|\Sigma(f,\Delta,\Delta^*)-A| < \epsilon
+$$
+がなりたつ。このとき
+$$
+\displaystyle\lim_{|\Delta|\rightarrow0} \Sigma(f,\Delta,\Delta^*)=A
+$$
+と表す。また、実数 $A$ を関数 $f$ の $[a,b]$ におけるリーマン積分もしくは定積分と呼び、
+$$
+A=\int_a^b f(x)dx
+$$
+と表す。
+
+関数が積分可能かどうかをこの定義通りに判定するには、定積分の値 $A$ をあらかじめ知る必要がある。以下で $A$ の値を用いずに積分可能性を判定する方法を述べる。
+
+リーマン可積分性の判定方法</br>
+関数 $f:[a,b]\rightarrow\mathbb{R}$ は有界な関数であると仮定する。すなわち、ある実数 $m<M$ が存在して、 $f:[a,b]\rightarrow [m,M]$ と表されるものとする。
+区間 $[a,b]$ の分割 $\Delta \{x_k\}_{k=0}^N$ が与えられているとき、各 $k=1,\dots, N$ に対し、
+$$
+M_k:=\sup\{f(x)\mid x_{k-1}\le x\le x_k \}
+$$
+$$
+m_k:=\inf\{f(x)\mid x_{k-1}\le x\le x_k \}
+$$
+と置くことにする。仮定より、$m\le m_k\le M_k\le M$ が成り立つ。さらに
+$$
+S(f,\Delta):=\displaystyle\sum_{k=1}^N M_k (x_k-x_{k-1})
+$$
+$$
+s(f,\Delta):=\displaystyle\sum_{k=1}^N m_k (x_k-x_{k-1})
+$$
+とおけば、 $\Delta$ の任意の代表点集合 $\Delta^*$ に対し、
+$$
+m(b-a)\le s(f,\Delta)\le\Sigma(f,\Delta,\Delta^*)\le s(f,\Delta) \le M(b-a)
+$$
+が成り立つ。特に、 $s(f,\Delta)$ 、 $S(f,\Delta)$ の取りうる値の範囲は有界であるから、ワイエルシュトラスの定理から、(収束する部分列があり、その中で最小及び最大のものをとる)
+$$
+S(f):=\inf\{S(f,\Delta)\mid \Delta は [a,b] の分割\}
+$$
+$$
+s(f):=\sup\{s(f,\Delta)\mid \Delta は [a,b] の分割\}
+$$
+が存在する。このとき以下が成立する。
+
+ダルブーの定理</br>
+有界な関数 $f:[a,b]\rightarrow \mathbb{R}$ に対し、
+$$
+\displaystyle\lim_{|\Delta|\rightarrow 0} S(f,\Delta) =S(f), \displaystyle\lim_{|\Delta|\rightarrow 0} s(f,\Delta) =s(f)
+$$
+がなりたつ。
+
+定理</br>
+有界な関数 $f:[a,b]\rightarrow \mathbb{R}$ が積分可能であることの必要充分条件は、 $S(f)=s(f)$ が成り立つことである。
