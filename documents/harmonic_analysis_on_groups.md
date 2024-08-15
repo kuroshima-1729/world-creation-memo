@@ -1017,4 +1017,40 @@ $$
  - 一般に、集合 $A_k$ の形は複雑なため、 $\mu(A_k)$ が満たすべき性質を探る。
 
  #### 第２章 ルベーグ外測と可測集合
- ルベーグ測度に期待される性質
+ ルベーグ測度に期待される性質</br>
+ ルベーグ積分を定義するには、与えられた集合 $A\subset\mathbb{R}$ に対し、その大きさ $\mu(A)$ を与える写像 $\mu$ が必要である。そのような写像に対して次の性質を期待する。</br>
+ (M1) 任意の $A\in 2^{\mathbb{R}}$ に対し、 $\mu(A)\in [0, \infty]$。</br>
+ (M2) 任意の閉区間 $[a, b] \ (a\le b)$ に対し、 $\mu([a,b])=b-a$ 。</br>
+ (M3) 互いに共通部分をもたない集合の列 $A_1, A_2,\dots \in 2^{\mathbb{R}}$ に対し、
+ $$
+ \mu\left(\bigcap_{n\ge 1}A_n\right) = \displaystyle\sum_{n\ge 1}\mu(A_n)
+ $$
+ (M4) 任意の $x\in \mathbb{R}$ 、 $A\in 2^{\mathbb{R}}$ に対し、
+ $$
+ A+x = \{a+x\in\mathbb{R}\mid a\in A\}
+ $$
+ とおくとき、 $\mu(A+x)=\mu(A)$
+
+ しかし、条件 (M1) ～ (M4) のすべてを満たす写像 $\mu : 2^{\mathbb{R}}\rightarrow [0,\infty]$ は存在しない。</br> 
+ 例：ヴィタリ集合(https://mathlandscape.com/vitali-set/)
+
+そのため、条件(M1)をあきらめて、
+ - ある適当な集合の族 $\mathcal{M}\subset 2^{\mathbb{R}}$ を選び、
+ - (M2) ～ (M4) (の $2^{\mathbb{R}}$ を $\mathcal{M}$ に変えたもの) を満たす写像 $\mu: \mathcal{M}\rightarrow [0,\infty]$ を構成する。この制限のもとでリーマン積分を適切に拡張するようなものを構成するのが目標。
+
+ルベーグ外測度の構成 </br>
+$a\le b$ を満たす実数 $a,b\in\mathbb{R}$ に対し、区間
+$$
+I=[a,b)=\{x\in\mathbb{R} \mid a\le x < b\}
+$$
+の「長さ」を $|I|=b-a$ と定める。 ただし、 $a=b$ のときは $I=\emptyset$ であり、 $|I|=0$ となる。
+
+定義(ルベーグ外測度)
+ - $\mathbb{R}$ の部分集合からなる列 $\{I_n\}_{n\ge 1}$ が集合 $A\in 2^{\mathbb{R}}$ を被覆するとは、$A\subset \bigcup_{n\ge 1} I_n$ を満たすことをいう。
+ - $\mathbb{R}$ の任意の部分集合 $A$ に対し、(1次元)ルベーグ外測度を
+ $$
+ \mu^*(A):=\inf\displaystyle\sum_{n=1}^\infty |I_n|
+ $$
+ と定める。 ただし、 $\inf$ は以下の性質を満たす区間の列 $\{I_n\}_{n\ge 1}$ すべてをわたるものとする。
+   - $\{I_n\}_{n\ge 1}$ は $A$ を被覆する。
+   - 各 $I_n (n=1,2,\dots)$ は $[a_n,b_n) (ただし、a_n\le b_n)$ の形の区間。 
