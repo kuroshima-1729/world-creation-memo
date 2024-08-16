@@ -1053,4 +1053,58 @@ $$
  $$
  と定める。 ただし、 $\inf$ は以下の性質を満たす区間の列 $\{I_n\}_{n\ge 1}$ すべてをわたるものとする。
    - $\{I_n\}_{n\ge 1}$ は $A$ を被覆する。
-   - 各 $I_n (n=1,2,\dots)$ は $[a_n,b_n) (ただし、a_n\le b_n)$ の形の区間。 
+   - 各 $I_n (n=1,2,\dots)$ は $[a_n,b_n) (ただし、a_n\le b_n)$ の形の区間。
+
+命題(可算劣か法性)</br>
+(1) $A\subset B\subset \mathbb{R}$ のとき、 $\mu^*(A)\le \mu^*(B)$ </br>
+(2) $\mathbb{R}$ の部分集合からなる列(共通部分があってもよい) $A_1,A_2,\dots \in 2^{\mathbb{R}}$ に対し、
+$$
+\mu\left( \bigcap_{i\ge 1} A_i\right) \le \displaystyle\sum_{i\ge 1}\mu^* (A_i)
+$$
+証明) (1) 区間の列 $\{I_n\}$ が $B$ を被覆するとき、 $A$ も被覆する。よって外測度の定義から、 $\mu^*(A)\le \mu^*(B)$ である。</br>
+(2) ある $j$ が存在し、 $\mu^*(A_j)=\infty$ であるとき、右辺の値は $\infty$ である。また、 $A_j\subset \cup_{i\ge 1}A_i$ と (1) より
+$$
+\infty = \mu^*(A_j)\le \mu^* \left(\bigcap_{i\ge 1} A_i\right)
+$$
+であるから、左辺も $\infty$ 。</br>
+すべての $i\ge 1$ に対し、 $\mu^*(A_i)<\infty$ であるとき、 $\epsilon >0$ を任意に選び固定する。 $\mu^*$ の定義から各 $i$ に対し、 ある $A_i$ を被覆する区間列 $I_n(i) \ (n=1,2,\dots)$ で
+$$
+\displaystyle\sum_{n=1}^\infty |I_n(i)|\le \mu^*(A_i)+\frac{\epsilon}{2^i}
+$$
+を満たすものが存在する。特に
+$$
+\bigcup_{i\ge 1} A_i \subset \bigcup_{i\ge 1} \left(\bigcup I_n(i)\right)
+$$
+であるから、$\{I_n(i)\}_{n,i\in\mathbb{N}}$ を適当に並べなおして区間列 $I_k \ (k=1,2,\dots)$ を作れば、これは集合 $\cup_{i\ge 1} A_i$ を被覆するので、
+$$
+\mu^*\left(\bigcup_{i\ge 1} A_i \right)\le \displaystyle\sum_{k=1}^\infty |I_k| = \displaystyle\sum_{i\le 1}\displaystyle\sum_{n\le 1} |I_n(i)|\le \displaystyle\sum_{i\le 1}\left(\mu^*(A_i)+\frac{\epsilon}{2^i}\right) = \displaystyle\sum_{i\le 1}\mu^*(A_i) + \epsilon
+$$
+$\epsilon$ は任意に小さくとれるので、求める不等式が得られる。
+
+命題</br>
+$a\le b <\infty$ のとき、 区間 $[a,b]$ 、 $[a,b)$ 、 $(a,b]$ 、 $(a,b)$ の外測度はすべて $b-a$ である。</br>
+証明) 区間 $[a,b]$ 、 $[a,b)$ 、 $(a,b]$ 、 $(a,b)$ のいずれかを $I$ と表す。 $a=b$ のとき $I$ は１点または空集合なので $\mu^*(I)=0b-a$ 。 $a<b$ と仮定する。いま、 $\mu^*([a,b])=b-a$ が証明されたと仮定すると、任意の十分小さな $\epsilon>0$ に対し、 $[a+\epsilon, b-\epsilon]\subset I\subset [a-\epsilon, b+\epsilon]$ が成り立つので、命題より
+$$
+(b-\epsilon)-(a+\epsilon)\le \mu^*(I)\le (b+\epsilon)-(a-\epsilon) 
+$$
+$\epsilon$ は任意なので、 $\mu^*(I)=b-a$ である。よって、 $I=[a,b]$ として　$\mu^*(I)=b-a$ を示す。
+
+$\epsilon>0$ を任意に固定し、 $I_1=[a,b+\epsilon)$ 、 $I_n=\empty \ (n\ge 2)$ とすれば、 $\mu^*(I)\le |I_1|+0+0+\dots=b-a+\epsilon$ 。 $\epsilon$ は任意なので、 $\mu^*(I)\le b-a$ を得る。
+
+つぎに $\mu^*(I)\ge b-a$ を示す。再び、任意に $\epsilon$ をとり固定する。また、区間列 $I_n=[a_n,b_n) \ (a_n\le b_n)$ が $I$ を被覆したと仮定する。このとき、 $J_n=(a_n^{\prime}, b_n)=(a_n-\epsilon/2^n, b_n)$ とおくと、 $I_n\subset J_n$ かつ $\{J_n\}$ は $I$ を被覆する。 $I$ はコンパクトなので、ハイネ・ボレルの定理よりある $N\in\mathbb{N}$ が存在して、 $I\subset J_1\cup\dots \cup J_N$ (有限開被覆)を満たす。
+
+いま、必要であれば、 $J_1,\dots, J_N$ の添え字を入れ替えて、ある $1\le k\le N$ に対し $a\in J_1=(a_1^{\prime}, b_1)$ 、 $b_1\in J_2=(a_2^{\prime}, b_2)$ 、 $b_2\in J_3=(a_3^{\prime}, b_3)$ ,..., $b\in J_k=(a_k^{\prime}, b_k)$ となるようにできる。 ( $I\subset J_1$ とできるときは $k=1$ とする)。 $l\ge 2$ のとき $a_2^{\prime}<b_1$ 、 $a_3^{\prime}<b_2$ ,..., $a_k^{\prime}<b_{k-1}$ であることに注意すると、
+$$
+\begin{array}{}
+\displaystyle\sum_{n\ge 1}|I_n| = \displaystyle\sum_{n\ge 1}(b_n-a_n)&=&\displaystyle\sum_{n\ge 1}(b_n-(a_n^{\prime}+\epsilon/2^n)) = -\epsilon + \displaystyle\sum_{n\ge 1}(b_n-a_n^{\prime}) \\
+&\ge& -\epsilon + \displaystyle\sum_{n=1}^k(b_n-a_n^{\prime}) \\
+&=& -\epsilon +(b_k-a_k^{\prime})+(b_{k-1}-a_{k-1}^{\prime})+\dots+(b_1-a_1^{\prime}) \\
+&=& -\epsilon + b_k +(b_{k-1}-a_k^{\prime})+\dots+(b_1-a_2^{\prime})-a_1^{\prime} \\
+&>& -\epsilon + b_k -a_1^{\prime}
+\end{array}
+$$
+$a_1^{\prime}<a<b<b_k$ より、 $b_k-a_1^{\prime}>b-a$ であり、 
+$$
+\displaystyle\sum_{n\ge 1}|I_n|>-\epsilon +(b-a)
+$$
+$\epsilon$ は任意なので、 $\sum_{n\ge 1}|I_n|\ge b-a$ を得る。よって、 $\mu^*(I)\ge b-a$ 。
