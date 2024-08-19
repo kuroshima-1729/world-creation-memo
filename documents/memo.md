@@ -21,6 +21,7 @@
     ```
     [a,b]
     ```
+  - personal access tokenを更新するにはdeveloper settingを開く。
 
 # keybord shortcut
   - F4: 電卓に設定
