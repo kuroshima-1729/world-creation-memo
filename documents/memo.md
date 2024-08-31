@@ -62,6 +62,7 @@
       - Bathroom - Chill Background Music
       - ほしくず
   - directional lightをbake設定にしてreflection proveをbakeすると、水面シェーダー(clear water2)が消える。directional lightをrealtime設定にすれば解決。
+  - VRC Pickup の Auto Fold component を Yes にすると、クリックを話してもつかんだままの状態にできる。
 
 
 # blender
