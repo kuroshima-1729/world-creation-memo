@@ -109,3 +109,9 @@
     ```
     再起動すれば治るけど、謎のバグ。処理速度が速すぎると出るらしい(Excel)。</br>
     参考: https://zawanii.com/uipath-excel-exception/
+  - VRC World アップロード時のエラー
+    ```
+    The VRCSDK build was aborted because the IVRCSDKPreprocessSceneCallback 'AssignSceneNetworkIDs' reported a failure.
+    ```
+    が出た場合は、インスペクター欄で「Network ID」と検索して、「select」を押せるオブジェクトは押すと直る。Object sync に Udon behavior をつけると起こる可能性があるかも。</br>
+    参考: https://note.com/tsukiyomirua/n/n04058347db28
