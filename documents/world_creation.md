@@ -572,3 +572,32 @@ Author: くろしま </br>
     - 対応シェーダーは、Standard シェーダーやAutodeskシェーダー、Fillamented Shader、mochie shaderなど
     - liltoomも設定すればベイクできるらしい
       参考: https://x.com/wata23_37/status/1801923080605880454
+
+# shader
+  - unityではマテリアルとシェーダーが1対1でひもづく。
+  - サーフェスシェーダー
+    - 頂点情報を処理(Vertex) -> オブジェクトの色を決める(Surf) -> ライティング(Lighting)
+      - VertexとLightingはUnityが自動生成する。
+  - shaderファイルの構成
+    - Parameters
+      - インスペクタに公開する変数
+    - Shader Settings
+      - ライティングや透明度などのシェーダーの設定項目
+    - Surface Shader
+      - シェーダー本体のプログラム -> この部分を修正して目的のシェーダーを作成する
+  - surf shader
+    - Vertexシェーダから出力された値(Input構造体)を入力に取り、オブジェクトの表面色(SurfaceOutputStandard)を出力する。
+      - Input構造体が持つ情報
+        - uv_MainTex: テクスチャのuv座標
+        - viewDir: 視線方向
+        - worldPos: ワールド座標
+        - screenPos: スクリーン座標
+      - Output構造体が持つ情報
+        - Albedo: 基本色
+        - Normal: 法線情報
+    - surf関数がサーフェイスシェーダの肝
+      - 出力用の構造体がもつAlbedo変数に色情報を指定する。
+  - オブジェクトを半透明にするには次の３点を設定する必要がある。
+    - Queue
+    - alpha:fade
+    - SurfaceOutputStandard
