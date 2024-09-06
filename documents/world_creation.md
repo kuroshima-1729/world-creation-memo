@@ -602,3 +602,4 @@ Author: くろしま </br>
       - "Transparent"の綴り間違えたら、透明すぎて見えなくなった。
     - alpha:fade
     - SurfaceOutputStandard
+  - shaderプログラムのエラーを確認するにはunityのコンソールを見る。
