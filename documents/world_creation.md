@@ -599,5 +599,6 @@ Author: くろしま </br>
       - 出力用の構造体がもつAlbedo変数に色情報を指定する。
   - オブジェクトを半透明にするには次の３点を設定する必要がある。
     - Queue
+      - "Transparent"の綴り間違えたら、透明すぎて見えなくなった。
     - alpha:fade
     - SurfaceOutputStandard
