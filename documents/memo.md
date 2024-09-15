@@ -65,6 +65,8 @@
   - VRC Pickup の Auto Fold component を Yes にすると、クリックを話してもつかんだままの状態にできる。
   - Quaternion.Slerp(現在角度, ターゲット角度, 速度)
      - 現在角度から ターゲット角度までを滑らかに保管して、速度の速さで回転させる。
+  - Bakery参考: https://note.com/snc885/n/n06c553ba73cc
+  - standard shaderの改変方法: https://note.com/hikohiro/n/n81b9a4751a55
 
 
 # blender
