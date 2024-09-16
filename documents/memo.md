@@ -67,7 +67,7 @@
      - 現在角度から ターゲット角度までを滑らかに保管して、速度の速さで回転させる。
   - Bakery参考: https://note.com/snc885/n/n06c553ba73cc
   - standard shaderの改変方法: https://note.com/hikohiro/n/n81b9a4751a55
-
+  - right probe group参考: https://umistudioblog.com/lightprobehowto/
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。
