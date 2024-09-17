@@ -68,6 +68,28 @@
   - Bakery参考: https://note.com/snc885/n/n06c553ba73cc
   - standard shaderの改変方法: https://note.com/hikohiro/n/n81b9a4751a55
   - right probe group参考: https://umistudioblog.com/lightprobehowto/
+  - 物体を中心から広げる参考
+    ```C#
+    using UnityEngine;
+
+    public class ObjectSpawner : MonoBehaviour
+    {
+        public GameObject objectPrefab;
+        public int numberOfObjects = 50;
+        public float radius = 5f;
+
+        void Start()
+        {
+            for (int i = 0; i < numberOfObjects; i++)
+            {
+                float angle = i * Mathf.PI * 2 / numberOfObjects;
+                Vector3 position = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+                Instantiate(objectPrefab, position, Quaternion.identity);
+            }
+        }
+    }
+    ```
+  - unityで「Ctrl+Shift+N」でフォルダを作成可能。
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。

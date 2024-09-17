@@ -664,3 +664,60 @@ Author: くろしま </br>
   - デプスバッファ
     - カメラからオブジェクトまでの距離を格納したバッファ
     - 被写界深度のエフェクトや影の計算など、様々な場面で使われる。
+
+# Bakery - GPU Lightmapper
+  - Geforce および Quadro シリーズのGPUで高品質かつ高速実行が可能なライトマッパー
+  - CPU で1時間以上かかるベイクもわずか５分で終わらせることができる。
+  - GPU が Geforce および Quadro 出ない場合、また、 Geforce でも700番台(Kepler)より前のGPUの場合は使えない。
+  - 公式マニュアル: https://geom.io/bakery/wiki/index.php?title=Manual
+## 基本的なベイクとUnity標準ベイクとの共通事項
+### Mesh Lenderer の設定
+  - Staticのチェック
+    - ライトマップを生成だけをしたい場合は、「Contribute Global illumination」のみチェックする。
+  - Cast Shadow
+  - Receive Shadows
+    - 影を作る、受けてライトマップに書き込む場合にチェックをonにする。
+  - Scale in Lightmap
+    - Contribute Global Illumination をオンにするとでてくる。
+    - オブジェクトごとにライトマップの解像度を倍率で変更できる。
+      - 広い屋外エリア（都市）：1-5
+      - 中程度の屋外エリア（路地等）：10-20
+      - 高品質のインテリア：100  など
+### BakeryLightコンポーネントを配置
+  - Bakery ライトにはタイプが存在せず、コンポーネント毎に動作が異なる。
+  - 設置方法は、Add Component もしくは Bakery>Create から行う。
+#### Bakery Direct Light
+  - Directionalライトと対応。
+  - 太陽光として使われる、エリア全体に平行に来るライト。
+    - Intensity
+      - ライトの明るさ
+    - Indirect Multiplier
+      - 光が反射したときの減衰率。
+      - 間接光が不要な場合に0、0から1の場合は反射するごとに暗くなり、1以上だと反射するごとに明るくなる。
+    - Shadow spred
+      - 影のぼやけ方を調整する。ギザギザの影ができる場合は、この値を上げれば改善される。
+#### Bakery Point Light
+  - Projection mask によって特性が変わる。
+  - Omni は Point ライトと同じ。
+  - Cone は Spot ライトと同じ。
+    - Intensity
+      - ライトの明るさ。
+    - Range
+      - ライトの設置位置からの到達距離。
+      - 大きければ明るくなり、小さければ暗くなる。
+      - 反射にも影響を及ぼすため狭い場所だとこれを下げるとかなり暗くなる。Intensityと合わせて明るさの調整ができる。
+    - Outer angle
+      - Cone/cookieライトで光を発する角度。円錐形上に光が出ていく。
+#### Bakery sky Light
+  - 環境光、Environment Lightingと対応している。
+  - 空気中の塵や水分による屈折や反射などによる非常に弱い光の再現に使う。
+### Bakery Renderウィンドウ
+  - "Bakery"から"RenderLightmap"を選ぶと出てくる。
+  - Renderを押せばレンダリングが開始される。
+  - 詳細な設定をする場合は、"Simple"を"Experimental"に変更することで設定項目が出てくる。
+    - Texel per unit は16で十分
+    - RTXmodeをonにすると、ベイク時間が３分の１ぐらいになる。
+### そのた
+  - Bakery 設定販売ワールド: https://sc-const.booth.pm/items/3078418
+       
+      
