@@ -719,6 +719,31 @@ Author: くろしま </br>
     - RTXmodeをonにすると、ベイク時間が３分の１ぐらいになる。
 ### その他
   - Bakery 設定販売ワールド: https://sc-const.booth.pm/items/3078418
+## Bakery マニュアル レンダリング設定
+### レンダリング設定
+#### Render Mode
+  - どのように Lightap をベイクするかの設定。
+  - Full Lightning
+    - 全ての Bakery ライトの直接光および間接光をベイクする。
+  - Indirect
+    - 基本的な混合モード。
+    - 全てのライトの Baked Contribution を参照する。
+    - Direct And Indirect に設定されている場合、Full Lighting モードと同じようにベイクする。
+    - Indirect Only に設定されている場合は、このライトからの間接光のみベイクする。
+  - Shadowmask
+    - ２種類のライトマップを生成することで機能する。
+      - 一つはベイクされた色で、もう一つは静的なオブジェクトからの影。
+        - リアルタイムな影はシーン全体ではなく一握りの動的なオブジェクトのみで計算される。
+        - リアルタイムな影とベイクされた影は正しくブレンドされる。
+        - リアルタイムライトは、法線や鏡面反射などの表面効果をレンダリングしながら、高品質なベイクされた影によって隠蔽させることができる。
+    - Shadowmask が設定できるライトは Direct, Poit, Spot ライトのみ(Unityがリアルタイム処理に対応しているため)。
+    - この動作を有効にするには、UnityとBakeryの両方のライトが同じオブジェクトにあり、Baked ContributionがIndirect And Shadowmaskに設定されている必要がある。設定されていないライトはIndirectモードのようにベイクされる。
+  - Distance Shadowmask
+    - Shadowmaskを選択した場合のみに表示され、プロジェクトの Quality Settingsで同名の設定を単純に切り替える。
+  - Subtractive
+    - ライトマップに特別なことは何もせず、FUll Lightingと同じように動作する。
+    - 唯一の違いは、リアルタイムのUnityライトが減算モードで動作するように設定される点である。
+    - UnityのLightingウィンドウで、global subtractiveパラメータを追加設定する必要がある。
 
 # Particle
  - Duration
