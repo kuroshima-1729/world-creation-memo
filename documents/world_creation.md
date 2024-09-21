@@ -794,5 +794,26 @@ Author: くろしま </br>
   - ライトでパーティクルにライトを追加できる。
   - 参考: https://styly.cc/ja/tips/unity-introduction-particle/
 
+# Tree
+## Tree (樹木) の作成
+### 新たなTreeの追加
+  - GameObject > 3D Object > Tree を選択すると、プロジェクトビュー内に新しい Tree アセットが作成され、現在開いているシーンでインスタンス化される。この新しい Tree は枝が1本しかない基本的なもの。
+### Branch (枝) の追加
+  - Inspector上の Tree ウィンドウで表示したい樹木を選択する。
+  - このインターフェースに、樹木の変形、整形に必要なすべてのツールがある。
+  - Tree Hierarchy で２つのノードが表示される。
+    - Tree Root ノード
+    - Branch Group ノード
+  - Branch Group を選択し、Add Branch Groupボタンをクリックすると、メインの Branch につながった新たな Branch Group が表示される。
+    - Branch Groupの設定をいろいろと変えると幹につながった枝のバリエーションを見ることができる。
+      - Distribution を wholred (渦巻) が割と木っぽくなるかも。
+  - さらに Branch Group ノードを追加して小枝を追加していく。
+### Leaf (葉) の追加
+  - Branch Group ノードを選択して、 Add Leaf Group ボタンをクリックする。
+    - Leafプロパティ値 (大きさ、位置、回転)を調整するために透明でない平面としてレンダリングされる。
+### マテリアルの追加
+  - Branch: マテリアルを作成し、シェーダーのドロップダウンから、 Nature -> Tree Creator Bark を選択する。
+  - Leaf: マテリアルを作成し、シェーダーを Nature -> Tree Creator Leave を割り当てる。
+  - Tree のことなるグループノードにマテリアルを割り当てる。
        
       
