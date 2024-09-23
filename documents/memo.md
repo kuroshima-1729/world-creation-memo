@@ -105,6 +105,8 @@
   - shift + N で面の向きを外側にそろえる。
   - 右クリック + 面をブリッジで、例えば円柱の真ん中をインセットした部分に適用すると、真ん中に穴が開く。
   - 傘作成参考: https://www.youtube.com/watch?v=E7HnlCa-pNk
+  - マウスのカーソルに丸が出てきたときは「w」キーを押すと直る
+    - 参考: https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12231855787
 
 # thought
   - 月を看（み）るは、清気（せいき）を観（み）るなり。円欠晴翳（えんけつせいえい）の間に在らず。
