@@ -92,6 +92,7 @@
   - unityで「Ctrl+Shift+N」でフォルダを作成可能。
   - 光芒は半透明のオブジェクトを重ねて作る?
   - Normal map 作れるサイト: https://cpetry.github.io/NormalMap-Online/
+  - Blender から持ってきたモデルを、Bakery で変な黒い線が出てうまく焼けないときは、generate uv maps を行っていない可能性がある。
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。
