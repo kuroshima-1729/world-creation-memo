@@ -110,6 +110,7 @@
   - 傘作成参考: https://www.youtube.com/watch?v=E7HnlCa-pNk
   - マウスのカーソルに丸が出てきたときは「w」キーを押すと直る
     - 参考: https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12231855787
+  - やり直すは「shift + Ctrl + Z」(Ctrl + Y ではない。)。
 
 # thought
   - 月を看（み）るは、清気（せいき）を観（み）るなり。円欠晴翳（えんけつせいえい）の間に在らず。
