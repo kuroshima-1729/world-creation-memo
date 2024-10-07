@@ -118,6 +118,8 @@
   - マウスのカーソルに丸が出てきたときは「w」キーを押すと直る
     - 参考: https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12231855787
   - やり直すは「shift + Ctrl + Z」(Ctrl + Y ではない。)。
+  - Alt + E -> 多様体を押し出し、で端の面とか残らずにきれいに押し出せる。
+  - 簡単ワイヤーフレーム化: https://qiita.com/dimebag29/items/a8fc188edf122074d61d
 
 # Clip Studio Paint
   - 明るさとコントラストの調整
