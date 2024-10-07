@@ -816,4 +816,8 @@ Author: くろしま </br>
   - Leaf: マテリアルを作成し、シェーダーを Nature -> Tree Creator Leave を割り当てる。
   - Tree のことなるグループノードにマテリアルを割り当てる。
        
-      
+# Custom Vertex Streams
+  - Particle System と シェーダーを連携させて使える機能。
+  - Particle System からシェーダーのパラメーターをコントロールしたり、Particle Systemの情報をシェーダーに送って、シェーダー側で処理したりすることができる。
+  - RendererのCustom Vertex Streamsにチェックを入れるのが大事。
+    - ここで設定した項目がシェーダーに渡される。      
