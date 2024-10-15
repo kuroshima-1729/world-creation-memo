@@ -1136,6 +1136,31 @@ $$
 定義</br>
 集合 $A\in 2^{\mathbb{R}}$ が可測であるとは、任意の $B\in 2^{\mathbb{R}}$ に対し
 $$
-\mu^*(B) = \mu^*(B\cap A) + \mu^*(B\cap A^c)
+\mu^*(B) = \mu^*(B\cap A) + \mu^*(B\cap A^c)\tag{2.3}
 $$
 が成り立つことをいう。可測集合全体からなる集合を $\mathcal{M}$ と表す。
+
+式 (2.3) は集合 $A$ が任意の集合 $B$ を外測度に関してきれいに分割できることを示唆している。また、例えば $A_1 = B\cap A$ 、 $A_2=B\cap A^c$ とおくと、 $A_1\cap A_2=\empty$ かつ
+$$
+\mu^*(A_1\cap A_2)=\mu^*(A_1)+\mu^*(A_2)
+$$
+さらに $A_2$ に対し別の可測集合 $A^{\prime}$ をもってきて、 $A_1^{\prime}:=A_1$ 、 $A_2^{\prime}:=A_2\cap A^{\prime}$ 、 $A_3^{\prime}:=A_2\cap (A^{\prime})^c$ とおけば、 $A_1^{\prime}$ 、 $A_2^{\prime}$ 、 $A_3^{\prime}$ は互いに共通部分を持たず
+$$
+\mu^*(A_1^{\prime}\cup A_2^{\prime}\cup A_3^{\prime})=\mu^*(A_1^{\prime}) + \mu^*(A_2^{\prime}) + \mu^*(A_3^{\prime})
+$$
+が成り立つ。同様に続けていけば、(M3)を実現しそうな集合たちが次々に生成できそうな気がする。
+
+命題2.3 </br>
+$\mu^*(A)=0$ を満たす集合 $A$ は可測である。すなわち、 $A\in\mathcal{M}$ </br>
+証明) 任意の $B\in 2^{\mathbb{R}}$ に対して $B\cap A\subset A$ より、 $\mu^*(B\cap A)\le \mu^*(A) = 0$ .また、 $B\cap A^c\subset B$ より、 $\mu^*(B\cap A^*)\le \mu^*(B)$ .よって、
+$$
+\mu^*(B\cap A) + \mu^*(B\cap A^c) \le \mu^*(B)
+$$
+式 (2.2) と合わせて 式 (2.3) が確認できた。
+
+定義 (ルベーグ測度) </br>
+ルベーグ測度 $\mu^* : 2^{\mathbb{R}}\rightarrow [0,\infty]$ を $\mathcal{M}\subset 2^{\mathbb{R}}$ に制限した写像
+$$
+\mu:=\mu^*|_{\mathcal{M}} : \mathcal{M} \rightarrow [0,\infty]
+$$
+を (1次元) ルベーグ測度と呼ぶ。
