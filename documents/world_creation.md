@@ -664,6 +664,7 @@ Author: くろしま </br>
   - デプスバッファ
     - カメラからオブジェクトまでの距離を格納したバッファ
     - 被写界深度のエフェクトや影の計算など、様々な場面で使われる。
+  Legacy shader/Particles/Additive (soft) で光芒とかを表現できそう。あとgradationした画像テクスチャを使う
 
 # Bakery - GPU Lightmapper
   - Geforce および Quadro シリーズのGPUで高品質かつ高速実行が可能なライトマッパー
@@ -793,6 +794,7 @@ Author: くろしま </br>
   - ノイズで動きにランダム性を与えることができる。
   - ライトでパーティクルにライトを追加できる。
   - 参考: https://styly.cc/ja/tips/unity-introduction-particle/
+  - Prewarmをオンにするとあらかじめパーティクルを放出させておくことができる。
 
 # Tree
 ## Tree (樹木) の作成
