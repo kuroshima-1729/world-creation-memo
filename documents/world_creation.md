@@ -894,3 +894,70 @@ Author: くろしま </br>
   - レンダリングパイプラインから与えられた方法のみによってオブジェクトを描画する」仕組みを「固定機能パイプライン」や「固定機能シェーダ」と呼ぶ。
     - かつてはハードウェア性能やソフトウェア技術が十分に発達していなかったため、このような仕組みでしかリアルタイムに描画することができなかった。
   - 昨今のシェーダはすべてプログラマブルシェーダで、高速かつある程度自由に描画できる仕組みが導入されたことで様々な表現が生み出されるようになった。
+## 第2章 シェーダの基本的な構造と役割
+```
+Shader "Sample/UnlitShader" 
+{  
+  SubShader 
+  {  
+    Pass 
+    {  
+      CGPROGRAM  
+      #pragma vertex vert 
+      #pragma fragment frag 
+      #include "UnityCG.cginc"
+
+      struct appdata 
+      {  
+        float4 vertex : POSITION; 
+      }; 
+      struct v2f 
+      {  
+        float4 vertex : SV_POSITION; 
+      };  
+
+      v2f vert (appdata v) 
+      {  
+        v2f o; o.vertex = UnityObjectToClipPos(v.vertex); 
+        return o; 
+      }  
+      fixed4 frag (v2f i) : SV_Target 
+      {  
+        fixed4 color = fixed4(1, 0, 0, 1); 
+        return color; 
+      }  
+      ENDCG 
+    } 
+  } 
+}
+```
+### 2.1 Shader構文
+  - Shader構文は、シェーダーの名前を定義するものである。
+    - UnityEditor上から参照する名前にもなる。
+  - 一般的なファイルシステムと同様に"/"によって階層を定義して整理できる。
+    - ほとんどの場合、"種類/名前"のように定義される。
+### 2.2 SubShader / Pass 構文
+  - １つのシェーダープログラムの中には、あるオブジェクトを描画するための方法を複数定義することができ、そのひとつの方法をSubShaderとして定義する。
+  - あるオブジェクトを描画するために複数回の工程を要する場合があり、その工程の一つをPassとして定義する。
+### 2.3 CGPROGRAM / ENDCG 構文
+  - CGPROGRAM と ENDCG 構文はセットで使われ、そこに書かれたソースコードが「HLSL (High Level Shader Language)」言語であることを定義する。
+    - HLSL は Microsoft 社が主体となって開発するプログラマブルシェーダー用の言語で、C言語に近い構文と機能を有している。
+    - Microsoft 社は HLSL に関する多くの資料を公開している。
+    - 類似する言語にOpenGL環境で使われる「GLSL (OpenGL Shader Language)」や、NVIDIA 社の提唱していた「Cg言語」がある。
+  - それ以外のソースコードは、Unity 固有の「ShaderLab」という言語で記述されている。
+### 2.4 #pragma 構文
+  - Vertex シェーダと Fragment シェーダを定義するための構文。
+    - Vertexシェーダは頂点が画面上のどこに映るかを算出する。
+    - Fragmentシェーダは画素を塗る色を算出する。
+  - それぞれのシェーダの実体は関数である。
+    - 関数には任意の名前が付けられるため、レンダリングパイプラインに対し、どの関数がVertexシェーダ、Fragmentシェーダであるかを明示する必要がある。
+      - レンダリングパイプラインにどの関数がそれぞれのシェーダに相当するかを理解させる。
+  - #pragma に続き、vertex 関数名と記述することで Vertexシェーダを定義する。
+  - #pragma に続き、fragment 関数名と記述することでFragmentシェーダを定義する。
+    - ここでは vert, frag 関数をそれぞれ指定しているが、必ずしもこの名前にする必要はない(Unity で標準採用)。
+### 2.5 #include 構文
+  - 外部のファイルに定義されたソースコードをこのソースコードに取り込む。
+    - C言語などの include 構文と同じ。
+  - Unityのシェーダでは多くの場合に"UnityCG.cginc"を参照する。
+    - このファイルには多くの基本的な関数、構造体などが定義されている。
+### 2.6 Vertexシェーダ
