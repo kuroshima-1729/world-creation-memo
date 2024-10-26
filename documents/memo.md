@@ -110,6 +110,7 @@
     Model will now be reverted to original state.
     ```
   - VRCStation コンポーネントはデフォルトでオフにすると、アクティブ化したときにうまく初期化されないから作動しない。デフォルトオンにして、すぐオフにすればうまくいく。
+  - Unityのヒエラルキー上で cut & paste すれば遠いところでも楽に移動できる。
 
 # blender
   - ver 3.6 においては、RGB分離は、カラー分離に統合されて、内部の選択欄でRGBかHSV等が選択できる。
@@ -133,6 +134,9 @@
     1. shiftで回転させたいすべてのオブジェクトを選択する。
     2. 左側のツール類から、「カーソル」を選択する。
     3. R + Z で回転させる。
+  - 連結した面を選択する方法。
+    1. 選択したい面の一つを選択。
+    2. Ctrl + L で 連結した面をすべて選択。
 
 # Clip Studio Paint
   - 明るさとコントラストの調整
@@ -205,3 +209,9 @@
     ```
     が出た場合は、インスペクター欄で「Network ID」と検索して、「select」を押せるオブジェクトは押すと直る。Object sync に Udon behavior をつけると起こる可能性があるかも。</br>
     参考: https://note.com/tsukiyomirua/n/n04058347db28
+  - Unityのplaymodeでのエラー
+    ```
+    Layer Settings VRChat scenes must have the same Unity layer configuration as VRChat. Please see the VRChat Build Control Panel to setup the projects layers and collision matric
+    ```
+      - VRChat SDK のコントールパネルで、「Fix Layers」や「Fix Collision Matrix」のようなボタンが表示されている場合、それをクリックして自動で設定を調整する。
+    - プロジェクトをバージョンアップした後に出てきたので、その関係かもしれない。
