@@ -987,3 +987,79 @@ Shader "Sample/UnlitShader"
     - セマンティクスは SV_POSITION になっている。SV_POSITION は、役割的には POSITION と変わりなく、その変数が座標を示すことを意味する。
     - SV_POSITION を POSITION に変更してもコンパイルされるが、レンダリングパイプラインに返す座標情報には、SV_POSITION を設定することが強く推奨される。
     - v2f は "Vertex to Fragment" の略称で、Unity で標準的に採用される名前。
+
+### 2.7 Fragmentシェーダ
+  - Fragmentシェーダは、描画する画素の色を算出するための関数。
+  - 塗りつぶす画素ごとに呼び出される。
+  - v2f 構造体を引数とし、fixed4 を戻り値とする。
+    - fixed4 は、４つの"固定"小数点数値から構成される型。
+  - Fragmentシェーダは、各画素が描画されるタイミングで実行される関数で、座標情報を参照する必要がないため、 Vertexシェーダから与えられる座標情報 vertex: SV_POSITION が参照されていない。
+    - Vertex シェーダが算出した座標情報はカリングや Z Test に使用される。
+#### 2.7.1 出力先を示すセマンティクス
+  - SV_Target は、この Fragment シェーダの出力先を示す。
+    - Fragment シェーダの出力先が一つではない可能性がある。
+### 2.8 オブジェクトの色を変える
+  - 透明度を表す A に0.5を入れても、半透明になるための処理を実行していないため、半透明にはならない。
+
+## 第3章 Inspector からシェーダの値を変更する
+  - 赤と緑のオブジェクトを描画するためにほとんど変わらないソースコードを２つ用意することはよくない。
+    - この問題を解決するにはマテリアルを使う。普通、シェーダはマテリアルに設定して使うが、マテリアルにはシェーダに与えるパラメータを設定できる。
+### 3.1 Properties 構文
+  - マテリアルの Inspector 上にパラメータを表示するときは Properties 構文を使う。
+  - Properties は CGPROGRAM 構文の外にあるので、Unity固有の言語 ShaderLab に定義される構文。
+  ```
+  Properties 
+  {  
+    _Color("Color Property", Color) = (1, 0, 0, 1) 
+  }  
+  SubShader 
+  {  
+    Pass 
+  {  
+    CGPROGRAM ...  
+    struct v2f 
+    {  
+      float4 vertex : SV_POSITION; 
+    };  
+    fixed4 _Color; 
+    ...
+  ```
+  - 「変数名("Inspector上の表記", 値の型) = 値の初期値」がこの構文の書式。
+  - CGPROGRAM 内にも Properties と同じ _Color が定義されており、Properties に定義され、Inspector 上から操作された値は、CGPROGRAM内の対応する変数の値に代入される。
+  - CGPROGRAM 内では型が fixed4 である。
+    - Properties の型、Color が、CGPROGRAM の型、fixed4 に対応するため。４つの小数点を取りうる方であればよいので、float4 でも動作する。
+  - Inspector 上の表記が、変数名と異なることは問題にならない。
+  - 次の Fragment シェーダは、Inspector 上から変更された色の値をそのまま返すので、Inspectorで色を変更すると、オブジェクトの色も連動して即時変更される。
+  ```
+  fixed4 frag(v2f i) : SV_Target 
+  {  
+    return _Color; 
+  }
+  ```
+### 異なる型のProperties
+  - 4つの浮動小数点数で指定できる Vector 型、単一の浮動小数点数値の Float 型、単一の整数値の Int 型 がある。Texture 型もある。
+  ```
+  _Vector("Vector Property", Vector) = (1, 0, 0, 1) 
+  _Float ("Float Property", Float) = 1.0 
+  _Int ("Int Property", Int) = 0 
+  ...  
+  CGPROGRAM 
+  float4 _Vector; 
+  float _Float; 
+  int _Int;
+  ```
+  - 単一の値を示す型であれば、型に Range を指定できる。 Range を使うと、 Inspector 上で操作する UI の最小値と最大値を指定できる。
+  ```
+  Properties 
+  {  
+    _GrayValue("Gray Value", Range(0, 1)) = 0 
+  } 
+  ...  
+  fixed _GrayValue; 
+  ...  
+  fixed4 frag (v2f i) : SV_Target 
+  {  
+    return fixed4(_GrayValue, _GrayValue, _GrayValue, 1); 
+  }
+  ```
+  
