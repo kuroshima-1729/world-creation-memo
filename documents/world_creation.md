@@ -1062,4 +1062,91 @@ Shader "Sample/UnlitShader"
     return fixed4(_GrayValue, _GrayValue, _GrayValue, 1); 
   }
   ```
+
+## 第4章 テクスチャを設定して描画する
+### 4.1 Properties にテクスチャの項目を追加する
+  - Properties にテクスチャの項目を追加するときは、 2D 型 を使う。
+  ```
+  Properties 
+  {  
+    _MainTex("Texture", 2D) = "white" {} 
+  }  
+  SubShader 
+  {  
+    Pass 
+    {  
+      CGPROGRAM 
+      ...  
+      sampler2D _MainTex; 
+      ...
+  ```
+  - 初期値はテクスチャが設定されないときに代わりに得られる色。
+    - white, black, gray, bump, red が使える。
+    - ""として値を与えないときは gray に等しくなる。
+  - 後に続く {} は、このように記述するもの。Unityでは活用されていない。
+  - 変数名の _MainTex は Unity で標準的に定義される変数名で任意に変えられる。
+    - CGPROGRAM に対応する変数が定義されており、CGPROGRAM に定義する変数の型は sampler2D である。
+#### 4.1.1 sampler2D 型
+  - sampler2D 型はテクスチャへの参照そのものが代入される型。
+  - ふつう、sampler2D 型は単体では使わず、 tex2D 関数と合わせて使う。
+    - tex2D 型はテクスチャの一部分を参照するための関数。
+### 4.2 UV座標
+```
+struct appdata 
+{  
+  float4 vertex : POSITION; 
+  float2 uv : TEXCOORD; 
+};
+
+struct v2f 
+{  
+  float4 vertex : SV_POSITION; 
+  float2 uv : TEXCOORD; 
+};
+
+sampler2D _MainTex;  
+  
+v2f vert(appdata v) 
+{  
+  v2f o; o.vertex = UnityObjectToClipPos(v.vertex); 
+  o.uv = v.uv; return o; 
+}  
+  
+fixed4 frag(v2f i) : SV_Target 
+{  
+  fixed4 color = tex2D(_MainTex, i.uv); 
+  return color; 
+}
+```
+  - ポリゴンの各頂点には、テクスチャの座標情報が含まれる。
+    - テクスチャの座標情報とは、貼り付けられるテクスチャのどの画素(部分)が、その頂点の位置に対応するかを示す情報。個の座標を「UV座標」と呼ぶ。
+    - UV 座標は 0~1 で正規化され、テクスチャの左下が (0, 0)、右上が (1,1)である。
+    - Unity の標準的なキューブの正面側の面には４つの頂点があり、その左下の頂点には UV 座標 (0,0) が与えられており、右上の頂点には (1,1) が与えられている。
+      - UV 座標 (0,0) が与えられた画素には、テクスチャの座標 (0,0) の色が描画される。
+      ![UV 座標](../images/uv_coord.png)
+  - Fragmentシェーダは UV 座標を使って出力する画素に対応するテクスチャの画素を取得する。
+  - UV 座標は頂点に対して設定されるものなので、画面上のある画素に対して、UV座標がどのように投影されるかを算出するのは Vertex シェーダである。
+  - UV 座標の UV は、3次元座標を示す X,Y,Z,W の直前に並ぶため U, V を採用した経緯がある。
+### 4.3 レンダリングパイプラインから UV 座標を受け取る
+  - レンダリングパイプラインから Vertexシェーダに UV 座標を渡してもらうときは、TEXCOORD セマンティクスを使う。文字通り「テクスチャの座標」。
+  - Vertex シェーダでは頂点を平面上に投影するが、UV座標の情報は頂点に与えられているため、UV座標の情報も平面上に投影される。
+  - Fragment シェーダにも UV 座標が渡るように、構造体 v2f にも変数 uv を定義する。
+    - 変数 uv に設定するセマンティクスは、Vertex シェーダへの入力と同じように、TEXCOORD を使う。
+### 4.4 ラスタライズ
+  - キューブの正面に位置する面一つだけ考える。この面の４つの頂点には、それぞれ UV 座標の (0,0), (1,0), (0,1), (1, 1) が設定されている。
+    - あるポリゴンの面を画素の集合に置き換えて表すための処理がラスタライズ。
+    - 頂点に与えられた値は、各画素に対して線形補間して与えられる。
+      ![UV座標のラスタライズ](../images/rasterize_uv.png)
+    - Fragmentシェーダに入力される構造体 v2f の値 uv には、ラスタライズ処理によって補間された値が与えられる。
+#### 4.4.1 Fragmentシェーダの実装と tex2D 関数
+  - tex2D 関数は、テクスチャから、指定した UV 座標の値を取得する関数。
+    - (0, 0) を指定すればテクスチャの左下の画素を、(0.5, 0.5) を指定すれば、テクスチャの中央の画素の色を取得する。
+    - ここでは _MainTex に与えられたテクスチャから色を取得している。
+      ```
+      fixed4 frag(v2f i) : SV_Target 
+      {  
+        fixed4 color = tex2D(_MainTex, i.uv); 
+        return color; 
+      }
+      ```
   
