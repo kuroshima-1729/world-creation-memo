@@ -1149,4 +1149,79 @@ fixed4 frag(v2f i) : SV_Target
         return color; 
       }
       ```
-  
+### 4.5 Tiling と Offset
+  - テクスチャの設定を Properties に追加すると、 Inspector 上には Tiling パラメータと Offset パラメータが表示される。
+    - これらの値を設定すれば、テクスチャを繰り返したり、開始地点をずらしたりできる。
+  - これまでのシェーダのままでは、シェーダはTiling と Offset を考慮しない。
+    - Unity にはこれらの値を適切に処理するための仕組みが用意されている。
+#### 4.5.1 _MainTex_ST
+```
+Properties 
+{  
+  _MainTex("Texture", 2D) = "white" {} 
+}  
+SubShader 
+{  
+  Pass 
+  {  
+    CGPROGRAM 
+    ...  
+    sampler2D _MainTex; 
+    float4 _MainTex_ST; 
+    ...  
+    
+    v2f vert(appdata v) 
+    {  
+      v2f o; 
+      o.vertex = UnityObjectToClipPos(v.vertex); 
+      o.uv = TRANSFORM_TEX(v.uv, _MainTex); 
+      return o; 
+    }
+```
+  - 新たに変数 _MainTex_ST を追加している。
+    - 個の変数は TRANSFORM_TEX 関数によって参照される。
+    - 「テクスチャの変数名_ST」と定義される必要がある。
+    - 例えば、変数名を、_SubTex としたときは、TRANSFORM_TEX 関数は float4 _SubTex_ST を参照する。
+#### 4.5.2 TRANSFORM_TEX
+  - TRANSFORM_TEX 関数は UnityCG.cginc に定義される関数で、テクスチャのパラメータ Tiling と Offset を考慮した UV 座標を取得するために使う。
+  - TRANSFORM_TEX 関数は float4 _MainTex_ST を参照するため、 _MainTex_ST が定義されないときはエラーになる。
+  - 関数は Vertex シェーダの中で使用し、引数に UV 座標と参照するテクスチャを指定するだけ。
+#### 4.5.3 Tiling と Offset を使わないとき
+  - Tiling や Offset を使わない場合は、NoScaleOffset 属性(アトリビュート) を設定することで、Tiling と Offset のパラメータを非表示にできる。
+    ```
+    Properties 
+    {  
+      [NoScaleOffset] 
+      _MainTex("Texture", 2D) = "white" {} 
+    }
+    ```
+
+## 第5章 Vertex, Fragment シェーダの再確認
+### 5.1 Fragment シェーダによる UV 座標の可視化
+```
+fixed4 frag(v2f i) : SV_Target 
+{  
+  fixed4 color = fixed4(i.uv.x, i.uv.y, 0, 1); 
+  return color; 
+}
+```
+  - (0,0)のときは黒、(1.0)の時は赤、(0,1)のときは緑(1,1)のときは黄色となる。
+  - 各頂点を補完する画素は、その値の間を示す色となる。
+### 5.2 Vertex シェーダによる頂点の移動
+  - Vertex シェーダも Fragment シェーダと同様に、入力された頂点の情報を自由に操作して出力できる。
+    ```
+    v2f vert(appdata v) 
+    {  
+      v2f o;  
+      if (v.vertex.x > 0 && v.vertex.y > 0 && v.vertex.z > 0) 
+      {  
+        v.vertex.xy += 0.5; 
+      }  
+      
+      o.vertex = UnityObjectToClipPos(v.vertex); 
+      o.uv = TRANSFORM_TEX(v.uv, _MainTex);  
+      return o; 
+    }
+    ```
+      - 原点が中心にあり、各辺の長さが１となるキューブの右上の座標は(0.5, 0.5, 0.5)であるから、Vertexシェーダに入力される座標 v.vetex から右上の頂点を判定し、+X, +Y 方向にわずかに移動する。
+   
