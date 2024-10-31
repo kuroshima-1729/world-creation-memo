@@ -216,3 +216,7 @@
     ```
       - VRChat SDK のコントールパネルで、「Fix Layers」や「Fix Collision Matrix」のようなボタンが表示されている場合、それをクリックして自動で設定を調整する。
     - プロジェクトをバージョンアップした後に出てきたので、その関係かもしれない。
+
+# others
+  - quest3 のドリフト改善参考
+    - https://www.meta.com/ja-jp/help/quest/articles/fix-a-problem/troubleshoot-headsets-and-accessories/touch-controller-drift/
