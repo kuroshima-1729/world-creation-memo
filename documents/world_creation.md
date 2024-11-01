@@ -1353,4 +1353,4 @@ fixed4 frag(v2f i) : SV_Target
     - 規定値以外の値を設定するときは、例えば"3100"のように"数値"で指定するか、あるいは、"Transparent+1"や"Transparent-1"のように"規定値±数値"で指定する。このときスペースは含めることはできない。
     - レンダーキューの値はマテリアルの Insspector から変更できる。
        ![Inspector上の Render Queue の設定](../images/render_queue_on_inspector.png)
-
+### 8.5 RenderType タグ
