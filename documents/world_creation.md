@@ -1354,3 +1354,56 @@ fixed4 frag(v2f i) : SV_Target
     - レンダーキューの値はマテリアルの Insspector から変更できる。
        ![Inspector上の Render Queue の設定](../images/render_queue_on_inspector.png)
 ### 8.5 RenderType タグ
+  - 概ね、そのシェーダがどのような目的で利用されているかを示すためのタグ。
+    |タグ|用途|
+    |--|--|
+    |Opaque|ほとんどのオブジェクト|
+    |Transparent|透明なオブジェクト|
+    |TransparentCutout|部分的に透明なオブジェクト|
+    |Background|背景、Skyboxなど|
+    |Overlay|GUI やハロ、フレアなどの効果|
+    |TreeOpaque|Terrain エンジンの樹皮|
+    |TreeTransparentCutout|Terrain エンジンの葉|
+    |TreeBillboard|Terrain エンジンの幹|
+    |Grass|Terrain エンジンの草|
+    |GrassBillboard|Terrain エンジンのビルボード|
+### 8.6 Blend 構文
+  - 色の合成方法を設定するための構文。
+  - 「SrcColor * SrcFactor + DstColor * DstFactor」で計算される。
+  - Unity に定義されている係数は次の通り。
+    |係数|値|
+    |--|--|
+    |One|1|
+    |Zero|0|
+    |SrcColor|SrcColor|
+    |SrcAlpha|SrcColor.a|
+    |DstColor|DstColor|
+    |DstAlpha|DstColor.a|
+    |OneMinusSrcColor|(1-SrcColor)|
+    |OneMinusSrcAlpha|(1-SrcAlpha.a)|
+    |OneMinusDstColor|(1-DstColor)|
+    |OneMinusDstAlpha|(1-DstColor.a)|
+#### 8.6.1 具体的な設定と算出例
+  - Blend 構文を使ってブレンディングを設定するとき、SrcColor と DstColor は省略され、係数となる SrcFactor と DstFactor だけを記述する。
+    ```
+    Blend SrcAlpha OneMinusSrcAlpha
+    ```
+#### 8.6.2 その他のαブレンディングの例
+  |定義|効果|
+  |--|--|
+  |SrcAlpha OneMinusSrcAlpha|もっとも基本的な合成|
+  |One OneMinusSrcAlpha|プリマルチプライド合成|
+  |One One|可算合成|
+  |OneMinusDstColor One|ソフトな可算合成|
+  |DstColor Zero|乗算合成|
+  - ブレンディングする必要がないとき Blend 構文は省略できる。これは規定値 Blend Off に等しい設定。
+### 8.7 BlendOp 構文
+  - 必要であれば、Blend の際、加算以外の演算方法を設定できる。
+    |定義|演算方法|
+    |--|--|
+    |Add|Src + Dst (規定値)|
+    |Sub|Src - Dst|
+    |RevSub|Dst - Src|
+    |Min|if(Src.r < Dst.r)? Src.r:Dst.r, g, b も同様|
+    |Max|if(Src.r > Dst.r)? Src.r:Dst.r, g, b も同様|
+## 第９章 Z Write の制御による部分的な透過表現
