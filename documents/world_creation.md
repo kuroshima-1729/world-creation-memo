@@ -1407,3 +1407,80 @@ fixed4 frag(v2f i) : SV_Target
     |Min|if(Src.r < Dst.r)? Src.r:Dst.r, g, b も同様|
     |Max|if(Src.r > Dst.r)? Src.r:Dst.r, g, b も同様|
 ## 第９章 Z Write の制御による部分的な透過表現
+  - ２つの直行するクアッドに対して、部分的に透過するテクスチャを張ったとき、水平クアッドの、透過されるべき部分が透過して見えない。
+　　![Z Write on/off](../images/z_write_on_off.png)
+  - Z Write の処理を設定により無効化し、Z Buffer を更新しないことで解決する。
+### 9.1 ZWrite 構文
+  - Z 値の書き込みを有効にするときは ZWrite On、無効にするときは ZWrite Off とする。規定値は ZWrite On で 普通は省略される。
+    ```
+    SubShader 
+    {  
+      Tags 
+      {  
+        "Queue" = "Transparent" 
+        "RenderType" = "Transparent " 
+      }  
+      Blend SrcAlpha OneMinusSrcAlpha 
+      Cull Off 
+      ZWrite Off 
+    ...
+    ```
+### 9.2 Z Write を無効にすることで起こる問題
+  - 片方のテクスチャの色を変えて描画すると前後関係が得られなくなる。
+    ![Z Write not effective](../images/z_write_not_effective.png)
+  - きわめて小さなオブジェクト、雪などのシンプルで前後関係があいまいなもので有効。
+## 第１０章 Alpha Test による部分的な透過表現
+  - Z Write を制御することにより部分的に透明なオブジェクトを描画した。Z Wtrite を無効化したため、メッシュ間の前後関係が破綻する問題も起こった。
+    - Z Write を有効にしつつ、Fragment シェーダでは透明な部分を描画しない、といった処理が必要。
+    - 透明な部分を描画しない用意するためには「Alpha Test」と呼ばれる処理が必要になる。
+  - Alpha Test は Fragment シェーダから算出された色が透過である場合に塗りつぶし処理を破棄する。
+### 10.1 Alpha Test 用の RenderQueue
+  - ShaderLab は標準で AlphaTest タグを用意している。AlphaTest タグの値は 2450 である。
+### 10.2 Fragment シェーダの実行を破棄する
+#### 10.2.1 discard 構文
+  - Fragment シェーダ内で discard 構文を実行すると、Fragment シェーダは対象の画素への塗りつぶし処理を破棄する。したがって、先に与えた色がそのまま残され、透過したような表現になる。
+    ```
+    fixed4 frag(v2f i) : SV_Target 
+    {  
+      fixed4 color = tex2D(_MainTex, i.uv) * _Color;  
+      
+      if (color.a <= 0) 
+      {  
+        discard; 
+      }  
+      
+      return color; 
+    }
+    ```
+#### 10.2.2 clip 関数
+  - clip 関数は引数の値が 0 よりも小さいときに、対象の画素への塗りつぶし処理を破棄する。得られる結果は discard と同じ。
+    ```
+    fixed4 frag(v2f i) : SV_Target 
+    {  
+      fixed4 color = tex2D(_MainTex, i.uv) * _Color;  
+      clip(color.a - 0.00001);  
+      return color; 
+    }
+    ```
+  - discard や clip 等を用いて部分的な透過を表現するシェーダを「Cutoff, Cutout シェーダ」と呼ぶことがある。
+### AlphaToMask によるジャギーの軽減
+  - discard や clip は単純に描画しないことしかできないため、透過な部分とそうでない部分の境界にはジャギーが起こる。
+  - テクスチャのが解像度を上げればよいが、完全ではなく、低い解像度で十分表現できるオブジェクトであるのに、ジャギーの軽減だけに解像度を高くすることは避けたい。
+  - 「Alpha To Coverage」と呼ばれる仕組みを導入する。
+    - 透過処理された部分にのみアンチエイリアシングを施し、ジャギーを軽減する。
+  - ShaderLab で Alpha To Coverage を有効にするためには、AlphaToMask 構文を使う。
+    ```
+    SubShader 
+    {  
+      Tags 
+      {  
+        "RenderType" = "Opaque" 
+      }  
+      Cull Off 
+      AlphaToMask On 
+    ...
+    ```
+  - Cull や ZWrite 等の設定と同じように On または Off の値と合わせて定義する。
+   ![ジャギーの軽減](../images/alpha_to_coverage.png)
+
+
