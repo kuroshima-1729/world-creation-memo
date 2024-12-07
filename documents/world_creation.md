@@ -1483,4 +1483,22 @@ fixed4 frag(v2f i) : SV_Target
   - Cull や ZWrite 等の設定と同じように On または Off の値と合わせて定義する。
    ![ジャギーの軽減](../images/alpha_to_coverage.png)
 
+# Animator 
+参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
+  - animation
+    - create から animation を作成。
+    - animation を動かしたいオブジェクトにアタッチ。
+    - アタッチしたオブジェクトを選択すると、add property を選択できる。
+    - キーフレーム位置における座標位置などを指定すれば、その間を補間するような動きとなる。
+      - キーフレームの追加は、ちょっと上らへんを右クリック。
+      - 補間の関数は curve で調整できる。
+    - animator のインスペクターで、Loop time にチェックを入れると動きを繰り返してくれる。
+  - animator contoroller
+    - ２つのアニメーションをつなぎ合わせる機能。
+    - Entry : 初期状態
+    - any state : どの状態からも始められる
+    - state は状態
+    - 矢印はトランジション
+    - state を右クリックして、トランジションを追加して、遷移したい状態につなげる。
+
 
