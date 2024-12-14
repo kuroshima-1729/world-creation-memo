@@ -1501,4 +1501,7 @@ fixed4 frag(v2f i) : SV_Target
     - 矢印はトランジション
     - state を右クリックして、トランジションを追加して、遷移したい状態につなげる。
 
+# Right probe Group
+  - 色または影が変化する前後に丸いやつを配置するとよい。
+  - Bakery の場合は、順番としては Render をしてから、 Render right probe を行う。
 
