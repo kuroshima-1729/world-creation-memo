@@ -1504,4 +1504,5 @@ fixed4 frag(v2f i) : SV_Target
 # Right probe Group
   - 色または影が変化する前後に丸いやつを配置するとよい。
   - Bakery の場合は、順番としては Render をしてから、 Render right probe を行う。
+    参考: https://www.youtube.com/watch?v=_E0JXOZDTKA&list=PLtPbT3kJbxIEOFEihwzrMgoZ540DYcue7&index=25
 
