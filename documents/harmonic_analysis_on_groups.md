@@ -1164,3 +1164,85 @@ $$
 \mu:=\mu^*|_{\mathcal{M}} : \mathcal{M} \rightarrow [0,\infty]
 $$
 を (1次元) ルベーグ測度と呼ぶ。
+
+#### 第3章 可測集合と $\sigma$ -加法族
+$\mu^*: 2^{\mathbb{R}}\rightarrow [0,\infty]$ をルベーグ外測度とする。また、 $\mathcal{M}\subset 2^{\mathbb{R}}$ を可測集合全体からなる集合とする。すなわち
+$$
+A\in \mathcal{M} \Leftrightarrow ( ^\forall B\in 2^{\mathbb{R}}) \mu^*(B)=\mu^*(B\cap A)+\mu^*(B\cap A^c)
+$$
+
+例 $\empty, \mathbb{R}\in \mathcal{M}$. すなわち $\empty$ と $\mathbb{R}$ は可測集合である。実際、 $A=\empty$ または $A=\mathbb{R}$ のとき、任意の $B\subset \mathbb{R}$ に対し
+$$
+\mu^*(B\cap A)+\mu^*(B\cap A^c) = \mu(B\cap\empty)+\mu^*(B\cap\mathbb{R})=\mu^*(\empty)+\mu^*(B)=\mu^*(B)
+$$
+
+命題 3.1 $\mathcal{M}$ は次の性質を持つ </br>
+(1) $A\in \mathcal{M} \Rightarrow A^c\in\mathcal{M}$ </br>
+(2) $A_1, A_2\in\mathcal{M} \Rightarrow A_1\cup A_2\in\mathcal{M}$ 
+
+証明 (1) 任意の $B\subset\mathbb{R}$ に対し、
+$$
+\mu(B) =\mu^*(B\cap A)*+\mu^*(B\cap A^c) = \mu^*(B\cap (A^c)^c)+\mu^*(B\cap A^c)
+$$
+よって $A^c$ も可測。</br>
+(2) ![alt text](../images/set_cup.png)
+任意の $B\subset\mathbb{R}$ をとり、次のように
+$$
+B=C_1\sqcup C_2\sqcup C_3
+$$
+と分解する。まず、 $B$ を $A_1$ を用いて、 $B=(B\cap A_1)\sqcup (B\cap A_1^c)$ と分解し、 $C_1=B\cap A_1$ とおく。つぎに、 $B\cap A_1^c$ を $A_2$ を用いて $B\cap A_1^c=((B\cap A_1^c)\cap A_2)\sqcup ((B\cap A_1^c)\cap A_2^c)$ と分解し、 $C_2=((B\cap A_1^c)\cap A_2)$ 、 $C_3=((B\cap A_1^c)\cap A_2^c)$ とおく。このとき、 $A_1,A_2\in\mathcal{M}$ より
+$$
+\begin{array}{}
+\mu^*(B)&=&\mu^*(C_1\sqcup C_2\sqcup C_3) \\
+&=& \mu^*(C_1) +\mu^*(C_2\sqcup C_3) \\
+&=& \mu^*(C_1)+\mu^*(C_2)+\mu^*(C_3) \\
+&=& \mu^*(C_1\sqcup C_2) +\mu^*(C_3) \\
+&=& \mu^*(B\cap (A_1\cup A_2)) + \mu^* (B\cap(A_1\cup A_2)^c)
+\end{array}
+$$
+ここで、２つめの等式は、 $A_1$ が可測集合であることを用い、３つ目の等式は $A_2$ が可測集合であることを用いた。４つ目の等式は、
+$$
+C_1\sqcup C_2 = ((C_1\sqcup C_2)\cap A_1)\sqcup ((C_1\sqcup C_2)\cap A_1^c)
+$$
+で、 $A_1$ が可測集合なので、
+$$
+\mu^*(C_1\sqcup C_2)=\mu^*((C_1\sqcup C_2)\cap A_1)+\mu^*((C_1\sqcup C_2)\cap A_1^c)=\mu^*(C_1) + \mu^*(C_2)
+$$
+
+命題 3.2 (有限加法性)　</br>
+互いに素な可測集合からなる列 $A_1,A_2,\dots, A_n\in\mathcal{M}$ を考える。このとき任意の $B\in 2^\mathbb{R}$ に対し
+$$
+\mu^*(B\cap\bigcup_{i=1}^n A_i) = \displaystyle\sum_{i=1}^n\mu^*(B\cap A_i)
+$$
+とくに $B=\mathbb{R}$ のとき、
+$$
+\mu^*(\bigcup_{i=1}^n A_i) = \displaystyle\sum_{i=1}^n\mu^*(A_i)
+$$
+証明) (定義から証明したら、互いにその条件は必要ないかもしれない) </br>
+外測度の定義より、
+$$
+\mu^*(A)=\inf\{\displaystyle\sum_{I-1}^\infty : A\subset \bigcup_{i\ge 1}I_i \}
+$$
+ここで、左辺は
+$$
+\mu^*(B\cap\bigcup_{i=1}^nA_i) = \inf\{\displaystyle\sum_{j\ge 1}|I_j|:B\cap\bigcup_{i=1}^nA_i\subset\bigcup_{i\ge 1}I_j\}
+$$
+右辺は
+$$
+\begin{array}{}
+\displaystyle\sum_{i=1}^n
+\mu^*(B\cap A_i)&=&\displaystyle\sum_{i=1}^n\inf\{\displaystyle\sum_{k_i\ge 1}|I_{k_i}|:b\cap A_i\subset \bigcup_{k_i\ge 1}I_{k_i} \ {\rm{for \  all}} \ i\} \\
+&=& \inf\{\displaystyle\sum_{i=1}^n\displaystyle\sum_{k_i\ge 1}|I_{k_i}|:b\cap A_i\subset \bigcup_{k_i\ge 1}I_{k_i} \ {\rm{for \  all}} \ i\}
+\end{array} 
+$$
+とかける。
+$$
+B\cap A_i\subset B\cap \bigcup_{i=1}^n A_i\subset \bigcup_{j\ge 1} I_j
+$$
+$$
+B\cup\bigcup_{i=1}^n A_i =\bigcup_{i=1}^nB\cup A_i\subset \bigcup_{i=1}^n \bigcup_{k_i} I_{k_i}
+$$
+より、左辺と右辺でもう一方に片一方の被覆方法が存在するため、左辺と右辺は等しい。
+
+
+
