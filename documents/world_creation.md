@@ -1509,7 +1509,66 @@ fixed4 frag(v2f i) : SV_Target
   - 設定する変数は、Properties に定義されていない必要がある。
   - 共通のマテリアルを設定できないけど、共通の値を参照したいマテリアル(シェーダ)が多く存在するときに使う。
     - シーン全体を照らす太陽のような光源に対して、シーン中にある木や草、その他のオブジェクトは、それぞれのシェーダとマテリアルを使って描画されるが、共通のパラメータとして、光源のパラメータを参照することが考えられる。
-    
+## 第２章 複数の SubShader と LOD / Fallback
+  - Shader 構文の中には複数の SubShader が定義できる。複数の SubShader は「LOD」のために活用できる。
+    - LOD とは "Level Of Detail" の略称で、十分な処理性能が期待できる環境では最高品質の処理を実行し、より低い性能しか期待できない場合は、必要程度品質を落とした処理を実行する仕組み。
+### LOD の値を設定する
+  - LOD は数値で与えられ、Unity の標準的な LOD の最大値は 600。
+    - LOD に 600 の値が設定されるとき、 Unity の標準的なビルトインシェーダは、視差マップやスぺキュラマップなどの高度な描画機能を有効にする。
+  - 最小値は 100 で、LOD に 100 の値が設定されるとき、Unity の標準的なビルトインシェーダは、シンプルな Unlit シェーダのような描画のみしか出来なくなる。
+### SubShader と LOD の定義
+  - LOD の機能を有効にするには、複数の SubShader を定義し、 LOD 構文によって、どの SubShader が実行されるかを設定する。
+  ```
+  Shader "Sample/LODFallback" 
+  { 
+    ...  
+    SubShader 
+    {
+    LOD 600
+     ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(1, 0, 0, 1); 
+    } 
+    }  
+    SubShader 
+    {  
+      LOD 400 
+      ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(0, 1, 0, 1); 
+    } 
+    } 
+      ...
+  ```
+### Fallback 機能
+  - Fallback は、一般にはある処理が正常に実行されなかったときに実行される処理のことを差す。
+  - LOD の値に応じた適切な SubShader が見つからないときに、指定したシェーダによって描画処理を実行する。
+  - SubShader の最後に Fallback 構文を追加すると、すべての SubShader が有効でないときに、指定したシェーダによって描画処理が実行される。
+  ```
+  SubShader 
+  {  
+    LOD 600 
+    ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(1, 0, 0, 1); 
+    } 
+  }  
+  FallBack "Sample/Fallback 
+  // FallBack "Diffuse" 
+  // FallBack "VertexLit" 
+  ...
+  Shader "Sample/Fallback" 
+  { 
+    ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(1, 1, 1, 1); 
+    } 
+  }
+  ```
 
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
