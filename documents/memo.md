@@ -116,6 +116,8 @@
   - right probe は Render すれば自動的にやってくれるので、改めて Render right probe のボタンは押さなくてよい。一方で、Reflectionはボタンを押す必要があるため、注意が必要。
   - right prove の影響を受けるのは static にしているか否かの違い。
   - soft shadow で柔らかい影を作る？
+  - エミッションからの光をベイクする場合
+    - エミッションを設定しているオブジェクトの、「Contribute Global Illumination」を有効化する。
 
 # world idea
   - 廃墟 + 地下 + 地下鉄
