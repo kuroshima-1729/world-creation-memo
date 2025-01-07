@@ -1570,6 +1570,53 @@ fixed4 frag(v2f i) : SV_Target
   }
   ```
 
+## 第3章 複数の Pass を使ったオブジェクトの描画
+  - 一つの Pass には必ず一つの出力を持つ。
+    - 複数の Pass が定義されるとき、それらは上から順に出力されて、それぞれの結果は　Blend に従ってブレンディングされる。
+    ```
+    Pass 
+    { 
+      ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(1, 0, 0, 1); 
+    } 
+    }  
+    Pass 
+    {  
+      Blend One One 
+      ...  
+    fixed4 frag (v2f i) : SV_Target 
+    {  
+      return fixed4(0, 1, 1, 1); 
+    } 
+    }
+    ```
+  - 複数の Pass は、それより以前の Pass の描画結果を参照したいとき、あるいは複数の光源から照らされる影響を考慮したいときに利用される。
+
+## 第４章 ColorMask によるカラーチャネルの出力制限
+  - カラーチャネルとは、R,G,B,A のこと。
+### ColorMask の使い方
+  - ColorMask 構文は、出力したいチャネルの値と共に定義する。
+    - R=赤 だけ出力したいときは R, 同じように G, B, A として定義する。
+### 背景色に注意
+  - 既に描画済みの色と混ざる。
+  ![alt text](../images/color_mask.png)
+  - Cull, ZTest, ZWrite, Offset, Blend, ColorMask をまとめて「レンダリングステート」と呼ぶ。
+
+## 第６章 プリプロセッサ命令・マクロの基礎
+  - #pragma や #include などの # から始まるコードは、「プリプロセッサ命令」と呼ばれる。
+  - プリプロセッサ命令は、コンパイラがソースコードをコンパイルするときに考慮される。
+### #define による置換処理
+  - #define は、定義された識別子がソースコード中に見つかるとき、それを、後に続く文字列に置換する機能を持つ。
+    - この置換処理、あるいは定義そのものを「マクロ」とよぶ。
+
+## 第７章 ライブラリによる関数や構造体の共通化
+  - .cginc は Cg や HLSL で通例的に用いられる、シェーダファイルのための拡張子。
+  - #include "Library.cginc" としてライブラリを参照する。
+  - #ifndef (if not defined) で多重定義を防ぐ。
+    - 指定されたキーワードが定義されていないとき、#endif までのソースコードが有効になる。
+
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
   - animation
