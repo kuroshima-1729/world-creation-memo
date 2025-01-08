@@ -1617,6 +1617,9 @@ fixed4 frag(v2f i) : SV_Target
   - #ifndef (if not defined) で多重定義を防ぐ。
     - 指定されたキーワードが定義されていないとき、#endif までのソースコードが有効になる。
 
+## 第10章 MinMap の効果と仕組み
+  - MinMap は、あるテクスチャが用意されるとき、元のテクスチャの解像度よりも低い解像度のテクスチャを複数用意しておく機能。あるいは素のテクスチャの集まりを MinMap と呼ぶ。
+
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
   - animation
