@@ -119,6 +119,9 @@
   - エミッションからの光をベイクする場合
     - エミッションを設定しているオブジェクトの、「Contribute Global Illumination」を有効化する。
 
+# Physbone
+  - allow collision を off にすると、手が当たったときに動かなくなる。
+
 # world idea
   - 廃墟 + 地下 + 地下鉄
   - 廃墟 + 駅 橋の上、山の間 -> よくあるシチュエーションだからもうワンポイント
