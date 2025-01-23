@@ -160,6 +160,10 @@
 
 # Unity 
   - shift + space でアクティブ画面を最大化、最小化
+  - Ultra Shader, Mega Shader
+    - モデルごとにマスクテクスチャを用意する必要があり、使いこなしが大変そう。上手く使えば綺麗に見えるかも。
+  - Planet Shader 
+    - 地球儀を作るときに便利そう
 
 # Clip Studio Paint
   - 明るさとコントラストの調整
