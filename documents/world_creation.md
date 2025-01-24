@@ -1642,4 +1642,22 @@ fixed4 frag(v2f i) : SV_Target
   - 色または影が変化する前後に丸いやつを配置するとよい。
   - Bakery の場合は、順番としては Render をしてから、 Render right probe を行う。
     参考: https://www.youtube.com/watch?v=_E0JXOZDTKA&list=PLtPbT3kJbxIEOFEihwzrMgoZ540DYcue7&index=25
+  - アバターの身長の高さに２つずつ置くことで頭と体で違うライトを受ける現象を避けることができる。
+    - 難しいから好きに置けばいい
+
+# ライティング設定の違い
+||幻夜街|Lighting Template|
+|--|--|--|
+|Environment Sampling|256|512|
+|Lighting Mode|Shadowmask|Subtractive|
+|Filtering|Auto|Advanced|
+|Direct Denoiser|Optix|None|
+|Indirect denoiser|Optix|None|
+|Ambient Occlusion Denoiser|Optix|None|
+|Lightmap Resolution|8|15|
+|Max Lightmap Size|1024|2048|
+|Lightmap Compression|Normal Quality|High Quality|
+|Directional Mode|Directional|Non-Directional|
+ - Area light の Rangeは、Area Lightから放射される光がどの程度の距離まで影響を与えるかを設定するパラメータ
+   - Template だと rangeの設定値が結構大きい? 50 近く
 
