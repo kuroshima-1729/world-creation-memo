@@ -1646,18 +1646,18 @@ fixed4 frag(v2f i) : SV_Target
     - 難しいから好きに置けばいい
 
 # ライティング設定の違い
-||幻夜街|Lighting Template|
-|--|--|--|
-|Environment Sampling|256|512|
-|Lighting Mode|Shadowmask|Subtractive|
-|Filtering|Auto|Advanced|
-|Direct Denoiser|Optix|None|
-|Indirect denoiser|Optix|None|
-|Ambient Occlusion Denoiser|Optix|None|
-|Lightmap Resolution|8|15|
-|Max Lightmap Size|1024|2048|
-|Lightmap Compression|Normal Quality|High Quality|
-|Directional Mode|Directional|Non-Directional|
+||幻夜街|Lighting Template|違い|
+|--|--|--|--|
+|Environment Sampling|256|512|環境光の細かさ|
+|Lighting Mode|Shadowmask|Subtractive|方向性に厳格か否か|
+|Filtering|Auto|Advanced|Denoiser のメニューが出るか否か|
+|Direct Denoiser|Optix|None|ノイズ除去の有無|
+|Indirect denoiser|Optix|None|ノイズ除去の有無|
+|Ambient Occlusion Denoiser|Optix|None|ノイズ除去の有無|
+|Lightmap Resolution|8|15|シャドウや間接光の細かさ|
+|Max Lightmap Size|1024|2048||
+|Lightmap Compression|Normal Quality|High Quality||
+|Directional Mode|Directional|Non-Directional|方向性に厳格か否か|
  - Area light の Rangeは、Area Lightから放射される光がどの程度の距離まで影響を与えるかを設定するパラメータ
    - Template だと rangeの設定値が結構大きい? 50 近く
 
