@@ -248,3 +248,4 @@
 # others
   - quest3 のドリフト改善参考
     - https://www.meta.com/ja-jp/help/quest/articles/fix-a-problem/troubleshoot-headsets-and-accessories/touch-controller-drift/
+  - 日本語入力モードで Ctrl + I でカタカナに変換。
