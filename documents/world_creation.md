@@ -1723,3 +1723,12 @@ fixed4 frag(v2f i) : SV_Target
     - Ex コマンドの射程は広い。
   - vim = vi improved
   - :% は現在のファイルの全ての行を表す。
+  - [rangee]copy {address} で range 行を address で指定した場所にコピーする。
+  - [rangee]copy {address} で range 行を address で指定した場所に移動する。
+  - jVG は次の意味
+   1. j でカーソルを1行下に移動
+   2. V で visual モードの行選択
+   3. G 行選択モードで最終行まで選択
+  - :normal は Ex コマンドでノーマルモードのコマンドを実行。
+  - @: で直前の Ex コマンドを実行。
+  
