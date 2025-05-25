@@ -1749,5 +1749,23 @@ fixed4 frag(v2f i) : SV_Target
   - Ctrl + w + = で全てのウィンドウの幅と高さを同じにする。
   - Ctrl + w + _ でアクティブなウィンドウの高さを最大化する。
   - :tabe {filename} で {filename} を新しいタブでオープンする。
-  - :tabn {N} で番号 {N} のタブページに切り替える。 
+  - :tabn {N} で番号 {N} のタブページに切り替える。
+  - :edit {path} で path のファイルをオープンする
+  - :edit %:h{Tab} でカレントディレクトリまで補間される。
+  - vim のファイルエクスプローラで「-」を押すと上のディレクトリに移動する。
+  - ファイルエクスプローラは例えば次のような画面。
+  ```
+  " ============================================================================
+" Netrw Directory Listing                                        (netrw v171)
+"   /home/miyatani/practical-vim-practical/code/files/mvc
+"   Sorted by      name
+"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
+" ==============================================================================
+../                                                                                                   ./
+app/
+lib/
+app.js
+index.html 
+```
+  -  
   
