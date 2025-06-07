@@ -251,3 +251,6 @@
     - https://www.meta.com/ja-jp/help/quest/articles/fix-a-problem/troubleshoot-headsets-and-accessories/touch-controller-drift/
   - 日本語入力モードで Ctrl + I でカタカナに変換。
   - pwd は print working directory の略。
+  - Windows + V でクリップボードの履歴を表示できる。
+  - "* は X11 ウィンドウシステムのプライマリクリップボードを表す。
+    - X Window System 参考:  https://qiita.com/kakkie/items/c6ccce13ce0beaefaad1
