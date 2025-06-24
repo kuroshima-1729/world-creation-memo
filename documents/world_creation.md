@@ -1830,6 +1830,9 @@ index.html
     - set nohlsearch でマッチの強調表示を無効化
       - 参考: 強調表示の無効化のマッピング nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
   - :%s///gn でマッチした数がでる。
+  - /文字列/e でマッチの末尾に移動する。
+  - 置換コマンドの書式
+    - :[range]s[ubstitute]/{pattern}/{string}/[flags]
   
     
   
