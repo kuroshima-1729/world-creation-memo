@@ -1699,6 +1699,20 @@ fixed4 frag(v2f i) : SV_Target
       - Start や OnPlayerjoined よりも後に OnPlayerRestored が発生する可能性があるため、保存データを扱う際は OnPlayerRestored 以降で扱うようにする必要がある。
     - データが保存されるタイミングは、Player Data はキーにデータを Set したとき、Player Object では同期変数の値を更新して再同期させたとき。
     - ワールド join 時は自動でデータを復元するが、Left には自動でデータを保存しない。
+  - PlayerObject の作成方法
+    1. 一番親の GameObject に VRCPlayerObject コンポーネントをアタッチする。
+    2. VRCPlayerObject コンポーネントをアタッチした GameObject より子の中で、データを保存しておきたい GameoBject に VRCEnablePersistence コンポーネントをアタッチする。
+    3. VRCEnablePersistence コンポーネントをアタッチした GameObject に UdonBehavior がアタッチされていれば、保存するデータをその Udon の同期変数として記載する。
+  - PlayerObject の取得方法
+    - PlayerObject は実行時にテンプレートから各プレイヤーごとに複製されるため、プレイヤーの数だけ PlyaerObject が存在する。
+    - 実行時テンプレート本体は非アクティブ化される。
+      - 実行時に PlayerObject の参照を得る必要がある。
+    - PlayerObject の参照は、 Networking.GetPlayerObjects(player) を用いることで取得できる。
+      - 引数に入れたプレイヤーの PlayerObject をテンプレートの数だけ配列として返すため、自分の PlayerObject と他人の PlayerObject を取得することができる。
+      ```
+      GameObject[] playerObjectList = Networking.GetPlayerObjects(player);
+      ```
+    - 取得した PlayerObject から目的のオブジェクトやスクリプトの参照を見つけてくることで、目的のセーブデータを取得する。
 
 # vim 
   - $ vim -u NONE -N で vimrc を読み込まずに vim を起動。
