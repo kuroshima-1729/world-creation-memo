@@ -1620,6 +1620,13 @@ fixed4 frag(v2f i) : SV_Target
 ## 第10章 MinMap の効果と仕組み
   - MinMap は、あるテクスチャが用意されるとき、元のテクスチャの解像度よりも低い解像度のテクスチャを複数用意しておく機能。あるいは素のテクスチャの集まりを MinMap と呼ぶ。
 
+# Shader
+  - 3点決まるごとに処理を行う
+  - 半透明処理はシェーダではない
+  - 半透明はすべて不透明の後に描画される。
+  - セマンティクス: GPU に変数の扱い方を伝える
+  - surface シェーダは Unity の機能で、頂点シェーダとフラグメントシェーダを楽な記述になるように生成している。
+
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
   - animation
