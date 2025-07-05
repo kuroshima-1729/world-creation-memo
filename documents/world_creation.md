@@ -1627,6 +1627,8 @@ fixed4 frag(v2f i) : SV_Target
   - セマンティクス: GPU に変数の扱い方を伝える
   - surface シェーダは Unity の機能で、頂点シェーダとフラグメントシェーダを楽な記述になるように生成している。
   - _Time はグローバル変数で、ステージのロードからの時間 (t/20, t, t*2, t*3) の float4 型の変数。
+  - Stencil
+    - ステンシルバッファは、一般的にピクセルマスクごとにピクセルの保存や廃棄を行うために使用される。
 
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
