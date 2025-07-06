@@ -1629,6 +1629,7 @@ fixed4 frag(v2f i) : SV_Target
   - _Time はグローバル変数で、ステージのロードからの時間 (t/20, t, t*2, t*3) の float4 型の変数。
   - Stencil
     - ステンシルバッファは、一般的にピクセルマスクごとにピクセルの保存や廃棄を行うために使用される。
+  - 光源方向と視線方向のベクトルの内積が大きいほどまぶしいという解釈。
 
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
