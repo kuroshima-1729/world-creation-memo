@@ -1631,6 +1631,10 @@ fixed4 frag(v2f i) : SV_Target
     - ステンシルバッファは、一般的にピクセルマスクごとにピクセルの保存や廃棄を行うために使用される。
   - 光源方向と視線方向のベクトルの内積が大きいほどまぶしいという解釈。
 
+# Procedual Modeling
+  - ルールを利用して 3D モデルを構築するテクニックのこと。
+  - Unity では、モデルの形を表すジオメトリデータを Mesh クラスによって管理している。
+
 # Animator 
 参考: https://www.youtube.com/watch?v=jKZhKt4q0yg&list=PL860gXPb3_unforoPY8EIRKP4pj1p63GQ&index=39
   - animation
