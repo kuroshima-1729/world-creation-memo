@@ -1630,6 +1630,14 @@ fixed4 frag(v2f i) : SV_Target
   - Stencil
     - ステンシルバッファは、一般的にピクセルマスクごとにピクセルの保存や廃棄を行うために使用される。
   - 光源方向と視線方向のベクトルの内積が大きいほどまぶしいという解釈。
+  - Surface shader は、物体の表面の材質情報を定義するだけでいい感じにライティングしてくれる機能をもつシェーダ。
+    - #pragma surface [Surface Shader 関数名] [ライティングの方法] で記述
+    - カスタムライティングモデルや、頂点シェーダも記述できる。
+    - あくまでも頂点シェーダやフラグメントシェーダを Unity 上で簡単に書けるようにするための便利機能。
+    - ライティング方法によって違う名前の出力構造体を指定する。
+    - Input 構造体で宣言しただけで使える変数がいくつかある。
+    - 参考: https://light11.hatenadiary.com/entry/2019/07/10/210837
+  - .cginc という拡張子のファイルをつくることで別ファイルからシェーダ関数を呼び出せる。
 
 # Procedual Modeling
   - ルールを利用して 3D モデルを構築するテクニックのこと。
@@ -1902,6 +1910,17 @@ index.html
     3. :args *
     4. :set hidden
     5. :argdo %s//word_replace/g
+  - grep コマンドは グローバルコマンドの略記の :g/re/p が由来
+    - 「re」 に入れた正規表現パターンをすべて表示
+  - global コマンドは :g/{pattern}/[cmd] の書式で、ファイル全体でpatternにマッチする行にコマンド cmd を適用する。
+  - ctags: コードベースを走査し、キーワードのインデックスを生成する外部プログラム。
+    - sudo apt-get install exuberant-ctags でインストール
+    - universal-ctag もあるらしい。
+    - Ctrl + ] で対応するクラスやメソッド、関数の定義に飛べる
+    - g + Ctrl + ] で複数マッチする場合に、一覧表示して数字で選択できる。
+  - :w を押すたびにタグを生成する方法
+    - :autocmd BufWritePost * call system("ctags -R")
+
   
     
   
