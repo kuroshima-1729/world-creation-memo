@@ -1920,6 +1920,9 @@ index.html
     - g + Ctrl + ] で複数マッチする場合に、一覧表示して数字で選択できる。
   - :w を押すたびにタグを生成する方法
     - :autocmd BufWritePost * call system("ctags -R")
+  - makeファイル
+    - コンパイルやビルドの手順を自動化するための指示書。
+  - quickfix リストは :make や :grep を実行したときに作られる。:cnext :cprev でマッチする場所に移動できる。
 
   
     
