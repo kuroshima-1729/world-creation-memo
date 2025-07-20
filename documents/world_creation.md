@@ -1638,6 +1638,9 @@ fixed4 frag(v2f i) : SV_Target
     - Input 構造体で宣言しただけで使える変数がいくつかある。
     - 参考: https://light11.hatenadiary.com/entry/2019/07/10/210837
   - .cginc という拡張子のファイルをつくることで別ファイルからシェーダ関数を呼び出せる。
+  - Grabpass で描画される画面コンテンツを、テクスチャとして取得できる。
+  - MSAA (Multi-Sample Anti-Aliasing)
+    * エッジのジャギーを滑らかにするためのアンチエイリアス手法。
 
 # Procedual Modeling
   - ルールを利用して 3D モデルを構築するテクニックのこと。
