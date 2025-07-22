@@ -1931,7 +1931,7 @@ index.html
   - grep は POSIX の正規表現を使用し、ack は Perl の正規表現を使用している。
   - vim の自動補完機能は Ctrl + p または Ctrl + n を押して起動できる。
     - 候補の決定は Ctrl + y でできる。
-  - Ctrl n + Ctrl p を押してから、次の文字を打つことで候補を減らすことができる。i
+  - Ctrl n + Ctrl p を押してから、次の文字を打つことで候補を減らすことができる。
   - :set spell でスペルチェック時の辞書を読み込み補完に使用することができる。
   - Ctrl x + ctrl l で 行単位の補完ができる。
   - cd - (マイナス) 直前の作業ディレクトリに戻る。
@@ -1939,7 +1939,14 @@ index.html
     - zg でスペルが辞書に登録される。
     - zw でスペルが辞書から削除される。
     - 挿入モードでは Ctrl + x + s でスペルチェックができる。
-　
-  
+
+# Blender Python
+  - bpy.context.activeobject.location でアクティブオブジェクトの3次元位置を表示する。
+    - bpy.context.activeobject にアクティブアブジェクトの全情報が入っている。
+      - blender での python API のひとつ。(アクティブなオブジェクト)
+    - bpy.context.activeobject.scale でスケールを表示。
+    - bpy.context.activeobject.rotation_euler でオイラー角を表示。
+    - bpy.context.activeobject.name で名前を取得。
+
     
   
