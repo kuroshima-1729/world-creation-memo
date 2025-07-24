@@ -1947,6 +1947,8 @@ index.html
     - bpy.context.activeobject.scale でスケールを表示。
     - bpy.context.activeobject.rotation_euler でオイラー角を表示。
     - bpy.context.activeobject.name で名前を取得。
+  - blender 上に作成したすべてのオブジェクトは bpy.data.objects に保存されている。
+  - if 文によるインデントが深くなることに対する対策のひとつは、条件に論理演算子を用いること。
 
     
   
