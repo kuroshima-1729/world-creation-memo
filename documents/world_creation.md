@@ -1949,6 +1949,6 @@ index.html
     - bpy.context.activeobject.name で名前を取得。
   - blender 上に作成したすべてのオブジェクトは bpy.data.objects に保存されている。
   - if 文によるインデントが深くなることに対する対策のひとつは、条件に論理演算子を用いること。
-
+  - Blender の UI 上から実行できる処理をオペレータという。
+    - オペレータは Python の関数を呼び出すことで実行できる。
     
-  
