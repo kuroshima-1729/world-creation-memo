@@ -1939,6 +1939,7 @@ index.html
     - zg でスペルが辞書に登録される。
     - zw でスペルが辞書から削除される。
     - 挿入モードでは Ctrl + x + s でスペルチェックができる。
+  - 数字 + hjkl で吸う自分だけ移動できる
 
 # Blender Python
   - bpy.context.activeobject.location でアクティブオブジェクトの3次元位置を表示する。
