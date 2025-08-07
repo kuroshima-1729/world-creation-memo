@@ -1822,7 +1822,6 @@ fixed4 frag(v2f i) : SV_Target
   - :edit %:h{Tab} でカレントディレクトリまで補間される。
   - vim のファイルエクスプローラで「-」を押すと上のディレクトリに移動する。
   - ファイルエクスプローラは例えば次のような画面。
-  ```
   " ============================================================================
 " Netrw Directory Listing                                        (netrw v171)
 "   /home/miyatani/practical-vim-practical/code/files/mvc
@@ -1834,7 +1833,7 @@ app/
 lib/
 app.js
 index.html 
-```
+
   - gj で表示行を一つ上に移動。(gkも同じ)
   - 「w」で次の単語の先頭に前進
   - 「e」で現在の単語もしくは次の単語の末尾に前進
@@ -2002,5 +2001,6 @@ index.html
   - ops モジュールは、オペレータを実行するための関数を定義
   - type モジュールは Blender の内部データを定義するクラスを提供
   - blend ファイルにデータが保存される単位をファイルブロックやデータブロックという。
+  - Blender Python 完全ガイド p251 with bpy.context.temp_override() には window, screen, area の３つの引数を渡す必要がある。
 
 
