@@ -2063,4 +2063,4 @@ index.html
     - 参考 : https://www.headboost.jp/python-for-else/
   - invoke 訳: 呼び出す、発動する。
   - invoke 関数は第3引数からイベント情報を取得することができる。
-
+  - PASS_THROUGH はイベントを Blender に伝え、RUNNING_MODAL はイベントをモーダルに伝える。
