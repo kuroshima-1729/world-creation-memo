@@ -1938,7 +1938,9 @@ index.html
     - zg でスペルが辞書に登録される。
     - zw でスペルが辞書から削除される。
     - 挿入モードでは Ctrl + x + s でスペルチェックができる。
-  - 数字 + hjkl で吸う自分だけ移動できる
+  - 数字 + hjkl で数字の分だけ移動できる
+  - shift + V でｆ複数行選択した後、:<,>s/^/[文字] ですべての行頭に文字を入れることができる。
+  - ノーマルモードから o を押すと、次の行の行頭から始まる。インデントも適切な場所になる。
 
 # Blender Python
   - bpy.context.activeobject.location でアクティブオブジェクトの3次元位置を表示する。
@@ -2064,3 +2066,11 @@ index.html
   - invoke 訳: 呼び出す、発動する。
   - invoke 関数は第3引数からイベント情報を取得することができる。
   - PASS_THROUGH はイベントを Blender に伝え、RUNNING_MODAL はイベントをモーダルに伝える。
+  - python に要素数がひとつのタプルを伝えるには、(1,)などカンマを入れる
+  - self.report({'INFO'}, [message]) でアプリケーション画面にメッセージが表示される。
+  - blf モジュールでテキストを描画したり、テキストに影などの効果を適用できる。内部で gpu モジュールを使用。
+  - Blender Documentation
+    - https://docs.blender.org/
+  - Blender Artists
+    - https://blenderartists.org/ 
+  - ロケールとは、アプリケーションが使用する言語や地域設定を指定するための情報。
