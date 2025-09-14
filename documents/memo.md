@@ -161,6 +161,7 @@
     2. Ctrl + L で 連結した面をすべて選択。
   - Alt + N で法線方向に伸縮
   - shift + w で bend (曲げ)
+  - shift + s でカーソル移動などのメニューがでる。
 
 # Unity 
   - shift + space でアクティブ画面を最大化、最小化
