@@ -501,3 +501,4 @@
   - Windows + V でクリップボードの履歴を表示できる。
   - "* は X11 ウィンドウシステムのプライマリクリップボードを表す。
     - X Window System 参考:  https://qiita.com/kakkie/items/c6ccce13ce0beaefaad1
+  - systeminfo | find "システム起動時間" で起動してからの時間が分かる。
