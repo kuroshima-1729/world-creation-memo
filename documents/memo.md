@@ -493,6 +493,38 @@
       - VRChat SDK のコントールパネルで、「Fix Layers」や「Fix Collision Matrix」のようなボタンが表示されている場合、それをクリックして自動で設定を調整する。
     - プロジェクトをバージョンアップした後に出てきたので、その関係かもしれない。
 
+# 正規表現
+  - pattern で取得したい部分を () でかこみ、gorpup(i)でi番目のカッコ内の値を取り出す。
+  - .* でなるべく多い文字をマッチして、.*?でなるべく少ない文字をマッチする。
+  - match の引数に re.S を指定することで、.* が改行を識別する。
+  - match は先頭からぴったり一致するときに検出され、search はどこかに存在するときに検出される。
+  - search は最初の検出を返し、findall はすべての検出結果を list 型で返す。
+  - sub で余計な情報を取り除いて正規表現を簡略化できる。
+  - 正規表現表
+
+| 文字 | 説明 | 同様 | 例 | マッチする | マッチしない |
+|------|------|------|----|--------------|----------------|
+| \d | 任意の数字 | [0-9] | - | 123 | - |
+| \D | 任意の数字以外 | [^0-9] | - | abc | 123 |
+| \s | 任意の空白文字 | [\t\n\r\f\v] | - | a b | ab |
+| \S | 任意の空白文字以外 | [^\t\n\r\f\v] | - | ab | (空白) |
+| \w | 任意の英数字 | [a-zA-Z0-9_] | - | abc123 | !@# |
+| \W | 任意の英数字以外 | [^a-zA-Z0-9_] | - | !@# | abc |
+| \A | 文字列の先頭 | ^ | - | ^abc | defabc |
+| \Z | 文字列の末尾 | $ | - | abc$ | abcdef |
+| . | 任意の1文字 | - | a.c | abc, acc, aac | abbc, accc |
+| ^ | 文字列の先頭 | - | ^abc | abcdef | defabc |
+| $ | 文字列の末尾 | - | abc$ | defabc | abcdef |
+| * | 0回以上の繰り返し | - | a* | a, aa, ab, abbb | b |
+| + | 1回以上の繰り返し | - | a+ | a, aa, ab, abbb | b |
+| ? | 0回または1回 | - | a? | a, aa, ab | bb |
+| {m} | m回の繰り返し | - | a{2} | aa | a, aaa |
+| {m,n} | m〜n回の繰り返し | - | a{2,4} | aa, aaa, aaaa | aaaaa |
+| [] | 集合 | [a-c] | - | a, b, c | d, e, f |
+| \| | 和集合（または） | a\|b | - | a, b | c, d |
+| () | グループ化 | (abc)+ | - | abc, abcabc | ab, ac |
+
+
 # others
   - quest3 のドリフト改善参考
     - https://www.meta.com/ja-jp/help/quest/articles/fix-a-problem/troubleshoot-headsets-and-accessories/touch-controller-drift/
