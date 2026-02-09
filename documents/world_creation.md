@@ -2106,3 +2106,13 @@ index.html
     - アドオンの再読み込み
   - VS Code の コンソールから pip install fake-bpy-module でインストールしたら使用できた。
   - GitLab はソースコードホスティングサイトを自身で構築できる OSS。
+
+# Particle System
+  - パーティクルシステムとは、Unityでオブジェクトに付ける「ParticleSystem」コンポーネントおよび、これによって生成されるエフェクトを指す。
+    - アイコンが手裏剣に似ていることから、Shuriken と呼ばれることもある。
+  - transform で右クリックして Reset を押すと、座標と角度がすべて 0 になる。
+  - partice の一つ一つのチェックボックスをモジュールと呼ぶ。
+    - Emission より上のモジュールを Main モジュールと呼ぶ。
+    - Trigger モジュールはほぼ使うことがなく、C# と組み合わせて使うことが前提。
+  - Renderer の Allow Roll がオンの場合は、頭を傾けた場合にパーティクルも傾くため、オフが推奨される。 
+  - color over lifetime の上部は透明度を制御し、下部は色を制御する。
