@@ -2120,7 +2120,7 @@ index.html
     - Rate over Time
       - 1秒間に出現するパーティクル数
     - Rate over Distance
-      - このオブジェクトが移動したときに、1m 当たりに出現するパーティクル数
+      - このオブジェクトが移動したときに、1m 動くたびに出現するパーティクル数
     - Bursts
       - 特定タイミングで発生させるパーティクルの設定
       - 再生時間が Time の値になった瞬間に、Count の数だけパーティクルが発生する。
@@ -2146,3 +2146,102 @@ index.html
   - Inherit Velocity モジュール
     - SubEmitter の親パーティクルの速度などを、発生するパーティクルに加算することができる。
     - Multiplier は参照する測度の倍率。
+  - Collision モジュール
+    - パーティクルと物体の衝突をシミュレートする。
+    - 項目の説明
+      |項目|説明|
+      |--|--|
+      |Type|衝突を検出する方法|
+      |Dampen|衝突時の速度減衰の割合|
+      |Bounce|衝突時の反発割合|
+      |Lifetime Loss|衝突時に減らされるパーティクルの生存時間|
+      |Radius Scale|パーティクルの衝突判定サイズ|
+      |Colide With|パーティクルが衝突するレイヤー|
+    - パーティクルが物体に衝突すると、次のように速度と生存時間が変化する。
+      - 現在の速度に Dampen をかけた値まで減速する。
+      - さらに、Bounce をかけた速度まで跳ね返る。
+      - 残りの生存時間が、Lifetime Loss をかけた値まで削られる。
+    - Radius Scale を調節すると、描画されるパーティクルと衝突検出のサイズを個別に調整できる。
+      - VIsualize Bounds のチェックを入れると、衝突検出サイズを可視化することができる。 
+  - TextureSheetAnimation モジュール
+    - パラパラ漫画を作るための機能。
+    - 1 枚の大きなテクスチャに複数コマを描いておいて、それをフレーム単位で制御することで、マテリアルを増やさずにアニメーションを作ることができる。
+    - Tiles
+      - テクスチャの分割フレーム数
+    - Time Mode
+      - フレームを切り替える方法。FPS を選択した場合、毎秒 30 フレームの速度でテクスチャが切り替わる。
+  - Light モジュール
+    - パーティクルにライトを持たせることができる。
+    - 負荷が大きいのと視界の迷惑になる可能性があるため、非推奨。
+    - Light の欄には設定した Lightコンポーネントを指定。
+    - 設定したパーティクルが発生した際、Ratio で設定した割合でライトが追加される。
+    - Range Multiplier や Intensity Multiplier を調整すると、もともとの Light と異なる範囲を照らしたり、光源の強さを調整したりできる。
+    - パーティクルに付与されるライトの数を制限する場合は、次のパラメータで調整できる。
+      |モジュール|項目|役割|
+      |--|--|--|
+      |Main|Max Particles|この設定値より多いパーティクルは発生しない。|
+      |Lights|Ratio|1.0 以下にすると、ライトを持つパーティクルが減る|
+      |Lights|Maximum Lights|この設定値より多いライトは、このパーティクルシステムからは発生しない。|
+  - Color by Speed モジュール
+    - Speed Range で最低速度と最高速度を設定すると、その範囲内でパーティクルの色を変えることができる。
+  - Size by Speed モジュール
+    - パーティクルの速度が 最低値/最高値 の間にあるときに、パーティクルのサイズに倍率をかけることができる。
+  - Rotaton by Speed モジュール
+    - パーティクルの速度が 最低値/最高値 の間にあるときに、パーティクルの回転速度を変えることができる。
+  - External Forces モジュール
+    - パーティクルに対して他のオブジェクトから力を加えることができる。
+    - 他のオブジェクトにアタッチした「Particle Force Field」コンポーネントと一緒に使用する。
+      - Particle Force Field 付きのオブジェクトが近くにあると、適切な設定がされたパーティクルは一定方向に流されたり、オブジェクトの方に引き寄せられたりする。
+    - Multiplier はパーティクルが受ける力の倍率。
+    - Influence Filter を LayerMask にすると、レイヤー単位でパーティクルに影響する Force Field を選択できる。
+      - List に変更すると、オブジェクト単位で影響を与えるものを登録できる。
+        (ワールドに配置する場合は特定のオブジェクトのみから影響を受けさせるという意味でオブジェクト単位で登録しておくのが無難かもしれない。)
+    - Particle Force Field コンポーネントの設定値
+      - Shape でパーティクルに力が発生するエリアの形状を指定する。Start Range と End Range で、力が発生する距離の上限と下限を設定する。
+      - Gravity / Strength をプラスにすると引力、マイナスにすると斥力を与えることができる。
+      - Direction の値を設定すると、特定方向に力を加えることができる。
+        - 力の向きは Particle Force Field をアタッチしたオブジェクトのローカル座標基準。
+      - Rotation の値を設定すると、特定の方向を軸にして、パーティクルが渦のような力を受ける。
+  - Force over Lifetime モジュール
+    - 軸方向に対して外力を加える。
+  - Custom Data モジュール
+    - 自分でシェーダや U# を書いて設定するモジュール ?
+    - Custom1 と Custom2 という設定項目があり、変数を2つ設定できる。
+      - 定義する変数の型は Color, float, float2, float3, float4 から選択できる。
+      - これらの値をシェーダに渡したり、スクリプトで取得したりすることで、様々な機能を実装することができる。
+      - Renderer モジュールの Custom Vertex Streams でどの変数を使用するかを指定する。
+  - パーティクル設定のコツ
+    - 一般
+      - パーティクルを軽量化するうえで、テクスチャのサイズを減らすことも有効。128～512 で十分。
+      - scaling Mode が Hierarchy の場合、親オブジェクトをスケーリングすると連動してスケーリングされる。Local であればこのようにはならない。
+    - アバター
+      - Main モジュールの Simulation Space を World にする。
+    - ワールド
+      - ParticleSystem を Inspector で指定するコード
+        ```
+        [SerializeField] ParticleSystem particleSystem;
+        ```
+      - 次であれば、スクリプトと同じオブジェクトにアタッチされた ParticleSystem を自動的に指定する。
+        ```
+        ParticleSystem particleSystem = this GetComponent<ParticleSystem>();
+        ``` 
+      - 指定した ParticleSystem に再生を指示する。
+        ```
+        particleSystem.Play();
+        ```
+      - パーティクルを止める。
+        ```
+        particleSystem.Stop();
+        ```
+      - パーティクルを指定数だけ再生する。
+        ```
+        particleSystem.Emit(10);
+        ```
+      - パーティクルの設定をスクリプトから設定する。
+        例: Main モジュールの Start Lifetime を 10 秒に変更
+        ```
+        var mainModule = partcleSystem.main;
+        mainMOdule startLifetime = 10;
+        ```
+  
+  
