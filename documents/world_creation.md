@@ -2301,3 +2301,55 @@ index.html
   - Vector3 は小数が 3 つセットになった型の変数である。座標や回転角殿計算でよく使用する。
   - \[SerializeFIeld\] や public をつけた変数は、Inspector から手動で指定することができるようになる。
   - ToString() の中に、F2 や F4 等とかくと、小数点以下の表示桁数を制御できる。
+  - Utilities.IsValid() でカッコ内のデータにアクセスできない場合は、false になる。
+  - Neteorking.LocalPlayer はローカルプレイヤーのデータ
+    - Networking.LocalPlayer.displayName でローカルプレイヤーの名前を string として取得。
+  - HUD (ゲーム用語)
+    - ヘッドアップディスプレイの略。ゲーム画面上にプレイヤーが必要とする情報を直接表示するインターフェイス。
+  - Networking.LocalPlayer.GetTrackingData() でローカルプレイヤーのトラッキングデータを取得できる。
+    - 取得できるトラッキングデータは次の4種類で、()の中で指定できる。
+      - VRCPlayerApi.TrackingDataType.Head: 頭
+      - VRCPlayerApi.TrackingDataType.LeftHand: 左手 
+      - VRCPlayerApi.TrackingDataType.RightHand: 右手 
+      - VRCPlayerApi.TrackingDataType.Origin: VR空間の原点 
+    - .position で座標情報を取得。
+  - strafeSpeed は横移動の速度。
+  - Networking.LocalPlayer.TeleportTo() でプレイヤーを指定位置にテレポートさせる。
+    - TeleportTo() 関数は引数が２つあり、それぞれ位置(Vector3)、回転(Quaternion)の変数が必要である。
+      - Quaternion は４つの数字がセットになったもので、回転を表現するのに適している。
+      - Transform に記載されている Rotation は3つの数字がセットのオイラー角であり、クォータニオンとは異なる。
+      - Quaternion の中身がどんな値かは気にしなくてよい。
+      - 回転の表現方法は２つあり、人間にとってはオイラー角、コンピュータにとってはクォータニオンが都合がいい。
+  - SendCustomEventDelayedSeconds(関数名, 秒数) で、特定の関数を、一定時間後に発動させることができる。
+    - SendCustomEventDelaedFeames() で指定フレーム後に関数を発動させる。
+  - 同期の種類分け(Tommyによる)
+    |種類|具体例|
+    |--|--|
+    |タイミング同期|ゲームワールドでゲームを開始する|
+    ||謎解きワールドで正解音を鳴らす|
+    |データ同期|Pickup オブジェクトの位置を同期する|
+    ||ゲームワールドのスコアを更新する|
+  - タイミング同期
+    - インスタンス内の全員が同じ関数を実行する同期の方法。
+    - 誰かが指示を行い、全員が同じタイミングで同じ関数を実行する。
+    - 命令と一緒に引数を送ることはできず、命令単体では、実行結果をプレイヤー間で共有することはできない。
+    - 次のような用途に向いている
+      - 効果音を鳴らす
+      - パーティクルを再生する
+      - Late-Joiner を考慮しないワールドギミックを発動する。
+  - データ同期
+    - 各プレイヤーが持っている変数の値をそろえる同期の方法。
+    - 誰かがそろえる指示を出すと、全員の持っている変数が、同じ値にそろえられる。
+    - 同期を実行するまでは人によって変数の値が異なる可能性がある。
+    - 揃えることができるデータを「同期変数」と呼ぶ。
+      - 同期変数の値は各自がローカルで書き換えることができ、人によって違う値を持っていることがある。同期を実施すると、あるプレイヤーが持っているローカルの値に統一される。
+    - 揃える際の基準となる値を持っている人を「オブジェクトオーナー」と呼ぶ
+      - 同期変数の値とオーナーをうまく管理することが、データ同期の肝である。
+  - SendCustomNetworkEvent()
+    - インスタンス内の他のプレイヤーに、関数実行を指示することができる。
+      - １つめの引数は、「誰が関数を実行するか」
+        - VRC.Udon.Common.Interface.NetworkEvewntTarget.All: インスタンスの全員
+        - VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner: オブジェクトオーナーのみ
+      - ２つ目の引数は、「どの関数を実行するか」
+        - ダブルクォーテーションで囲まれた部分が、実際に実行する関数の名前。
+    - 「引数がない」関数のみを発動できる。
